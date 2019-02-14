@@ -1,0 +1,16 @@
+package cn.yisou.hotel.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+import cn.yisou.hotel.pojo.User;
+
+public interface UserDao {
+	public boolean addUser(User user,Connection conn)throws Exception;
+	public List<User> selectAll(Connection conn) throws Exception;
+	public User selectUserByUid(String uid,Connection conn)throws Exception;
+	public boolean updateGradeByUid(String uid,String grade,Connection conn)throws Exception;
+	public boolean updateUtelByUid(String utel,String uid,Connection conn)throws Exception;
+	public boolean updatePswByUid(String uid,String psw,Connection conn)throws Exception;
+	
+}
