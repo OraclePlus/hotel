@@ -41,5 +41,6 @@ public class LogAction extends DispatcherAction{
 			request.getSession().setAttribute("logmsg","没有此用户");
 			return new ActionForward(true,"register");
 		}
+		
 	}
 }
