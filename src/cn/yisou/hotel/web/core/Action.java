@@ -3,9 +3,11 @@ package cn.yisou.hotel.web.core;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public interface Action {
-	public ActionForward execute(HttpServletRequest request,HttpServletResponse reponse,ActionForm form)throws ServletException, IOException;
+	public ActionForward excute(HttpServletRequest request ,HttpServletResponse response,ActionForm form)throws ServletException, IOException ;
 }

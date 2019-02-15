@@ -111,4 +111,23 @@ public class UserDaoImpl implements UserDao{
 		return flag;
 	}
 
+	@Override
+	public User selectUserByIdcard(String idcard, Connection conn) throws Exception {
+		User user=new User();
+		String sql="select * from user where idcard=?";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1, idcard);
+		ResultSet rs=ps.executeQuery();
+		while (rs.next()) {
+			user.setUid(rs.getString("uid"));
+			user.setName(rs.getString("name"));
+			user.setPsw(rs.getBytes("psw"));
+			user.setIdcard(rs.getString("idcard"));
+			user.setSex(rs.getString("sex"));
+			user.setUtel(rs.getString("utel"));
+			user.setGrade(rs.getString("grade"));
+		}
+		return user;
+	}
+
 }

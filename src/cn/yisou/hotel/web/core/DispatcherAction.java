@@ -4,15 +4,16 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DispatcherAction implements Action {
+public class DispatcherAction implements Action{
 
-	public ActionForward execute(HttpServletRequest request,
-			HttpServletResponse reponse, ActionForm form)
+	@Override
+	public ActionForward excute(HttpServletRequest request, HttpServletResponse response, ActionForm form)
 			throws ServletException, IOException {
-		System.out.println("DispatcherAction");
 		String methodName = form.getParam();
 		Class c = this.getClass();
 		ActionForward af = null;
@@ -20,21 +21,16 @@ public class DispatcherAction implements Action {
 			methodName = "undefined";
 		}
 		try {
-			Method m = c.getMethod(methodName, new Class[] {
-					HttpServletRequest.class, HttpServletResponse.class,
-					ActionForm.class });
-			af = (ActionForward) m.invoke(this, new Object[] { request,
-					reponse, form });
+			Method m = c.getMethod(methodName, new Class[] {HttpServletRequest.class, HttpServletResponse.class,ActionForm.class });
+			af = (ActionForward) m.invoke(this, new Object[] { request,response, form });
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return af;
 	}
-
 	public ActionForward undefined(HttpServletRequest request,
 			HttpServletResponse reponse, ActionForm form)
 			throws ServletException, IOException {
 		return new ActionForward(true,"error");
 	}
-	
 }

@@ -12,5 +12,5 @@ public interface UserDao {
 	public boolean updateGradeByUid(String uid,String grade,Connection conn)throws Exception;
 	public boolean updateUtelByUid(String utel,String uid,Connection conn)throws Exception;
 	public boolean updatePswByUid(String uid,String psw,Connection conn)throws Exception;
-	
+	public User selectUserByIdcard(String idcard,Connection conn)throws Exception;
 }

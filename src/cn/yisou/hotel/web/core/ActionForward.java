@@ -6,12 +6,7 @@ import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-/**
- * 这个类就是专门用来做跳转页面的类
- * 包含是否重定向还是转发，以及逻辑页面名称
- * @author Administrator
- *
- */
+
 public class ActionForward {
 	private boolean isRedirect = false;
 	private String path = null;
