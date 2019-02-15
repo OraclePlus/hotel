@@ -1,448 +1,838 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="#" />
-    <link type="text/css" rel="styleSheet"  href="css/main.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理员注册登录</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        
-        html,
-        body {
-            height: 100%;
-        }
+<meta charset="utf-8">
+<title>用户体验友好的注册登录</title>
 
-        @font-face {
-            font-family: 'neo';
-            src: url("fonts/NEOTERICc.ttf");
-        }
-        input:focus{
-			outline: none;
-		}
-		.form input{
-			width: 300px;
-			height: 30px;
-			font-size: 18px;
-            background: none;
-            border: none;
-            border-bottom: 1px solid #fff;
-            color: #fff;
-            margin-bottom: 20px;
-		}
-        .form input::placeholder{
-            color: rgba(255,255,255,0.8);
-            font-size: 18px;
-            font-family: "neo";
-        }
-        .confirm{
-            height: 0;
-            overflow: hidden;
-            transition: .25s;
-        }
-		.btn{
-			width:140px;
-			height: 40px;
-			border: 1px solid #fff;
-            background: none;
-			font-size:20px;
-			color: #fff;
-            cursor: pointer;
-            margin-top: 25px;
-            font-family: "neo";
-            transition: .25s;
-		}
-        .btn:hover{
-            background: rgba(255,255,255,.25);
-        }
-        #login_wrap{
-            width: 980px;
-            min-height: 500px;
-            border-radius: 10px;
-            font-family: "neo";
-            overflow: hidden;
-            box-shadow: 0px 0px 120px rgba(0, 0, 0, 0.25);
-            position: fixed;
-            top: 50%;
-            right: 50%;
-            margin-top: -250px;
-            margin-right: -490px;
-        }
-        #login{
-            width: 50%;
-            height: 100%;
-            min-height: 500px;
-            background: linear-gradient(45deg, #9a444e, #e06267);
-            position: relative;
-            float: right;
-        }
-        #login #status{
-            width: 90px;
-            height: 35px;
-            margin: 40px auto;
-            color: #fff;
-            font-size: 30px;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-        }
-        #login #status i{
-            font-style: normal;
-            position: absolute;
-            transition: .5s
-        }
-        #login span{
-            text-align: center;
-            position: absolute;
-            left: 50%;
-            margin-left: -150px;
-            top: 52%;
-            margin-top: -140px;
-        }
-        #login span a{
-            text-decoration: none;
-            color: #fff;
-            display: block;
-            margin-top: 80px;
-            font-size: 18px;
-        }
-        #bg{
-            background: linear-gradient(45deg, #211136, #bf5853);
-            height: 100%;
-        }
-        /*ç»å¾*/
-        #login_img{
-            width: 50%;
-            min-height: 500px;
-            background: linear-gradient(45deg, #221334, #6c3049);
-            float: left;
-            position: relative;
-        }
-        #login_img span{
-            position: absolute;
-            display: block;
-        }
-        #login_img .circle{
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #df5555, #ef907a);
-            top: 70px;
-            left: 50%;
-            margin-left: -100px;
-            overflow: hidden;
-        }
-        #login_img .circle span{
-            width: 150px;
-            height: 40px;
-            border-radius: 50px;
-            position: absolute;
-        }
-        #login_img .circle span:nth-child(1){
-            top: 30px;
-            left: -38px;
-            background: #c55c59;
-        }
-        #login_img .circle span:nth-child(2){
-            bottom: 20px;
-            right: -35px;
-            background: #934555;
-        }
-        #login_img .star span{
-            background: radial-gradient(#fff 10%,#fff 20%,rgba(72, 34, 64, 0));
-            border-radius: 50%;
-            box-shadow: 0 0 7px #fff;
-        }
-        #login_img .star span:nth-child(1){
-            width: 15px;
-            height: 15px;
-            top: 50px;
-            left: 30px;
-        }
-        #login_img .star span:nth-child(2){
-            width: 10px;
-            height: 10px;
-            left: 360px;
-            top: 80px;
-        }
-        #login_img .star span:nth-child(3){
-            width: 5px;
-            height: 5px;
-            top: 400px;
-            left: 80px;
-        }
-        #login_img .star span:nth-child(4){
-            width: 8px;
-            height: 8px;
-            top: 240px;
-            left: 60px;
-        }
-        #login_img .star span:nth-child(5){
-            width: 4px;
-            height: 4px;
-            top: 20px;
-            left: 200px;
-        }
-        #login_img .star span:nth-child(6){
-            width: 4px;
-            height: 4px;
-            top: 460px;
-            left: 410px;
-        }
-        #login_img .star span:nth-child(7){
-            width: 6px;
-            height: 6px;
-            top: 250px;
-            left: 350px;
-        }
-        #login_img .fly_star span{
-            width: 90px;
-            height: 3px;
-            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.67), rgba(255,255,255,0));
-            background: -o-linear-gradient(left, rgba(255, 255, 255, 0.67), rgba(255,255,255,0));
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.67), rgba(255,255,255,0));
-            transform: rotate(-45deg);
-        }
-        #login_img .fly_star span:nth-child(1){
-            top:60px;
-            left: 80px;
-        }
-        #login_img .fly_star span:nth-child(2){
-            top: 210px;
-            left: 332px;
-            opacity: 0.6;
-        }
-        #login_img p{
-            text-align: center;
-            color: #af4b55;
-            font-weight: 600;
-            margin-top: 365px;
-            font-size: 25px;
-        }
-        #login_img p i{
-            font-style: normal;
-            margin-right: 45px;
-        }
-        #login_img p i:nth-last-child(1){
-            margin-right: 0;
-        }
-        /*æç¤º*/
-        #hint{
-            width: 100%;
-            line-height: 70px;
-            background: linear-gradient(-90deg, #9b494d, #bf5853);
-            text-align: center;
-            font-size: 25px;
-            color: #fff;
-            box-shadow: 0 0 20px #733544;
-            display: none;
-            opacity: 0;
-            transition: .5s;
-            position: absolute;
-            top: 0;
-            z-index: 999;
-        }
-        /* ååºå¼ */
-        @media screen and (max-width:1000px ) {
-            #login_img{
-                display: none;
-            }
-            #login_wrap{
-                width: 490px;
-                margin-right: -245px;
-            }
-            #login{
-                width: 100%;
-                
-            }
-        }
-        @media screen and (max-width:560px ) {
-            #login_wrap{
-                width: 330px;
-                margin-right: -165px;
-            }
-            #login span{
-                margin-left: -125px;
-            }
-            .form input{
-                width: 250px;
-            }
-            .btn{
-                width: 113px;
-            }
-        }
-        @media screen and (max-width:345px ) {
-            #login_wrap {
-                width: 290px;
-                margin-right: -145px;
-            }
-        }
-    </style>
+<script src="js/jquery.min.js"></script>
+
+<style>
+/* base.scss */
+html {
+  box-sizing: border-box;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+}
+
+*:before, *:after {
+  box-sizing: inherit;
+}
+
+table {
+  width: 100%;
+}
+
+iframe {
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+
+small {
+  display: block;
+}
+
+fieldset {
+  margin: 0;
+}
+
+input,
+fieldset {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  font-size: 1.0rem;
+  font-family: inherit;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+svg {
+  display: block;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+
+p > a {
+  display: inline;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* type.scss */
+html {
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+body, h1, h2, h3, h4, h5, h6, label, button, input, select, textarea, li, a, strong, i, span, th, td {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+  font-weight: 300;
+  text-rendering: optimizeSpeed;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.125;
+  margin-top: 0;
+  text-rendering: optimizeLegibility;
+}
+
+p + p {
+  margin-top: 1.5em;
+}
+
+/* mixins.scss */
+/* z_index.scss */
+/* utility.scss */
+.u-m0 {
+  margin: 0;
+}
+
+.u-mt0 {
+  margin-top: 0;
+}
+
+.u-mr0 {
+  margin-right: 0;
+}
+
+.u-mb0 {
+  margin-bottom: 0;
+}
+
+.u-ml0 {
+  margin-left: 0;
+}
+
+.u-m05 {
+  margin: 5px;
+}
+
+.u-m1 {
+  margin: 10px;
+}
+
+.u-mt1 {
+  margin-top: 10px;
+}
+
+.u-mr1 {
+  margin-right: 10px;
+}
+
+.u-mb1 {
+  margin-bottom: 10px;
+}
+
+.u-ml1 {
+  margin-left: 10px;
+}
+
+.u-m2 {
+  margin: 20px;
+}
+
+.u-mt2 {
+  margin-top: 20px;
+}
+
+.u-mr2 {
+  margin-right: 20px;
+}
+
+.u-mb2 {
+  margin-bottom: 20px;
+}
+
+.u-ml2 {
+  margin-left: 20px;
+}
+
+.u-p0 {
+  padding: 0;
+}
+
+.u-pt0 {
+  padding-top: 0;
+}
+
+.u-pr0 {
+  padding-right: 0;
+}
+
+.u-pb0 {
+  padding-bottom: 0;
+}
+
+.u-pl0 {
+  padding-left: 0;
+}
+
+.u-p1 {
+  padding: 10px;
+}
+
+.u-pt1 {
+  padding-top: 12px;
+}
+
+.u-pr1 {
+  padding-right: 12px;
+}
+
+.u-pb1 {
+  padding-bottom: 12px;
+}
+
+.u-pl1 {
+  padding-left: 12px;
+}
+
+.u-p2 {
+  padding: 20px;
+}
+
+.u-pt2 {
+  padding-top: 20px;
+}
+
+.u-pr2 {
+  padding-right: 20px;
+}
+
+.u-pb2 {
+  padding-bottom: 20px;
+}
+
+.u-pl2 {
+  padding-left: 20px;
+}
+
+.u-db {
+  display: block;
+}
+
+.u-show {
+  display: block !important;
+}
+
+.u-show-dib {
+  display: inline-block !important;
+}
+
+.u-dn {
+  display: none;
+}
+
+.u-hide {
+  display: none !important;
+}
+
+.u-hide-off-canvas {
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateX(3000px);
+          transform: translateX(3000px);
+}
+
+.u-dib {
+  display: inline-block;
+}
+
+.u-fl {
+  float: left;
+}
+
+.u-full-height {
+  min-height: 100vh;
+}
+
+.u-full-width-break-container {
+  margin-left: calc(-50vw + 50%);
+  width: 100vw;
+}
+
+.u-relative {
+  position: relative;
+}
+
+.u-absolute {
+  position: absolute;
+}
+
+.u-fixed {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: fixed;
+}
+
+.u-pos-t0 {
+  top: 0;
+}
+
+.u-pos-r0 {
+  right: 0;
+}
+
+.u-pos-b0 {
+  bottom: 0;
+}
+
+.u-pos-l0 {
+  left: 0;
+}
+
+.u-pos-tr0 {
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: auto;
+}
+
+.u-pos-tl0 {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+}
+
+.u-pos-br0 {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: auto;
+}
+
+.u-pos-bl0 {
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+}
+
+.u-pos-tr10 {
+  top: 10px;
+  right: 10px;
+}
+
+.u-pos-tl10 {
+  top: 10px;
+  left: 10px;
+}
+
+.u-pos-br10 {
+  bottom: 10px;
+  right: 10px;
+}
+
+.u-pos-bl10 {
+  bottom: 10px;
+  left: 10px;
+}
+
+.u-pos-c {
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+}
+
+.u-b-radius {
+  border-radius: 3px;
+}
+
+.u-b-radius-round {
+  border-radius: 50%;
+}
+
+.u-b-radius-big {
+  border-radius: 40px;
+}
+
+.u-b-radius-top {
+  border-radius: 3px 3px 0 0;
+}
+
+.u-b-radius-bottom {
+  border-radius: 0 0 3px 3px;
+}
+
+.u-b-radius-right {
+  border-radius: 0 3px 3px 0;
+}
+
+.u-b-radius-left {
+  border-radius: 3px 0 0 3px;
+}
+
+.u-oh {
+  overflow: hidden;
+}
+
+.u-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.u-div-c {
+  margin: 0 auto;
+}
+
+.u-text-c {
+  text-align: center;
+}
+
+.u-text-r {
+  text-align: right;
+}
+
+.u-cursor-hand {
+  cursor: pointer;
+}
+
+.u-text-small {
+  font-size: 1.2rem;
+}
+
+.u-text-disclaimer {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.u-btn-wrapper {
+  padding: 15px 12px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  z-index: 2;
+}
+
+/* grid.scss */
+.grid-u,
+[class*="grid-u-"] {
+  display: inline-block;
+  letter-spacing: normal;
+  vertical-align: top;
+  word-spacing: normal;
+  zoom: 1;
+}
+
+.grid-r {
+  word-spacing: -0.34em;
+}
+
+.opera-only :-o-prefocus,
+.grid-r {
+  /* Opera 12 on Windows needs word-spacing. The ".opera-only" selector is used to prevent actual prefocus styling and is not required in markup. */
+  word-spacing: -0.43em;
+}
+
+@media (min-width: 25em) {
+  .grid-u-sm-1-5 {
+    width: 20%;
+  }
+
+  .grid-u-sm-1-4,
+  .grid-u-sm-3-12 {
+    width: 25%;
+  }
+
+  .grid-u-sm-1-3,
+  .grid-u-sm-4-12 {
+    width: 33.3333%;
+  }
+
+  .grid-u-sm-2-5 {
+    width: 40%;
+  }
+
+  .grid-u-sm-1-2,
+  .grid-u-sm-6-12 {
+    width: 50%;
+  }
+
+  .grid-u-sm-3-5 {
+    width: 60%;
+  }
+
+  .grid-u-sm-2-3,
+  .grid-u-sm-4-6,
+  .grid-u-sm-8-12 {
+    width: 66.6667%;
+  }
+
+  .grid-u-sm-3-4,
+  .grid-u-sm-9-12 {
+    width: 75%;
+  }
+
+  .grid-u-sm-1 {
+    width: 100%;
+  }
+}
+@media (min-width: 34.375em) {
+  .grid-u-md-1-5 {
+    width: 20%;
+  }
+
+  .grid-u-md-1-4,
+  .grid-u-md-3-12 {
+    width: 25%;
+  }
+
+  .grid-u-md-1-3,
+  .grid-u-md-4-12 {
+    width: 33.3333%;
+  }
+
+  .grid-u-md-2-5 {
+    width: 40%;
+  }
+
+  .grid-u-md-1-2,
+  .grid-u-md-6-12 {
+    width: 50%;
+  }
+
+  .grid-u-md-3-5 {
+    width: 60%;
+  }
+
+  .grid-u-md-2-3,
+  .grid-u-md-4-6,
+  .grid-u-md-8-12 {
+    width: 66.6667%;
+  }
+
+  .grid-u-md-3-4,
+  .grid-u-md-9-12 {
+    width: 75%;
+  }
+
+  .grid-u-md-1 {
+    width: 100%;
+  }
+}
+@media (min-width: 46.875em) {
+  .grid-u-lg-1-5 {
+    width: 20%;
+  }
+
+  .grid-u-lg-1-4,
+  .grid-u-lg-3-12 {
+    width: 25%;
+  }
+
+  .grid-u-lg-1-3,
+  .grid-u-lg-4-12 {
+    width: 33.3333%;
+  }
+
+  .grid-u-lg-2-5 {
+    width: 40%;
+  }
+
+  .grid-u-lg-1-2,
+  .grid-u-lg-6-12 {
+    width: 50%;
+  }
+
+  .grid-u-lg-3-5 {
+    width: 60%;
+  }
+
+  .grid-u-lg-2-3,
+  .grid-u-lg-4-6,
+  .grid-u-lg-8-12 {
+    width: 66.6667%;
+  }
+
+  .grid-u-lg-3-4,
+  .grid-u-lg-9-12 {
+    width: 75%;
+  }
+
+  .grid-u-lg-1 {
+    width: 100%;
+  }
+}
+@media (min-width: 62.5em) {
+  .grid-u-xl-1-5 {
+    width: 20%;
+  }
+
+  .grid-u-xl-1-4,
+  .grid-u-xl-3-12 {
+    width: 25%;
+  }
+
+  .grid-u-xl-1-3,
+  .grid-u-xl-4-12 {
+    width: 33.3333%;
+  }
+
+  .grid-u-xl-2-5 {
+    width: 40%;
+  }
+
+  .grid-u-xl-1-2,
+  .grid-u-xl-6-12 {
+    width: 50%;
+  }
+
+  .grid-u-xl-3-5 {
+    width: 60%;
+  }
+
+  .grid-u-xl-2-3,
+  .grid-u-xl-4-6,
+  .grid-u-xl-8-12 {
+    width: 66.6667%;
+  }
+
+  .grid-u-xl-3-4,
+  .grid-u-xl-9-12 {
+    width: 75%;
+  }
+
+  .grid-u-xl-1 {
+    width: 100%;
+  }
+}
+/* icons.scss */
+@font-face {
+  font-family: 'comeon-iconset';
+  src: url("https://dl.dropboxusercontent.com/u/26351585/Comeon/comeon-iconfamily.woff2") format("woff2");
+  src: url("https://dl.dropboxusercontent.com/u/26351585/Comeon/comeon-iconfamily.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.btn--error {
+  /* overrides for Error State */
+}
+
+.btn--in-progress {
+  /* overrides for In Progress State */
+}
+
+.no-touchevents .btn.btn--main-cta:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+.no-touchevents .btn.btn--secondary:hover {
+  -webkit-transform: none;
+          transform: none;
+}
+
+body {
+  background-color: #1abc9c;
+}
+
+.flex-c-c {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 30rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ui-field,
+.ui-button {
+  border-radius: .7rem;
+  height: 4rem;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  width: 25rem;
+}
+.ui-field--hidden,
+.ui-button--hidden {
+  height: 0;
+  margin: 0;
+}
+
+.select__list {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.select__label {
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  opacity: 0.6;
+  padding: 0 2rem;
+  text-transform: capitalize;
+}
+.select__label--active {
+  opacity: 1;
+}
+
+input {
+  background-color: #fff;
+  margin: .5rem 0;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+textarea:focus,
+input:focus {
+  outline-color: #fff;
+}
+
+.pointer {
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid #fff;
+  height: 0;
+  position: relative;
+  top: .6rem;
+  -webkit-transition: all 30s ease;
+  transition: all 30s ease;
+  width: 0;
+}
+.pointer.--usr-rtn {
+  right: 9rem;
+}
+.pointer.--usr-rst {
+  left: 9.5rem;
+}
+
+button {
+  background: #16a085;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  margin: .5rem 0;
+  text-transform: capitalize;
+  -webkit-transition: background 300ms;
+  transition: background 300ms;
+}
+button:hover {
+  background: #138a72;
+}
+button.--usr-rtn::before {
+  content: '登录';
+}
+button.--usr-new::before {
+  content: "注册";
+}
+button.--usr-rst::before {
+  content: "重置密码";
+}
+</style>
 </head>
-
-
 <body>
-    <div id="bg">
-        <div id="hint"><!-- æç¤ºæ¡ -->
-            <p>ç»å½å¤±è´¥</p>
-        </div>
-        <div id="login_wrap">
-            <div id="login"><!-- ç»å½æ³¨ååæ¢å¨ç» -->
-                <div id="status">
-                    <i style="top: 0">Log</i>
-                    <i style="top: 35px">Sign</i>
-                    <i style="right: 5px">in</i>
-                </div>
-                <span>
-                    <form action="post">
-                        <p class="form"><input type="text" id="user" placeholder="username"></p>
-                        <p class="form"><input type="password" id="passwd" placeholder="password"></p>
-                        <p class="form confirm"><input type="password" id="confirm-passwd" placeholder="confirm password"></p>
-                        <input type="button" value="Log in" class="btn" onclick="login()" style="margin-right: 20px;">
-                        <input type="button" value="Sign in" class="btn" onclick='signin()' id="btn">
-                    </form>
-                    <a href="#">Forget your password?</a>
-                </span>
-            </div>
 
-            <div id="login_img"><!-- å¾çç»å¶æ¡ -->
-                <span class="circle">
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="star">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="fly_star">
-                    <span></span>
-                    <span></span>
-                </span>
-                <p id="title">CLOUD</p>
-            </div>
-        </div>
-    </div>
-</body>
+<div class="wrap flex-c-c">
+  <form action="" method="" class="flex-c-c">
+    <ul class="select__list">
+      <li id="js-usr-rtn" class="select__label">登录</li>
+      <li id="js-usr-new" class="select__label select__label--active">注册</li>
+      <li id="js-usr-rst" class="select__label">忘记密码</li>
+    </ul>
+    <span class="pointer"></span>
+    <input type="email" placeholder="账号" class="ui-field" id="js-field__email" />
+    <input type="password" placeholder="密码" class="ui-field" id="js-field__pass" />
+    <input type="password" placeholder="确认密码" class="ui-field" id="js-field__r-pass" />
+    <button id="js-btn" class="ui-button --usr-new"></button>
+  </form>
+</div>
+
 <script>
-    var onoff = true//æ ¹æ®æ­¤å¸å°å¼å¤æ­å½åä¸ºæ³¨åç¶æè¿æ¯ç»å½ç¶æ
-    var confirm = document.getElementsByClassName("confirm")[0]
-    //var user = document.getElementById("user")
-    //var passwd = document.getElementById("passwd")
-    //var con_pass = document.getElementById("confirm-passwd")
-    
-    //èªå¨å±ä¸­title
-    var name_c = document.getElementById("title")
-    name = name_c.innerHTML.split("")
-    name_c.innerHTML = ""
-    for (i = 0; i < name.length; i++)
-        if (name[i] != ",")
-            name_c.innerHTML += "<i>" + name[i] + "</i>"
-    //å¼ç¨hint()å¨æä¸æ¹å¼¹åºæç¤º
-    function hint() {
-        let hit = document.getElementById("hint")
-        hit.style.display = "block"
-        setTimeout("hit.style.opacity = 1", 0)
-        setTimeout("hit.style.opacity = 0", 2000)
-        setTimeout('hit.style.display = "none"', 3000)
-    }
-    //åè°å½æ°
-    /*function submit(callback) {
-        //if (passwd.value == con_pass.value) {
-        let request = new XMLHttpRequest()
-        let url = ""
-        request.open("post", url, true)
-        let data = new FormData()
-        data.append("user", user.value)
-        data.append("passwd", passwd.value)
-        request.onreadystatechange = function() {
-            if (this.readyState == 4) {
-                callback.call(this, this.response)
-                //console.log(this.responseText)
-            }
-        }
-        request.send(data)
-    }*/
-    /*else {
-               hit.innerHTML = "ä¸¤æ¬¡å¯ç ä¸å"
-               hitting()
-           }
-       }*/
-    //æ³¨åæé®
-    function signin() {
-        let status = document.getElementById("status").getElementsByTagName("i")
-        let hit = document.getElementById("hint").getElementsByTagName("p")[0]
-        if (onoff) {
-            confirm.style.height = 51 + "px"
-            status[0].style.top = 35 + "px"
-            status[1].style.top = 0
-            onoff = !onoff
-        } else {
-            /*if (!/^[A-Za-z0-9]+$/.test(user.value))
-                hit.innerHTML = "è´¦å·åªè½ä¸ºè±æåæ°å­"
-            else if (user.value.length < 6)
-                hit.innerHTML = "è´¦å·é¿åº¦å¿é¡»å¤§äº6ä½"
-            else if (passwd.value.length < 6)
-                hit.innerHTML = "å¯ç é¿åº¦å¿é¡»å¤§äº6ä½"
-            else if (passwd.value != con_pass.value)
-                hit.innerHTML = "ä¸¤æ¬¡å¯ç ä¸ç¸ç­"
-            else if (passwd.value = con_pass.value) {
-                submit(function(res) {
-                    if (res == "exist")
-                        hit.innerHTML = "è¯¥è´¦å·å·²å­å¨"
-                    else if (res == true) {
-                        hit.innerHTML = "è´¦å·æ³¨åæåï¼ä¸¤ç§åèªå¨å·æ°é¡µé¢"
-                        setTimeout("window.location.reload()", 2000)
-                    } else if (res == false)
-                        hit.innerHTML = "è´¦å·æ³¨åå¤±è´¥"
-                })
-            }
-            hint()*/
-        }
-    }
+//to-do. dry-up & remove jq
+$('.select__label').click(function() {
+  $('.select__label').removeClass('select__label--active');
+  $(this).addClass('select__label--active');
+});
 
-    //ç»å½æé®
-    function login() {
-        if (onoff) {
-            /*let request = new XMLHttpRequest()
-            let url = ""
-            request.open("post", url, true)
-            let data = new FormData()
-            data.append("user", user.value)
-            data.append("passwd", passwd.value)
-            request.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                    if (this.responseText == false)
-                        hint()
-                    else
-                        window.location.href = this.responseText;
-                }
-            }
-            request.send(data)*/
-        } else {
-            let status = document.getElementById("status").getElementsByTagName("i")
-            confirm.style.height = 0
-            status[0].style.top = 0
-            status[1].style.top = 35 + "px"
-            onoff = !onoff
-        }
-    }
-
+$('#js-usr-rtn').click(function() {
+  $('#js-btn, .pointer, #js-field__pass').removeClass('--usr-new --usr-rst ui-field--hidden');
+  $('#js-btn, .pointer').addClass('--usr-rtn');
+  $('#js-field__r-pass').addClass('ui-field--hidden');
+});
+$('#js-usr-new').click(function() {
+  $('#js-btn, .pointer, #js-field__r-pass, #js-field__pass').removeClass('--usr-rtn --usr-rst ui-field--hidden');
+  $('#js-btn').addClass('--usr-new');
+});
+$('#js-usr-rst').click(function() {
+  $('#js-btn, .pointer').removeClass('--usr-rtn --usr-new');
+  $('#js-btn, .pointer').addClass('--usr-rst');
+  $('#js-field__r-pass, #js-field__pass').addClass('ui-field--hidden');
+});
 </script>
-æ´å¤æ¨¡æ¿ï¼<a href="http://www.mycodes.net/" target="_blank">æºç ä¹å®¶</a>
+<div style="text-align:center;">
+</div>
+</body>
 </html>
