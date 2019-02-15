@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="cn.yisou.hotel.pojo.User"%>
 <%@page import="cn.yisou.hotel.service.impl.UserServiceHImpl"%>
 <%@page import="cn.yisou.hotel.service.UserServiceH"%>
