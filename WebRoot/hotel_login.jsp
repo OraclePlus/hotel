@@ -37,10 +37,16 @@
 							<span id="login_err" class="sty_txt2"></span>
 						</div>
 						<div>
-							 用户名：<input type="text" name="userEntity.userCode" class="username" id="name">
+							 账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" name="adid" class="username" id="id">
 						</div>
 						<div>
-							密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="userEntity.password" class="pwd" id="pwd" onkeypress="EnterPress(event)" onkeydown="EnterPress()">
+							密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="password" class="pwd" id="pwd" onkeypress="EnterPress(event)" onkeydown="EnterPress()">
+						</div>
+						<div>
+							确认密码：<input type="password" name="psw" class="pwd" id="psw" onkeypress="EnterPress(event)" onkeydown="EnterPress()">
+						</div>
+						<div>
+							权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限：<input type="text" name="power"  id="power" onkeypress="EnterPress(event)" onkeydown="EnterPress()">
 						</div>
 						<div id="btn_area">
 							<input type="button" class="login_btn" id="login_sub"  value="登  录">
