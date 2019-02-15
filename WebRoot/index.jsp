@@ -68,10 +68,10 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html">欢迎来到香格里拉 请登录</a></h1>
+					<h1 id="fh5co-logo"><a href="index.html">欢迎来到香格里拉<input type="hidden" value="<%=session.getAttribute("logmsg") %>" id="msglog"/></a></h1>
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-						<li><a href="index.jsp">登录与注册</a></li>
+						<li><a href="register.jsp">登录与注册</a></li>
 							<li><a class="active"  href="index.jsp">主页</a></li>
 							<li>
 								<a href="hotel.jsp" class="fh5co-sub-ddown">酒店房型</a>

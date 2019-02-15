@@ -10,7 +10,7 @@
               factory="org.apache.naming.factory.BeanFactory"
               type="com.mchange.v2.c3p0.ComboPooledDataSource"
               initialPoolSize="10" maxPoolSize="200" minPoolSize="20" user="root"
-              password="7326" driverClass="com.mysql.jdbc.Driver"
+              password="1234" driverClass="com.mysql.jdbc.Driver"
               jdbcUrl="jdbc:mysql://localhost:3306/hotel" />
               -->  
 </Context>
