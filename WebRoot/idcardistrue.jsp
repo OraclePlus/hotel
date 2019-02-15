@@ -1,8 +1,9 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="cn.yisou.hotel.pojo.User"%>
 <%@page import="cn.yisou.hotel.service.impl.UserServiceHImpl"%>
 <%@page import="cn.yisou.hotel.service.UserServiceH"%>
 <%@page import="cn.hutool.core.util.IdcardUtil"%>
-<%@page import="java.net.URLDecoder"%>
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	UserServiceH us=new UserServiceHImpl();
