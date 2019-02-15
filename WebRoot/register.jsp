@@ -1,3 +1,4 @@
+<%@page import="cn.yisou.hotel.utils.PrimaryKeyUUID"%>
 <%@page import="cn.hutool.captcha.CircleCaptcha"%>
 <%@page import="cn.hutool.captcha.CaptchaUtil"%>
 <%@page import="cn.hutool.captcha.ShearCaptcha"%>
@@ -24,7 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<!-- Style --> <link rel="stylesheet" href="css/loginstyle.css" type="text/css" media="all">
 	
-	
+	<% 
+		String uid=PrimaryKeyUUID.getPrimaryKey();
+		pageContext.setAttribute("uid", uid);
+	%>
 	<script type="text/javascript">
 		function showmsg(){
 			var val = document.getElementById("msginput").value;
@@ -105,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if(xmlHttp.status==200){
 					//一切正常并能开始获得返回的结果
 					var result= xmlHttp.responseText;
-					if(result.trim()!="true"){
+					if(result.trim()=="true"){
 						document.getElementById("msgdiv").innerHTML="身份证号错误或此身份证已经注册";
 						document.getElementById("msgdiv").style.color="red";
 						document.getElementById("msgdiv").style.display="inline";
@@ -131,9 +135,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				return false;
 			}
 		}
+		
 		function regtijiao(){
 			var msgdiv=document.getElementById("msgdiv").html5;
 			var pswdiv=document.getElementById("pswdiv").html5;
+			var teldiv=document.getElementById("teldiv").html5;
 			if((msgdiv==undefined||msgdiv=="")&&(pswdiv==undefined||pswdiv=="")&&(teldiv==undefined||teldiv=="")){
 				var confirm=dataisnull();
 				if(confirm){
@@ -189,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h2>注 册</h2>
 			<form action="reg.do" method="post" id="formid" onsubmit="return regtijiao()">
 				<input type="hidden" value="<%=session.getAttribute("regmsg") %>" id="msginput"/>
-				<input type="text" name="uid" placeholder="账号" required="" id="uid">
+				<input type="text" name="uid" placeholder="账号" required="" id="uid" readonly=true value="<%=pageContext.getAttribute("uid") %>">
 				<input type="text" name="name" placeholder="用户名"  required="" id="name">
 				<input type="password" name="regpassword" placeholder="密码" required="" id="psw">
 				<input type="password" name="psw" placeholder="确认密码" required="" id="confirmpsw" onblur="pswjudge()"><div style="display:none" id="pswdiv"></div><br/>

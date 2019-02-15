@@ -26,7 +26,7 @@ public class RegAction extends DispatcherAction{
 		UserServiceH us=new UserServiceHImpl();
 		RegForm regForm=(RegForm)form;
 		User user=new User();
-		user.setUid(PrimaryKeyUUID.getPrimaryKey());
+		user.setUid(regForm.getUid());
 		user.setName(regForm.getName());
 		user.setPsw(GetMD5Byte.getMD5Byte(regForm.getRegpassword()));
 		user.setUtel(regForm.getTel());
