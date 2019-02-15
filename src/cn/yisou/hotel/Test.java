@@ -38,6 +38,7 @@ public class Test {
 //		room.setType("Ë«ÈË¼ä");
 //		room.setState(0);
 //		System.out.println(rd.addRoom(room, conn));
+		
 	}
 
 }
