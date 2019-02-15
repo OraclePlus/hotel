@@ -20,7 +20,7 @@
 		/**退出系统**/
 		function logout(){
 			if(confirm("您确定要退出本系统吗？")){
-				window.location.href = "login.html";
+				window.location.href = "hotel_login.jsp";
 			}
 		}
 		
@@ -408,7 +408,7 @@
 	 	<span id="here_area">当前位置：系统&nbsp;>&nbsp;系统介绍</span>
 	</div>
     <div id="main">
-      	<iframe name="right" id="rightMain" src="introduce.html" frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true"/>
+      	<iframe name="right" id="rightMain" src="hotel_introduce.jsp" frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true"/>
     </div>
 
 </body>
