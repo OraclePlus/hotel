@@ -3,6 +3,7 @@ package cn.yisou.hotel.dao;
 import java.sql.Connection;
 import java.util.List;
 
+import cn.yisou.hotel.pojo.Check;
 import cn.yisou.hotel.pojo.Room;
 
 public interface RoomDao {
@@ -13,4 +14,6 @@ public interface RoomDao {
 	public boolean addRoom(Room room,Connection conn)throws Exception;
 	public List<Room> selectAll(Connection conn)throws Exception;
 	public Room selectRoomByRoomid(String roomid,Connection conn)throws Exception;
+	public List<Room> splitQuery(int pageSize,int pageNo,Connection conn)throws Exception;
+	public int getMaxPageNo(int pageSize,Connection conn)throws Exception;
 }

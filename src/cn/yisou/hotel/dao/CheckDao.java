@@ -13,4 +13,6 @@ public interface CheckDao {
 	public Check selectCheckByNumber(String number ,Connection conn)throws Exception;
 	public boolean updateCheckTimeByNumber(Date checktime,String number,Double money,Connection conn)throws Exception;
 	public boolean updateLeaveTimeByNumber(Date leavetime,String number,Double money,Connection conn)throws Exception;
+	public List<Check> splitQuery(int pageSize,int pageNo,Connection conn)throws Exception;
+	public int getMaxPageNo(int pageSize,Connection conn)throws Exception;
 }

@@ -13,4 +13,6 @@ public interface UserServiceH {
 	public boolean changeGradeByUid(String uid,String grade);
 	public boolean changeUtelByUid(String utel,String uid);
 	public boolean changePswByUid(String uid,String psw);
+	public List<User> splitQuery(int pageSize,int pageNo);
+	public int getMaxPageNo(int pageSize);
 }

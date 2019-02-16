@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.yisou.hotel.dao.CheckDao;
+import cn.yisou.hotel.db.DBHelper;
 import cn.yisou.hotel.pojo.Check;
 
 public class CheckDaoImpl implements CheckDao{
@@ -118,6 +119,42 @@ public class CheckDaoImpl implements CheckDao{
 			check.setState(rs.getString("state"));
 		}
 		return check;
+	}
+
+	@Override
+	public List<Check> splitQuery(int pageSize, int pageNo, Connection conn) throws Exception {
+		List<Check> list = new ArrayList<Check>();
+		String sql = "select * from check limit ?,?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, (pageNo-1)*pageSize);
+		ps.setInt(2, pageSize);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			Check check = new Check();
+			check.setNumber(rs.getString("number"));
+			check.setRoomid(rs.getString("roomid"));
+			check.setUid(rs.getString("uid"));
+			check.setName(rs.getString("name"));
+			check.setPeoplenum(rs.getInt("peoplenum"));
+			check.setMoney(rs.getDouble("money"));
+			check.setChecktime(rs.getDate("checktime"));
+			check.setLeavetime(rs.getDate("leavetime"));
+			check.setState(rs.getString("state"));
+			list.add(check);
+		}
+		return list;
+	}
+
+	@Override
+	public int getMaxPageNo(int pageSize, Connection conn) throws Exception {
+		int count = 0;
+		String sql = "select count(*) from check";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+			count = rs.getInt(1);
+		}
+		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
 
 }

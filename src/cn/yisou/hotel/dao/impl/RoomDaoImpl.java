@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.yisou.hotel.dao.RoomDao;
+import cn.yisou.hotel.pojo.Check;
 import cn.yisou.hotel.pojo.Room;
 
 public class RoomDaoImpl implements RoomDao{
@@ -127,6 +128,40 @@ public class RoomDaoImpl implements RoomDao{
 			room.setRoomtel(rs.getString("roomtel"));
 		}
 		return room;
+	}
+
+	@Override
+	public List<Room> splitQuery(int pageSize, int pageNo, Connection conn) throws Exception {
+		List<Room> list = new ArrayList<Room>();
+		String sql = "select * from room limit ?,?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, (pageNo-1)*pageSize);
+		ps.setInt(2, pageSize);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			Room room = new Room();
+			room.setRoomid(rs.getString("roomid"));
+			room.setType(rs.getString("type"));
+			room.setPrice(rs.getDouble("price"));
+			room.setState(rs.getInt("state"));
+			room.setHourroom(rs.getString("hourroom"));
+		    room.setPeoplemun(rs.getInt("peoplenum"));
+			room.setRoomtel(rs.getString("roomtel"));
+			list.add(room);
+		}
+		return list;
+	}
+
+	@Override
+	public int getMaxPageNo(int pageSize, Connection conn) throws Exception {
+		int count = 0;
+		String sql = "select count(*) from room";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+			count = rs.getInt(1);
+		}
+		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
 
 

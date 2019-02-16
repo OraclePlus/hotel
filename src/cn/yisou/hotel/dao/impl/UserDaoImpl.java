@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.yisou.hotel.dao.UserDao;
+import cn.yisou.hotel.pojo.Room;
 import cn.yisou.hotel.pojo.User;
 import sun.security.timestamp.TSRequest;
 
@@ -128,6 +129,40 @@ public class UserDaoImpl implements UserDao{
 			user.setGrade(rs.getString("grade"));
 		}
 		return user;
+	}
+
+	@Override
+	public List<User> splitQuery(int pageSize, int pageNo, Connection conn) throws Exception {
+		List<User> list = new ArrayList<User>();
+		String sql = "select * from user limit ?,?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, (pageNo-1)*pageSize);
+		ps.setInt(2, pageSize);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			User user = new User();
+			user.setUid(rs.getString("uid"));
+			user.setName(rs.getString("name"));
+			user.setPsw(rs.getBytes("psw"));
+			user.setIdcard(rs.getString("idcard"));
+			user.setSex(rs.getString("sex"));
+			user.setUtel(rs.getString("utel"));
+			user.setGrade(rs.getString("grade"));
+			list.add(user);
+		}
+		return list;
+	}
+
+	@Override
+	public int getMaxPageNo(int pageSize, Connection conn) throws Exception {
+		int count = 0;
+		String sql = "select count(*) from user";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+			count = rs.getInt(1);
+		}
+		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
 
 }
