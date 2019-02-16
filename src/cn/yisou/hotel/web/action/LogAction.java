@@ -28,11 +28,14 @@ public class LogAction extends DispatcherAction{
 		User user=us.findUserByUid(logForm.getUserid());
 		Administrator ad=as.findUserById(logForm.getUserid());
 		if (user!=null) {
-			byte[] pass=user.getPsw();
+			byte[] pass=user.getPsw();//查出当前的user信息
 			byte[] pass1=GetMD5Byte.getMD5Byte(logForm.getLogpassword());
 			boolean f=GetMD5Byte.isMD5Equals(pass, pass1);
 			if (f) {
+				request.getSession().setAttribute("user", user);
+				
 				return new ActionForward("show");
+				
 			}else {
 				request.getSession().setAttribute("logmsg","密码错误");
 				return new ActionForward(true,"register");
@@ -43,4 +46,5 @@ public class LogAction extends DispatcherAction{
 		}
 		
 	}
+		
 }

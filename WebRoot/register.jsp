@@ -1,4 +1,5 @@
 <%@page import="cn.yisou.hotel.utils.PrimaryKeyUUID"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="cn.hutool.captcha.CircleCaptcha"%>
 <%@page import="cn.hutool.captcha.CaptchaUtil"%>
 <%@page import="cn.hutool.captcha.ShearCaptcha"%>
@@ -166,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="login w3layouts agileits">
 			<h2>登 录</h2>
 			<form action="log.do" method="post" >
-				<input type="hidden" value="<%=session.getAttribute("logmsg") %>" id="msglog"/>
+				<input type="hidden" value="<%=session.getAttribute("logmsg") %>" id="msglog"/> 
 				<input type="text" name="userid" placeholder="账号" required="">
 				<input type="password" name="logpassword" placeholder="密码" required="" onfocus="clearnmsg()">
 				<div style="display:none" id="logmsg"></div><br/>
@@ -214,9 +215,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	</div>
 
-	<div class="footer w3layouts agileits">
+	<!-- <div class="footer w3layouts agileits">
 		<p>Copyright &copy; More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-	</div>
+	</div> -->
 
 </body>
 <!-- //Body -->

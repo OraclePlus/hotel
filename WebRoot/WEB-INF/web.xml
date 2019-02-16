@@ -35,7 +35,14 @@
   	<dispatcher>REQUEST</dispatcher>
   	<dispatcher>FORWARD</dispatcher>
   </filter-mapping>
-  
+  <filter>
+  	<filter-name>page</filter-name>
+  	<filter-class>cn.yisou.hotel.web.filter.pageFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>page</filter-name>
+  	<url-pattern>/booking.jsp</url-pattern>
+  </filter-mapping>
   <filter>
   	<filter-name>usersplit</filter-name>
   	<filter-class>cn.yisou.hotel.web.filter.UserSplitFilter</filter-class>

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -68,7 +69,12 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html">欢迎来到香格里拉<input type="hidden" value="<%=session.getAttribute("logmsg") %>" id="msglog"/></a></h1>
+					<h1 id="fh5co-logo" style="color: white;">欢迎来到香格里拉 
+					<c:if test="${empty user.name}"><a href="register.jsp">请登录</a></c:if>
+					<c:if test="${not empty user.name }">${user.name}</c:if>
+					<c:if test="${user.sex=='男'}">先生</c:if>
+					<c:if test="${user.sex=='女' }">女士</c:if></h1>
+					<input type="hidden" value="<%=session.getAttribute("logmsg") %>" id="msglog"/></a></h1>
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 						<li><a href="register.jsp">登录与注册</a></li>

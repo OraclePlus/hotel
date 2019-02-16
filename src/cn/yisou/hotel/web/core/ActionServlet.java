@@ -27,7 +27,7 @@ public class ActionServlet extends HttpServlet{
 		int dot=uri.lastIndexOf(".");
 		int xie=uri.lastIndexOf("/");
 		uri=uri.substring(xie+1,dot);
-		String formKey = uri+"Form";
+		String formKey = uri+"Form";//logForm
 		String formClassName = config.getProperty(formKey);
 		ActionForm form = null;
 		try {
@@ -42,7 +42,7 @@ public class ActionServlet extends HttpServlet{
 				String[] values = me.getValue();
 				String methodName = "set"+key.substring(0, 1).toUpperCase()+key.substring(1);
 				Method m = c.getMethod(methodName, new Class[]{String.class});
-				m.invoke(form, values[0]);
+				m.invoke(form, values[0]);//Éú³Ébean£»
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
