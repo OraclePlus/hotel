@@ -52,9 +52,9 @@
                     <!--====== HELP LINE & EMAIL ID ==========-->
                     <div class="col-md-8 col-sm-12 col-xs-12 head_right head_right_all">
                         <ul>
-                            <li><a href="#">Help Line: +101-1231-1231</a>
+                            <li><a href="#">Help Line: +152-1169-9907</a>
                             </li>
-                            <li><a href="#">Email: contact@worldtours.com</a>
+                            <li><a href="#">Email:690005703@qq.com</a>
                             </li>
                             <li>
                                 <div class="dropdown">
@@ -94,6 +94,7 @@
                             <img src="images/logo.png" alt="" class="mob_logo" />
                         </div>
                         <!-- NAVIGATION MENU -->
+                        <!--页眉  -->
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
                                 <li><a href="index.html">Home</a></li>
@@ -489,7 +490,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>
@@ -525,7 +526,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -561,7 +562,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -597,7 +598,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -633,7 +634,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -669,7 +670,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -705,7 +706,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -741,7 +742,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>
@@ -777,7 +778,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -813,7 +814,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -849,7 +850,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -885,7 +886,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -921,7 +922,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									
@@ -957,7 +958,7 @@
 											<span class="hot-list-p3-2">$650</span>
 											<span class="hot-list-p3-3">$550</span>
 											<span class="hot-list-p3-4">
-												<a href="booking1.html" class="hot-page2-alp-quot-btn">Book Now</a>
+												<a href="booking.jsp" class="hot-page2-alp-quot-btn">Book Now</a>
 											</span>
 										</div>
 									</div>									

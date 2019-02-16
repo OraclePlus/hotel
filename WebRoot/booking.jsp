@@ -22,7 +22,7 @@
 
     <!-- Custom-Stylesheet-Links -->
     <!-- Bootstrap-CSS --> 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all">
-    <!-- Index-Page-CSS --> <link rel="stylesheet" href="css/style.css" 		type="text/css" media="all">
+    <!-- Index-Page-CSS --> <link rel="stylesheet" href="css/style_2.css" 		type="text/css" media="all">
     <!-- Index-Page-CSS --> <link rel="stylesheet" href="css/jquery-ui.css" 	type="text/css" media="all">
     <!-- Animate.CSS --> 	<link rel="stylesheet" href="css/animate.css" 		type="text/css" media="all">
     <!-- //Custom-Stylesheet-Links -->
@@ -112,7 +112,7 @@
 
             <div class="place wow  agileits w3layoutsslideInLeft">
                 <div class="dropdown-button agileits w3layouts">
-                    <h4>Place</h4>
+                    <h4>地点</h4>
                     <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
                         <option value="1"></option>
                         <option value="1">Atlantis</option>
@@ -130,7 +130,7 @@
 
             <div class="members wow agileits w3layouts slideInLeft">
                 <div class="adult agileits w3layouts">
-                    <h4>No. of Adults</h4>
+                    <h4>成年人数量</h4>
                     <div class="dropdown-button agileits w3layouts">
                         <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
                             <option value=""></option>
@@ -144,7 +144,7 @@
                 </div>
 
                 <div class="child wow slideInLeft agileits w3layouts">
-                    <h4>No. of Children</h4>
+                    <h4>儿童数量</h4>
                     <div class="dropdown-button agileits w3layouts">
                         <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
                             <option value=""></option>
@@ -158,9 +158,9 @@
                 <div class="clearfix"></div>
             </div>
 
-            <div class="suite wow slideInLeft agileits w3layouts">
+            <!-- <div class="suite wow slideInLeft agileits w3layouts">
                 <div class="dropdown-button agileits w3layouts">
-                    <h4>Suite</h4>
+                    <h4>房型</h4>
                     <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
                         <option value="1"></option>
                         <option value="1">Single Room</option>
@@ -174,23 +174,23 @@
                         <option value="3">The Penthouse</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <div class="book-pag wow agileits w3layouts slideInLeft">
                 <h4>Select Date</h4>
                 <div class="book-pag-frm1 agileits w3layouts wow slideInLeft">
-                    <label>Check In</label>
+                    <label>入住日期</label>
                     <input class="date agileits w3layouts" id="datepicker1" type="text" value="Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
                 </div>
                 <div class="book-pag-frm2 wow agileits w3layouts slideInLeft">
-                    <label>Check Out</label>
+                    <label>离开日期</label>
                     <input class="date agileits w3layouts" id="datepicker2" type="text" value="Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
                 </div>
                 <div class="clearfix"></div>
             </div>
 
             <div class="food wow agileits w3layouts slideInLeft">
-                <h4>Choose Cuisine</h4>
+                <h4>选择支付方式</h4>
                 <div class="radio-btns agileits w3layouts">
                     <ul>
                         <li>
@@ -329,12 +329,12 @@
 
 
 <!-- Map-iFrame -->
-<div class="map wow agileits w3layouts slideInUp" id="map">
+<!-- <div class="map wow agileits w3layouts slideInUp" id="map">
     <div class="map-hover agileits w3layouts">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22702.22744502486!2d11.113366067229226!3d44.662878362361056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fc3eca9065c15%3A0x12ec8a03aadae866!2s40019+Sant&#39;Agata+Bolognese+BO%2C+Italy!5e0!3m2!1sen!2sin!4v1451281303075" allowfullscreen></iframe>
         <div class="map-hover-1 agileits w3layouts"></div>
     </div>
-</div>
+</div> -->
 <!-- //Map-iFrame -->
 
 

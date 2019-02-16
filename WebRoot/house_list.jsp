@@ -160,7 +160,7 @@
 					<div id="box_border">
 						<div id="box_top">搜索</div>
 						<div id="box_center">
-							小区
+							酒店名称
 							<select name="fangyuanEntity.fyXqCode" id="fyXq" class="ui_select01" onchange="getFyDhListByFyXqCode();">
                                 <option value=""
                                 >--请选择--</option>
@@ -169,11 +169,11 @@
                                 <option value="83">和盛园小区</option>
                             </select>
 
-							栋号
+							楼层
 							<select name="fangyuanEntity.fyDhCode" id="fyDh" class="ui_select01">
                                 <option value="">--请选择--</option>
                             </select>
-							户型
+							房间号
 							<select name="fangyuanEntity.fyHxCode" id="fyHx" class="ui_select01">
                                 <option value="">--请选择--</option>
                                 <option value="76">一室一厅一卫</option>
@@ -211,15 +211,16 @@
 						<tr>
 							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
 							</th>
-							<th>位置</th>
-							<th>房源</th>
-							<th>房源面积</th>
-							<th>计租面积</th>
-							<th>户型</th>
-							<th>建筑结构</th>
-							<th>租赁性质</th>
+							<th>房间号</th>
+							<th>房间类型</th>
+							<th>房间价格</th>
 							<th>状态</th>
+							<th>是否为钟点房</th>
+							<th>可住人数</th>
+							<th>房间电话</th>
+							<th>图片</th>
 							<th>操作</th>
+							<th>备注</th>
 						</tr>
 							<tr>
 								<td><input type="checkbox" name="IDCheck" value="14458579642011" class="acb" /></td>

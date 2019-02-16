@@ -222,7 +222,7 @@
 					}
 				}
 			});*/
-            data = [{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":3,"resourceName":"基础数据","resourceOrder":0,"resourceType":""},
+            data = [{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":3,"resourceName":"会员信息管理","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":37,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":19,"resourceName":"出租方设置","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":37,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":20,"resourceName":"租金评定设置","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":2,"resourceName":"摇号配租","resourceOrder":0,"resourceType":""},
@@ -236,8 +236,8 @@
             {"accessPath":"","checked":false,"delFlag":0,"parentID":55,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":44,"resourceName":"退租申请","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":24,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":26,"resourceName":"日常合同扣租","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":16,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":17,"resourceName":"通知书审核","resourceOrder":0,"resourceType":""},
-            {"accessPath":"house_list.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":7,"resourceName":"房源管理","resourceOrder":0,"resourceType":""},
-            {"accessPath":"loupanchart.html","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":8,"resourceName":"承租方管理","resourceOrder":0,"resourceType":""},
+            {"accessPath":"house_list.jsp","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":7,"resourceName":"查看所有会员信息","resourceOrder":0,"resourceType":""},
+            {"accessPath":"hotel_loupanchart.jsp","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":8,"resourceName":"当前入住会员管理","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":5,"resourceName":"房源导出","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":16,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":18,"resourceName":"电子合同管理","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":24,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":59,"resourceName":"日常合同续费","resourceOrder":0,"resourceType":""},
@@ -250,7 +250,7 @@
             {"accessPath":"","checked":false,"delFlag":0,"parentID":24,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":42,"resourceName":"维修费用审核","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":16,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":33,"resourceName":"租金核算","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":6,"resourceName":"租户导出","resourceOrder":0,"resourceType":""},
-            {"accessPath":"","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":32,"resourceName":"家庭成员管理","resourceOrder":0,"resourceType":""},
+            {"accessPath":"","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":32,"resourceName":"vip客户管理","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":39,"resourceName":"施工单位管理","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":9,"resourceName":"配租导入","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":16,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":52,"resourceName":"租金缴费","resourceOrder":0,"resourceType":""},
