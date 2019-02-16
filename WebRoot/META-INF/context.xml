@@ -3,7 +3,7 @@
    
         <Resource name="mysql" auth="Container" type="javax.sql.DataSource"
 		maxActive="100" maxIdle="30" maxWait="10000" username="root"
-		password="7326" driverClassName="com.mysql.jdbc.Driver"
+		password="1234" driverClassName="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost:3306/hotel" /> 
         <!--     
     <Resource name="mysql" auth="Container"
