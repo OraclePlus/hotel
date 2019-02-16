@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,23 +129,17 @@
 		$("#submitForm").attr("action", "house_list.jsp?page=" + page).submit();
 	}
 	
-	/** 输入页跳转 **/
-	function jumpInputPage(totalPage){
-		// 如果“跳转页数”不为空
-		if($("#jumpNumTxt").val() != ''){
-			var pageNum = parseInt($("#jumpNumTxt").val());
-			// 如果跳转页数在不合理范围内，则置为1
-			if(pageNum<1 | pageNum>totalPage){
-				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'请输入合适的页数，\n自动为您跳到首页', ok:true,});
-				pageNum = 1;
+	function jump(){
+			var ps = document.getElementById("ps").value;
+			var pn = document.getElementById("pn").value;
+			if(ps==""){
+				ps = 3;
 			}
-			$("#submitForm").attr("action", "house_list.jsp?page=" + pageNum).submit();
-		}else{
-			// “跳转页数”为空
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'请输入合适的页数，\n自动为您跳到首页', ok:true,});
-			$("#submitForm").attr("action", "house_list.jsp?page=" + 1).submit();
+			if(pn==""){
+				pn = 1;
+			}
+			location.href="logind/show.jsp?roompageSize="+ps+"&roompageNo="+pn;
 		}
-	}
 </script>
 <style>
 	.alt td{ background:black !important;}
@@ -208,9 +203,11 @@
 			<div class="ui_content">
 				<div class="ui_tb">
 					<table class="table" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+						<thead>
 						<tr>
 							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
 							</th>
+							<th>序号</th>
 							<th>房间号</th>
 							<th>房间类型</th>
 							<th>房间价格</th>
@@ -218,40 +215,43 @@
 							<th>是否为钟点房</th>
 							<th>可住人数</th>
 							<th>房间电话</th>
-							<th>图片</th>
 							<th>操作</th>
 							<th>备注</th>
 						</tr>
-						
-						
+						</thead>
+						<tbody id="tbody">
+    					<c:forEach items="${roomlist}" var="r" varStatus="sta">
+    					<tr id="tr${r.roomid }"  >
+    						<td><input type="checkbox" name="IDCheck" value="${r.roomid }" class="acb" /></td>
+	    					<td>${sta.count}</td>
+	    					<td   id="roomid">${r.roomid}</td>
+	    					<td   id="type">${r.type}</td>
+	    					<td   id="price">${r.price}</td>
+	    					<td   id="state">${r.state}</td>
+	    					<td   id="hourroom">${r.hourroom}</td>
+	    					<td   id="peoplenum">${r.peoplenum}</td>
+	    					<td   id="roomtel">${r.roomtel}</td>
+	    					<td><button onclick="deleteUsers('${r.roomid }')">删除</button>
+	    						<input type="button" value="修改" onclick="updateUsers('${r.roomid}')"/>
+	    					</td>
+    					</tr>	
+    				</c:forEach>
+    			</tbody>
 					</table>
 				</div>
 				<div class="ui_tb_h30">
 					<div class="ui_flt" style="height: 30px; line-height: 30px;">
-						共有
-						<span class="ui_txt_bold04">90</span>
-						条记录，当前第
-						<span class="ui_txt_bold04">1
+						当前第
+						<span class="ui_txt_bold04">${roompageNo }
 						/
-						9</span>
+						${roommaxPage }</span>
 						页
 					</div>
 					<div class="ui_frt">
-						<!--    如果是第一页，则只显示下一页、尾页 -->
-						
-							<input type="button" value="首页" class="ui_input_btn01" />
-							<input type="button" value="上一页" class="ui_input_btn01" />
-							<input type="button" value="下一页" class="ui_input_btn01"
-								onclick="jumpNormalPage(2);" />
-							<input type="button" value="尾页" class="ui_input_btn01"
-								onclick="jumpNormalPage(9);" />
-						
-						
-						
-						<!--     如果是最后一页，则只显示首页、上一页 -->
-						
-						转到第<input type="text" id="jumpNumTxt" class="ui_input_txt01" />页
-							 <input type="button" class="ui_input_btn01" value="跳转" onclick="jumpInputPage(9);" />
+						<a href="house_list.jsp?roompageNo=1&roompageSize=${roompageSize }">首页</a>
+				  	 		<a href="house_list.jsp?roompageNo=${roompageNo-1}&roompageSize=${roompageSize }">上一页</a>
+				  	 		<a href="house_list.jsp?roompageNo=${roompageNo+1}&roompageSize=${roompageSize }">下一页</a>
+				  	 		<a href="house_list.jsp?roompageNo=${roommaxPage }&roompageSize=${roompageSize }">末页</a>
 					</div>
 				</div>
 			</div>

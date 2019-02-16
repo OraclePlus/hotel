@@ -6,9 +6,9 @@ public class Room {
 	private String roomid;
 	private String type;
 	private Double price;
-	private Integer state;
+	private String state;
 	private String hourroom;
-	private Integer peoplemun;
+	private Integer peoplenum;
 	private String roomtel;
 	private String delete;
 	private String remark;
@@ -30,10 +30,11 @@ public class Room {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public Integer getState() {
+	
+	public String getState() {
 		return state;
 	}
-	public void setState(Integer state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 	public String getHourroom() {
@@ -42,11 +43,13 @@ public class Room {
 	public void setHourroom(String hourroom) {
 		this.hourroom = hourroom;
 	}
-	public Integer getPeoplemun() {
-		return peoplemun;
+	
+	
+	public Integer getPeoplenum() {
+		return peoplenum;
 	}
-	public void setPeoplemun(Integer peoplemun) {
-		this.peoplemun = peoplemun;
+	public void setPeoplenum(Integer peoplenum) {
+		this.peoplenum = peoplenum;
 	}
 	public String getRoomtel() {
 		return roomtel;

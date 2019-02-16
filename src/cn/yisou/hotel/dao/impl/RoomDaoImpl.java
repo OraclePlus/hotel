@@ -23,9 +23,9 @@ public class RoomDaoImpl implements RoomDao{
 			room.setRoomid(rs.getString("roomid"));
 			room.setType(rs.getString("type"));
 			room.setPrice(rs.getDouble("price"));
-			room.setState(rs.getInt("state"));
+			room.setState(rs.getString("state"));
 			room.setHourroom(rs.getString("hourroom"));
-		    room.setPeoplemun(rs.getInt("peoplenum"));
+		    room.setPeoplenum(rs.getInt("peoplenum"));
 			room.setRoomtel(rs.getString("roomtel"));
 			list.add(room);
 		}
@@ -100,9 +100,9 @@ public class RoomDaoImpl implements RoomDao{
 		ps.setString(1, room.getRoomid());
 		ps.setString(2, room.getType());
 		ps.setDouble(3, room.getPrice());
-		ps.setInt(4, room.getState());
+		ps.setString(4, room.getState());
 		ps.setString(5, hourroom);
-		ps.setInt(6, room.getPeoplemun());
+		ps.setInt(6, room.getPeoplenum());
 		ps.setString(7, room.getRoomtel());
 		int n=ps.executeUpdate();
 		if (n>0) {
@@ -122,9 +122,9 @@ public class RoomDaoImpl implements RoomDao{
 			room.setRoomid(rs.getString("roomid"));
 			room.setType(rs.getString("type"));
 			room.setPrice(rs.getDouble("price"));
-			room.setState(rs.getInt("state"));
+			room.setState(rs.getString("state"));
 			room.setHourroom(rs.getString("hourroom"));
-		    room.setPeoplemun(rs.getInt("peoplenum"));
+		    room.setPeoplenum(rs.getInt("peoplenum"));
 			room.setRoomtel(rs.getString("roomtel"));
 		}
 		return room;
@@ -143,9 +143,9 @@ public class RoomDaoImpl implements RoomDao{
 			room.setRoomid(rs.getString("roomid"));
 			room.setType(rs.getString("type"));
 			room.setPrice(rs.getDouble("price"));
-			room.setState(rs.getInt("state"));
+			room.setState(rs.getString("state"));
 			room.setHourroom(rs.getString("hourroom"));
-		    room.setPeoplemun(rs.getInt("peoplenum"));
+		    room.setPeoplenum(rs.getInt("peoplenum"));
 			room.setRoomtel(rs.getString("roomtel"));
 			list.add(room);
 		}

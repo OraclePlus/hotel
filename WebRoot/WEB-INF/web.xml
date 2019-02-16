@@ -24,6 +24,29 @@
   	<dispatcher>ERROR</dispatcher>
   </filter-mapping>
   
+  <!-- 分页的 -->
+  <filter>
+  	<filter-name>roomsplit</filter-name>
+  	<filter-class>cn.yisou.hotel.web.filter.RoomSplitFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>roomsplit</filter-name>
+  	<url-pattern>/house_list.jsp</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>usersplit</filter-name>
+  	<filter-class>cn.yisou.hotel.web.filter.UserSplitFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>usersplit</filter-name>
+  	<url-pattern>/user_list.jsp</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
    <servlet>
   	<servlet-name>action</servlet-name>
   	<servlet-class>cn.yisou.hotel.web.core.ActionServlet</servlet-class>

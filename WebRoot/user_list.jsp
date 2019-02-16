@@ -209,13 +209,13 @@
 			<div class="ui_content">
 				<div class="ui_tb">
 					<table class="table" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+						<thead>
 						<tr>
 							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
 							</th>
 							<th>序号</th>
 							<th>用户id</th>
 							<th>用户姓名</th>
-							<th>密码</th>
 							<th>身份证</th>
 							<th>性别</th>
 							<th>电话</th>
@@ -223,197 +223,39 @@
 							<th>操作</th>
 							<th>备注</th>
 						</tr>
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458579642011" class="acb" /></td>
-								<c:forEach var="i" begin="1" end="10">
-								${i }
-								</c:forEach>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼1-111</td>
-								<td>65.97㎡</td>
-								<td>65.97㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>建成待租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458579642011" class="edit">编辑</a> 
-									<a href="javascript:del('14458579642011');">删除</a>
-								</td>
-							</tr>
-						
-							<!-- <tr>
-								<td><input type="checkbox" name="IDCheck" value="14458625716623" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼1-112</td>
-								<td>67.47㎡</td>
-								<td>67.47㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>已配租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458625716623" class="edit">编辑</a> 
-									<a href="javascript:del('14458625716623');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458592537463" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼2-121</td>
-								<td>65.97㎡</td>
-								<td>65.97㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>建成待租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458592537463" class="edit">编辑</a> 
-									<a href="javascript:del('14458592537463');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458632171244" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼2-122</td>
-								<td>67.47㎡</td>
-								<td>67.47㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>建成待租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458632171244" class="edit">编辑</a> 
-									<a href="javascript:del('14458632171244');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458599318263" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼3-131</td>
-								<td>65.97㎡</td>
-								<td>65.97㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>建成待租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458599318263" class="edit">编辑</a> 
-									<a href="javascript:del('14458599318263');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458638753194" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼3-132</td>
-								<td>67.47㎡</td>
-								<td>67.47㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>建成待租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458638753194" class="edit">编辑</a> 
-									<a href="javascript:del('14458638753194');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458606278350" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼4-141</td>
-								<td>65.97㎡</td>
-								<td>65.97㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>建成待租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458606278350" class="edit">编辑</a> 
-									<a href="javascript:del('14458606278350');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458644830000" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼4-142</td>
-								<td>67.47㎡</td>
-								<td>67.47㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>已配租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458644830000" class="edit">编辑</a> 
-									<a href="javascript:del('14458644830000');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458612828548" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼5-151</td>
-								<td>65.97㎡</td>
-								<td>65.97㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>建成待租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458612828548" class="edit">编辑</a> 
-									<a href="javascript:del('14458612828548');">删除</a>
-								</td>
-							</tr>
-						
-							<tr>
-								<td><input type="checkbox" name="IDCheck" value="14458619251417" class="acb" /></td>
-								<td>城中区</td>
-								<td>瑞景河畔16号楼6-161</td>
-								<td>65.97㎡</td>
-								<td>65.97㎡</td>
-								<td>一室一厅一卫</td>
-								<td>混凝土</td>
-								<td>公租房</td>
-								<td>已配租</td>
-								<td>
-									<a href="house_edit.jsp?fyID=14458619251417" class="edit">编辑</a> 
-									<a href="javascript:del('14458619251417');">删除</a>
-								</td>
-							</tr> -->
-						
+						</thead>
+						<tbody>
+							<c:forEach items="${userlist}" var="u" varStatus="sta">
+    					<tr id="tr${u.uid }"  >
+    						<td><input type="checkbox" name="IDCheck" value="${r.roomid }" class="acb" /></td>
+	    					<td>${sta.count}</td>
+	    					<td   id="uid">${u.uid}</td>
+	    					<td   id="name">${u.name}</td>
+	    					<td   id="idcard">${u.idcard}</td>
+	    					<td   id="sex">${u.sex}</td>
+	    					<td   id="utel">${u.utel}</td>
+	    					<td   id="grade">${u.grade}</td>
+	    					<td><button onclick="deleteUsers('${r.roomid }')">删除</button>
+	    						<input type="button" value="修改" onclick="updateUsers('${r.roomid}')"/>
+	    					</td>
+    					</tr>	
+    				</c:forEach>
+						</tbody>
 					</table>
 				</div>
 				<div class="ui_tb_h30">
 					<div class="ui_flt" style="height: 30px; line-height: 30px;">
-						共有
-						<span class="ui_txt_bold04">90</span>
-						条记录，当前第
-						<span class="ui_txt_bold04">1
+						当前第
+						<span class="ui_txt_bold04">${userpageNo }
 						/
-						9</span>
+						${usermaxPage }</span>
 						页
 					</div>
 					<div class="ui_frt">
-						<!--    如果是第一页，则只显示下一页、尾页 -->
-						
-							<input type="button" value="首页" class="ui_input_btn01" />
-							<input type="button" value="上一页" class="ui_input_btn01" />
-							<input type="button" value="下一页" class="ui_input_btn01"
-								onclick="jumpNormalPage(2);" />
-							<input type="button" value="尾页" class="ui_input_btn01"
-								onclick="jumpNormalPage(9);" />
-						
-						
-						
-						<!--     如果是最后一页，则只显示首页、上一页 -->
-						
-						转到第<input type="text" id="jumpNumTxt" class="ui_input_txt01" />页
-							 <input type="button" class="ui_input_btn01" value="跳转" onclick="jumpInputPage(9);" />
+						<a href="user_list.jsp?userpageNo=1&userpageSize=${userpageSize }">首页</a>
+				  	 	<a href="user_list.jsp?userpageNo=${userpageNo-1}&userpageSize=${userpageSize }">上一页</a>
+				  	 	<a href="user_list.jsp?userpageNo=${userpageNo+1}&userpageSize=${userpageSize }">下一页</a>
+				  	 	<a href="user_list.jsp?userpageNo=${usermaxPage }&userpageSize=${userpageSize }">末页</a>
 					</div>
 				</div>
 			</div>
