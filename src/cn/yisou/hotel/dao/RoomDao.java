@@ -16,4 +16,6 @@ public interface RoomDao {
 	public Room selectRoomByRoomid(String roomid,Connection conn)throws Exception;
 	public List<Room> splitQuery(int pageSize,int pageNo,Connection conn)throws Exception;
 	public int getMaxPageNo(int pageSize,Connection conn)throws Exception;
+	public List<Room> selectRoomByLC(String lc,Connection conn)throws Exception;
+	public List<Room> selectRoomByState(String state,Connection conn)throws Exception;
 }

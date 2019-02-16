@@ -1,6 +1,7 @@
 package cn.yisou.hotel.web.filter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,27 +32,119 @@ public class RoomSplitFilter implements Filter{
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		HttpServletResponse response = (HttpServletResponse)arg1;
 		RoomServiceH rs = new RoomServiceHImpl();
-		List<Room> list = null;
-		int maxPage=0;
-		int pageNo=0;
+		List<Room> list = new ArrayList<Room>();
+		Room room =new Room();
+		String lc=request.getParameter("lc");
+		String roomid=request.getParameter("room");
+		String state=request.getParameter("state");
+		int maxPage=1;
+		int pageNo=1;
 		int pageSize = 10;
-		String size = request.getParameter("roompageSize");
-		  if(size!=null){
-		  	pageSize = Integer.parseInt(size);
-		  }
-		  maxPage = rs.getMaxPageNo(pageSize);
-		  pageNo  = 1;
-		  String no = request.getParameter("roompageNo");
-		  if(no!=null){
-		  	pageNo = Integer.parseInt(no);
-		  	if(pageNo < 1){
-		  		pageNo=1;
-		  	}
-		  	if(pageNo > maxPage){
-		  		pageNo=maxPage;
-		  	}
-		  }
-		list  = rs.splitQuery(pageSize,pageNo);
+		if (lc==null||roomid==null||state==null) {
+			String size = request.getParameter("roompageSize");
+			  if(size!=null){
+			  	pageSize = Integer.parseInt(size);
+			  }
+			  maxPage = rs.getMaxPageNo(pageSize);
+			  pageNo  = 1;
+			  String no = request.getParameter("roompageNo");
+			  if(no!=null){
+			  	pageNo = Integer.parseInt(no);
+			  	if(pageNo < 1){
+			  		pageNo=1;
+			  	}
+			  	if(pageNo > maxPage){
+			  		pageNo=maxPage;
+			  	}
+			  }
+			list  = rs.splitQuery(pageSize,pageNo);
+		}else if (!"0".equals(roomid)) {
+			room=rs.findRoomByRoomid(roomid);
+			pageSize=1;
+			list.add(room);
+		}else if(!"0".equals(lc)){
+			if ("0".equals(state)) {
+				String size = request.getParameter("roompageSize");
+				  if(size!=null){
+				  	pageSize = Integer.parseInt(size);
+				  }
+				  maxPage = rs.getMaxPageNo(pageSize);
+				  pageNo  = 1;
+				  String no = request.getParameter("roompageNo");
+				  if(no!=null){
+				  	pageNo = Integer.parseInt(no);
+				  	if(pageNo < 1){
+				  		pageNo=1;
+				  	}
+				  	if(pageNo > maxPage){
+				  		pageNo=maxPage;
+				  	}
+				  }
+				list  = rs.splitQuery(pageSize,pageNo);
+			}else {
+				list=rs.findRoomByState(state);
+				String size = request.getParameter("roompageSize");
+				  if(size!=null){
+				  	pageSize = Integer.parseInt(size);
+				  }
+				  int count=list.size();
+				  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
+				  pageNo  = 1;
+				  String no = request.getParameter("roompageNo");
+				  if(no!=null){
+				  	pageNo = Integer.parseInt(no);
+				  	if(pageNo < 1){
+				  		pageNo=1;
+				  	}
+				  	if(pageNo > maxPage){
+				  		pageNo=maxPage;
+				  	}
+				  }
+			}
+		}else {
+			if ("0".equals(state)) {
+				list=rs.findRoomByLC(lc);
+				String size = request.getParameter("roompageSize");
+				  if(size!=null){
+				  	pageSize = Integer.parseInt(size);
+				  }
+				  int count=list.size();
+				  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
+				  pageNo  = 1;
+				  String no = request.getParameter("roompageNo");
+				  if(no!=null){
+				  	pageNo = Integer.parseInt(no);
+				  	if(pageNo < 1){
+				  		pageNo=1;
+				  	}
+				  	if(pageNo > maxPage){
+				  		pageNo=maxPage;
+				  	}
+				  }
+			}else {
+				list=rs.findRoomByLC(lc);
+				List<Room> list2=rs.findRoomByState(state);
+				list.retainAll(list2);
+				String size = request.getParameter("roompageSize");
+				  if(size!=null){
+				  	pageSize = Integer.parseInt(size);
+				  }
+				  int count=list.size();
+				  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
+				  pageNo  = 1;
+				  String no = request.getParameter("roompageNo");
+				  if(no!=null){
+				  	pageNo = Integer.parseInt(no);
+				  	if(pageNo < 1){
+				  		pageNo=1;
+				  	}
+				  	if(pageNo > maxPage){
+				  		pageNo=maxPage;
+				  	}
+				  }
+			}
+		}
+		
 		request.getSession().setAttribute("roomlist",list);
 		request.getSession().setAttribute("roompageNo",pageNo);
 		request.getSession().setAttribute("roommaxPage",maxPage);

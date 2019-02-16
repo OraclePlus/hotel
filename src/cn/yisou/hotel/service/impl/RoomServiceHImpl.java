@@ -44,4 +44,52 @@ public class RoomServiceHImpl implements RoomServiceH{
 		return max;
 	}
 
+	@Override
+	public List<Room> findRoomByLC(String lc) {
+		List<Room> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=rdao.selectRoomByLC(lc, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
+	}
+
+	@Override
+	public List<Room> findRoomByState(String state) {
+		List<Room> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=rdao.selectRoomByState(state, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
+	}
+
+	@Override
+	public Room findRoomByRoomid(String roomid) {
+		Room room=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			room=rdao.selectRoomByRoomid(roomid, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return room;
+	}
+
 }

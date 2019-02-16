@@ -14,132 +14,107 @@
 <script type="text/javascript" src="scripts/artDialog/artDialog.js?skin=default"></script>
 <title>信息管理系统</title>
 <script type="text/javascript">
-	$(document).ready(function(){
-		/** 新增   **/
-	    $("#addBtn").fancybox({
-	    	'href'  : 'house_edit.jsp',
-	    	'width' : 733,
-	        'height' : 530,
-	        'type' : 'iframe',
-	        'hideOnOverlayClick' : false,
-	        'showCloseButton' : false,
-	        'onClosed' : function() { 
-	        	window.location.href = 'house_list.jsp';
-	        }
-	    });
+	function change(){
+		var x = document.getElementById("lc");
+   		var y = document.getElementById("room");
+   		 y.options.length = 0
+   		 if(x.selectedIndex == 0){
+   		 	y.options.add(new Option("请先选中楼层", "0"));
+   		 }
+		 if(x.selectedIndex == 1){
+		 	y.options.add(new Option("请选择", "0"));
+		 	y.options.add(new Option("1001", "1001"));
+			y.options.add(new Option("1002", "1002"));
+			y.options.add(new Option("1003", "1003"));
+			y.options.add(new Option("1004", "1004"));
+			y.options.add(new Option("1005", "1005"));
+			y.options.add(new Option("1006", "1006"));
+			y.options.add(new Option("1007", "1007"));
+			y.options.add(new Option("1008", "1008"));
+			y.options.add(new Option("1009", "1009"));
+			y.options.add(new Option("1010", "1010"));
+		 }
+		  if(x.selectedIndex == 2){
+		 	y.options.add(new Option("请选择", "0"));
+		 	y.options.add(new Option("2001", "2001"));
+			y.options.add(new Option("2002", "2002"));
+			y.options.add(new Option("2003", "2003"));
+			y.options.add(new Option("2004", "2004"));
+			y.options.add(new Option("2005", "2005"));
+			y.options.add(new Option("2006", "2006"));
+			y.options.add(new Option("2007", "2007"));
+			y.options.add(new Option("2008", "2008"));
+			y.options.add(new Option("2009", "2009"));
+			y.options.add(new Option("2010", "2010"));
+		 }
+		  if(x.selectedIndex == 3){
+		 	y.options.add(new Option("请选择", "0"));
+		 	y.options.add(new Option("3001", "3001"));
+			y.options.add(new Option("3002", "3002"));
+			y.options.add(new Option("3003", "3003"));
+			y.options.add(new Option("3004", "3004"));
+			y.options.add(new Option("3005", "3005"));
+			y.options.add(new Option("3006", "3006"));
+			y.options.add(new Option("3007", "3007"));
+			y.options.add(new Option("3008", "3008"));
+			y.options.add(new Option("3009", "3009"));
+			y.options.add(new Option("3010", "3010"));
+		 }
+		  if(x.selectedIndex == 4){
+		 	y.options.add(new Option("请选择", "0"));
+		 	y.options.add(new Option("4001", "4001"));
+			y.options.add(new Option("4002", "4002"));
+			y.options.add(new Option("4003", "4003"));
+			y.options.add(new Option("4004", "4004"));
+			y.options.add(new Option("4005", "4005"));
+			y.options.add(new Option("4006", "4006"));
+			y.options.add(new Option("4007", "4007"));
+			y.options.add(new Option("4008", "4008"));
+			y.options.add(new Option("4009", "4009"));
+			y.options.add(new Option("4010", "4010"));
+		 }
+		  if(x.selectedIndex == 5){
+		 	y.options.add(new Option("请选择", "0"));
+		 	y.options.add(new Option("5001", "5001"));
+			y.options.add(new Option("5002", "5002"));
+			y.options.add(new Option("5003", "5003"));
+			y.options.add(new Option("5004", "5004"));
+			y.options.add(new Option("5005", "5005"));
+			y.options.add(new Option("5006", "5006"));
+			y.options.add(new Option("5007", "5007"));
+			y.options.add(new Option("5008", "5008"));
+			y.options.add(new Option("5009", "5009"));
+			y.options.add(new Option("5010", "5010"));
+		 }
+		  if(x.selectedIndex == 6){
+		  	
+		 	y.options.add(new Option("请选择", "0"));
+		 	y.options.add(new Option("6666", "6666"));
+		 }
+	}
+	function lockstate(){
+		var x = document.getElementById("room");
+		var y = document.getElementById("state");
+		y.options.length = 0
+		if(x.selectedIndex != 0){
+			y.options.add(new Option(" ", "0"));
+		}else{
+			y.options.add(new Option("可入住 ", "可入住"));
+			y.options.add(new Option("已住", "已住"));
+		}
+	}
+	function selectAll(){
+		var indexlc=document.getElementById("lc").selectedIndex;//获取当前选择项的索引.
+		var lc=document.getElementById("lc").options[indexlc].value;//获取当前选择项的值.
 		
-	    /** 导入  **/
-	    $("#importBtn").fancybox({
-	    	'href'  : '/xngzf/archives/importFangyuan.action',
-	    	'width' : 633,
-	        'height' : 260,
-	        'type' : 'iframe',
-	        'hideOnOverlayClick' : false,
-	        'showCloseButton' : false,
-	        'onClosed' : function() { 
-	        	window.location.href = 'house_list.jsp';
-	        }
-	    });
+		var indexroomid=document.getElementById("room").selectedIndex;//获取当前选择项的索引.
+		var roomid=document.getElementById("room").options[indexroomid].value;//获取当前选择项的值.
 		
-	    /**编辑   **/
-	    $("a.edit").fancybox({
-	    	'width' : 733,
-	        'height' : 530,
-	        'type' : 'iframe',
-	        'hideOnOverlayClick' : false,
-	        'showCloseButton' : false,
-	        'onClosed' : function() { 
-	        	window.location.href = 'house_list.jsp';
-	        }
-	    });
-	});
-	/** 用户角色   **/
-	var userRole = '';
-
-	/** 模糊查询来电用户  **/
-	function search(){
-		$("#submitForm").attr("action", "house_list.jsp?page=" + 1).submit();
+		var indexstate=document.getElementById("state").selectedIndex;//获取当前选择项的索引.
+		var state=document.getElementById("state").options[indexstate].value;//获取当前选择项的值.
+		
+		location.href="house_list.jsp?lc="+lc+"&room="+roomid+"&state="+state;
 	}
-
-	/** 新增   **/
-	function add(){
-		$("#submitForm").attr("action", "/xngzf/archives/luruFangyuan.action").submit();	
-	}
-	 
-	/** Excel导出  **/
-	function exportExcel(){
-		if( confirm('您确定要导出吗？') ){
-			var fyXqCode = $("#fyXq").val();
-			var fyXqName = $('#fyXq option:selected').text();
-//	 		alert(fyXqCode);
-			if(fyXqCode=="" || fyXqCode==null){
-				$("#fyXqName").val("");
-			}else{
-//	 			alert(fyXqCode);
-				$("#fyXqName").val(fyXqName);
-			}
-			$("#submitForm").attr("action", "/xngzf/archives/exportExcelFangyuan.action").submit();	
-		}
-	}
-	
-	/** 删除 **/
-	function del(fyID){
-		// 非空判断
-		if(fyID == '') return;
-		if(confirm("您确定要删除吗？")){
-			$("#submitForm").attr("action", "/xngzf/archives/delFangyuan.action?fyID=" + fyID).submit();			
-		}
-	}
-	
-	/** 批量删除 **/
-	function batchDel(){
-		if($("input[name='IDCheck']:checked").size()<=0){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'至少选择一条', ok:true,});
-			return;
-		}
-		// 1）取出用户选中的checkbox放入字符串传给后台,form提交
-		var allIDCheck = "";
-		$("input[name='IDCheck']:checked").each(function(index, domEle){
-			bjText = $(domEle).parent("td").parent("tr").last().children("td").last().prev().text();
-// 			alert(bjText);
-			// 用户选择的checkbox, 过滤掉“已审核”的，记住哦
-			if($.trim(bjText)=="已审核"){
-// 				$(domEle).removeAttr("checked");
-				$(domEle).parent("td").parent("tr").css({color:"red"});
-				$("#resultInfo").jsp("已审核的是不允许您删除的，请联系管理员删除！！！");
-// 				return;
-			}else{
-				allIDCheck += $(domEle).val() + ",";
-			}
-		});
-		// 截掉最后一个","
-		if(allIDCheck.length>0) {
-			allIDCheck = allIDCheck.substring(0, allIDCheck.length-1);
-			// 赋给隐藏域
-			$("#allIDCheck").val(allIDCheck);
-			if(confirm("您确定要批量删除这些记录吗？")){
-				// 提交form
-				$("#submitForm").attr("action", "/xngzf/archives/batchDelFangyuan.action").submit();
-			}
-		}
-	}
-
-	/** 普通跳转 **/
-	function jumpNormalPage(page){
-		$("#submitForm").attr("action", "house_list.jsp?page=" + page).submit();
-	}
-	
-	function jump(){
-			var ps = document.getElementById("ps").value;
-			var pn = document.getElementById("pn").value;
-			if(ps==""){
-				ps = 3;
-			}
-			if(pn==""){
-				pn = 1;
-			}
-			location.href="logind/show.jsp?roompageSize="+ps+"&roompageNo="+pn;
-		}
 </script>
 <style>
 	.alt td{ background:black !important;}
@@ -155,47 +130,27 @@
 					<div id="box_border">
 						<div id="box_top">搜索</div>
 						<div id="box_center">
-							酒店名称
-							<select name="fangyuanEntity.fyXqCode" id="fyXq" class="ui_select01" onchange="getFyDhListByFyXqCode();">
-                                <option value=""
-                                >--请选择--</option>
-                                <option value="6">瑞景河畔</option>
-                                <option value="77">蔚蓝小区</option>
-                                <option value="83">和盛园小区</option>
-                            </select>
-
 							楼层
-							<select name="fangyuanEntity.fyDhCode" id="fyDh" class="ui_select01">
-                                <option value="">--请选择--</option>
+							<select name="lc" id="lc" class="ui_select01" onchange="change()">
+                                <option value="0">--请选择--</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
                             </select>
 							房间号
-							<select name="fangyuanEntity.fyHxCode" id="fyHx" class="ui_select01">
-                                <option value="">--请选择--</option>
-                                <option value="76">一室一厅一卫</option>
-                                <option value="10">两室一厅一卫</option>
-                                <option value="14">三室一厅一卫</option>
-                                <option value="71">三室两厅一卫</option>
+							<select name="room" id="room" class="ui_select01" onchange="lockstate()">
+                                <option value="0">--请先选择楼层--</option>
                             </select>
 							状态
-							<select name="fangyuanEntity.fyStatus" id="fyStatus" class="ui_select01">
-                                <option value="">--请选择--</option>
-                                <option value="26">在建</option>
-                                <option value="25">建成待租</option>
-                                <option value="13">已配租</option>
-                                <option value="12">已租赁</option>
-                                <option value="24">腾退待租</option>
-                                <option value="23">欠费</option>
-                                <option value="27">其他</option>
+							<select name="state" id="state" class="ui_select01">
+                                <option value="0">--请选择--</option>
+                                <option value="可入住">可入住</option>
+                                <option value="已住">已住</option>
                             </select>
-
-							座落&nbsp;&nbsp;<input type="text" id="fyZldz" name="fangyuanEntity.fyZldz" class="ui_input_txt02" />
-						</div>
-						<div id="box_bottom">
-							<input type="button" value="查询" class="ui_input_btn01" onclick="search();" /> 
-							<input type="button" value="新增" class="ui_input_btn01" id="addBtn" /> 
-							<input type="button" value="删除" class="ui_input_btn01" onclick="batchDel();" /> 
-							<input type="button" value="导入" class="ui_input_btn01" id="importBtn" />
-							<input type="button" value="导出" class="ui_input_btn01" onclick="exportExcel();" />
+						<button onclick="selectAll()">搜索</button>
 						</div>
 					</div>
 				</div>

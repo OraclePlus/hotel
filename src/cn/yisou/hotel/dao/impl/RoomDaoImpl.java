@@ -164,5 +164,47 @@ public class RoomDaoImpl implements RoomDao{
 		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
 
+	@Override
+	public List<Room> selectRoomByLC(String lc, Connection conn) throws Exception {
+		List<Room> list=new ArrayList<Room>();
+		String sql="select * from room where roomid like ? ";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, "'"+lc+"%"+"'");
+		ResultSet rs=ps.executeQuery();
+		while (rs.next()) {
+			Room room = new Room();
+			room.setRoomid(rs.getString("roomid"));
+			room.setType(rs.getString("type"));
+			room.setPrice(rs.getDouble("price"));
+			room.setState(rs.getString("state"));
+			room.setHourroom(rs.getString("hourroom"));
+		    room.setPeoplenum(rs.getInt("peoplenum"));
+			room.setRoomtel(rs.getString("roomtel"));
+			list.add(room);
+		}
+		return list;
+	}
+
+	@Override
+	public List<Room> selectRoomByState(String state, Connection conn) throws Exception {
+		List<Room> list=new ArrayList<Room>();
+		String sql="select * from room where state = ? ";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, state);
+		ResultSet rs=ps.executeQuery();
+		while (rs.next()) {
+			Room room = new Room();
+			room.setRoomid(rs.getString("roomid"));
+			room.setType(rs.getString("type"));
+			room.setPrice(rs.getDouble("price"));
+			room.setState(rs.getString("state"));
+			room.setHourroom(rs.getString("hourroom"));
+		    room.setPeoplenum(rs.getInt("peoplenum"));
+			room.setRoomtel(rs.getString("roomtel"));
+			list.add(room);
+		}
+		return list;
+	}
+
 
 }

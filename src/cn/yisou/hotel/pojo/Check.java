@@ -1,8 +1,9 @@
 package cn.yisou.hotel.pojo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Check {
+public class Check implements Serializable{
 	private String number;
 	private String roomid;
 	private String uid;

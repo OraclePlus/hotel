@@ -1,6 +1,8 @@
 package cn.yisou.hotel.pojo;
 
-public class Administrator {
+import java.io.Serializable;
+
+public class Administrator implements Serializable{
 	private String id;
 	private byte[] adpsw;
 	private Integer power;

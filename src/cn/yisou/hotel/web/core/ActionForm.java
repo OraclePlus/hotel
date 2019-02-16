@@ -1,6 +1,8 @@
 package cn.yisou.hotel.web.core;
 
-public abstract class ActionForm {
+import java.io.Serializable;
+
+public abstract class ActionForm implements Serializable{
 	private String param;
 
 	public String getParam() {
