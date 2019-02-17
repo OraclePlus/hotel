@@ -15,7 +15,25 @@
 <script type="text/javascript" src="scripts/artDialog/artDialog.js?skin=default"></script>
 <title>信息管理系统</title>
 <script type="text/javascript">
-	
+	function selectAll(){
+		var name=document.getElementById("name").value;
+		var uid=document.getElementById("uid").value;
+		var indexgrade=document.getElementById("grade").selectedIndex;//获取当前选择项的索引.
+		var grade=document.getElementById("grade").options[indexgrade].value;//获取当前选择项的值.
+		
+		location.href="user_list.jsp?name="+name+"&uid="+uid+"&grade="+grade;
+	}
+	function lockname(){
+		var name=document.getElementById("name");
+		name.readOnly=true;
+	}
+	function unlockname(){
+		var uid=document.getElementById("uid").value;
+		if(uid==null||uid==""){
+			var name=document.getElementById("name");
+		name.readOnly=false;
+		}
+	}
 </script>
 <style>
 	.alt td{ background:black !important;}
@@ -32,18 +50,19 @@
 						<div id="box_top">搜索</div>
 						<div id="box_center">
 							用户名
-							<input type="text" name="fangyuanEntity.fyXqCode" id="fyXq" class="ui_select01" >
+							<input type="text" name="name" id="name" class="ui_select01" value="">
 							ID
-							<input type="text" name="fangyuanEntity.fyDhCode" id="fyDh" class="ui_select01">
+							<input type="text" name="uid" id="uid" class="ui_select01" value="" onblur="unlockname()" oninput="value=value.replace(/[^\d]/g,'')" onkeydown="lockname()">
 							vip等级
-							<select name="fangyuanEntity.fyHxCode" id="fyHx" class="ui_select01">
-                                <option value="">--请选择--</option>
+							<select name="grade" id="grade" class="ui_select01">
+                                <option value="0">--请选择--</option>
                                 <option value="vip0">铜卡</option>
                                 <option value="vip1">银卡</option>
                                 <option value="vip2">金卡</option>
                                 <option value="vip3">钻石卡</option>
                                 <option value="vip4">至尊卡</option>
                             </select>
+                            <button onclick="selectAll()">搜索</button>
 						</div>
 					</div>
 				</div>
@@ -69,7 +88,7 @@
 						<tbody>
 							<c:forEach items="${userlist}" var="u" varStatus="sta">
     					<tr id="tr${u.uid }"  >
-    						<td><input type="checkbox" name="IDCheck" value="${r.roomid }" class="acb" /></td>
+    						<td><input type="checkbox" name="IDCheck" value="${u.uid }" class="acb" /></td>
 	    					<td>${sta.count}</td>
 	    					<td   id="uid">${u.uid}</td>
 	    					<td   id="name">${u.name}</td>
@@ -77,8 +96,8 @@
 	    					<td   id="sex">${u.sex}</td>
 	    					<td   id="utel">${u.utel}</td>
 	    					<td   id="grade">${u.grade}</td>
-	    					<td><button onclick="deleteUsers('${r.roomid }')">删除</button>
-	    						<input type="button" value="修改" onclick="updateUsers('${r.roomid}')"/>
+	    					<td><button onclick="deleteUsers('${u.uid }')">删除</button>
+	    						<input type="button" value="修改" onclick="updateUsers('${u.uid}')"/>
 	    					</td>
     					</tr>	
     				</c:forEach>

@@ -15,4 +15,6 @@ public interface UserServiceH {
 	public boolean changePswByUid(String uid,String psw);
 	public List<User> splitQuery(int pageSize,int pageNo);
 	public int getMaxPageNo(int pageSize);
+	public List<User> findUserByName(String name);
+	public List<User> findUserByGrade(String grade);
 }

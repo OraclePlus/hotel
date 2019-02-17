@@ -20,31 +20,49 @@ import cn.yisou.hotel.service.impl.RoomServiceHImpl;
 
 
 public class RoomSplitFilter implements Filter{
-
+	int maxPage=1;
+	int pageNo=1;
+	int pageSize = 10;
+	List<Room> list = new ArrayList<Room>();
+	HttpServletRequest request = null;
+	HttpServletResponse response = null;
 	@Override
 	public void destroy() {
 		
 	}
-
+	private void tongyong() {
+		String size = request.getParameter("roompageSize");
+		  if(size!=null){
+		  	pageSize = Integer.parseInt(size);
+		  }
+		  int count=list.size();
+		  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
+		  pageNo  = 1;
+		  String no = request.getParameter("roompageNo");
+		  if(no!=null){
+		  	pageNo = Integer.parseInt(no);
+		  	if(pageNo < 1){
+		  		pageNo=1;
+		  	}
+		  	if(pageNo > maxPage){
+		  		pageNo=maxPage;
+		  	}
+		  }
+	}
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
 			throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest)arg0;
-		HttpServletResponse response = (HttpServletResponse)arg1;
+		request = (HttpServletRequest)arg0;
+		response = (HttpServletResponse)arg1;
 		RoomServiceH rs = new RoomServiceHImpl();
-		List<Room> list = new ArrayList<Room>();
 		Room room =new Room();
 		String lc=request.getParameter("lc");
 		String roomid=request.getParameter("room");
 		String state=request.getParameter("state");
-		int maxPage=1;
-		int pageNo=1;
-		int pageSize = 10;
 		if (lc==null||roomid==null||state==null) {
-			String size = request.getParameter("roompageSize");
-			  if(size!=null){
-			  	pageSize = Integer.parseInt(size);
-			  }
+			maxPage=1;
+			pageNo=1;
+			pageSize = 10;
 			  maxPage = rs.getMaxPageNo(pageSize);
 			  pageNo  = 1;
 			  String no = request.getParameter("roompageNo");
@@ -57,17 +75,20 @@ public class RoomSplitFilter implements Filter{
 			  		pageNo=maxPage;
 			  	}
 			  }
+			  list.clear();  
 			list  = rs.splitQuery(pageSize,pageNo);
 		}else if (!"0".equals(roomid)) {
 			room=rs.findRoomByRoomid(roomid);
 			pageSize=1;
+			pageNo=1;
+			maxPage=1;
+			list.clear();
 			list.add(room);
 		}else if("0".equals(lc)){
 			if ("0".equals(state)) {
-				String size = request.getParameter("roompageSize");
-				  if(size!=null){
-				  	pageSize = Integer.parseInt(size);
-				  }
+				maxPage=1;
+				pageNo=1;
+				pageSize = 10;
 				  maxPage = rs.getMaxPageNo(pageSize);
 				  pageNo  = 1;
 				  String no = request.getParameter("roompageNo");
@@ -80,48 +101,18 @@ public class RoomSplitFilter implements Filter{
 				  		pageNo=maxPage;
 				  	}
 				  }
+				  list.clear();
 				list  = rs.splitQuery(pageSize,pageNo);
 			}else {
 				list=rs.findRoomByState(state);
-				String size = request.getParameter("roompageSize");
-				  if(size!=null){
-				  	pageSize = Integer.parseInt(size);
-				  }
-				  int count=list.size();
-				  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
-				  pageNo  = 1;
-				  String no = request.getParameter("roompageNo");
-				  if(no!=null){
-				  	pageNo = Integer.parseInt(no);
-				  	if(pageNo < 1){
-				  		pageNo=1;
-				  	}
-				  	if(pageNo > maxPage){
-				  		pageNo=maxPage;
-				  	}
-				  }
+				tongyong();
 			}
 		}else {
 			if ("0".equals(state)) {
 				list=rs.findRoomByLC(lc);
-				String size = request.getParameter("roompageSize");
-				  if(size!=null){
-				  	pageSize = Integer.parseInt(size);
-				  }
-				  int count=list.size();
-				  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
-				  pageNo  = 1;
-				  String no = request.getParameter("roompageNo");
-				  if(no!=null){
-				  	pageNo = Integer.parseInt(no);
-				  	if(pageNo < 1){
-				  		pageNo=1;
-				  	}
-				  	if(pageNo > maxPage){
-				  		pageNo=maxPage;
-				  	}
-				  }
+				tongyong();
 			}else {
+				list.clear();
 				list=rs.findRoomByLC(lc);
 				List<Room>list2=rs.findRoomByState(state);
 				List<Room>list3=new ArrayList<Room>();
@@ -133,26 +124,9 @@ public class RoomSplitFilter implements Filter{
 					}
 				}
 				list=list3;
-				String size = request.getParameter("roompageSize");
-				  if(size!=null){
-				  	pageSize = Integer.parseInt(size);
-				  }
-				  int count=list.size();
-				  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
-				  pageNo  = 1;
-				  String no = request.getParameter("roompageNo");
-				  if(no!=null){
-				  	pageNo = Integer.parseInt(no);
-				  	if(pageNo < 1){
-				  		pageNo=1;
-				  	}
-				  	if(pageNo > maxPage){
-				  		pageNo=maxPage;
-				  	}
-				  }
+				tongyong();
 			}
 		}
-		
 		request.getSession().setAttribute("roomlist",list);
 		request.getSession().setAttribute("roompageNo",pageNo);
 		request.getSession().setAttribute("roommaxPage",maxPage);

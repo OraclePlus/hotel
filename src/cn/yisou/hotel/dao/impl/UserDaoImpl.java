@@ -165,4 +165,46 @@ public class UserDaoImpl implements UserDao{
 		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
 
+	@Override
+	public List<User> selectUserByName(String name, Connection conn) throws Exception {
+		List<User>list=new ArrayList<User>();
+		String sql="select * from user where name like ?";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1, "%"+name+"%");
+		ResultSet rs=ps.executeQuery();
+		while (rs.next()) {
+			User user=new User();
+			user.setUid(rs.getString("uid"));
+			user.setName(rs.getString("name"));
+			user.setPsw(rs.getBytes("psw"));
+			user.setIdcard(rs.getString("idcard"));
+			user.setSex(rs.getString("sex"));
+			user.setUtel(rs.getString("utel"));
+			user.setGrade(rs.getString("grade"));
+			list.add(user);
+		}
+		return list;
+	}
+
+	@Override
+	public List<User> selectUserByGrade(String grade, Connection conn) throws Exception {
+		List<User>list=new ArrayList<User>();
+		String sql="select * from user where grade=?";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1, grade);
+		ResultSet rs=ps.executeQuery();
+		while (rs.next()) {
+			User user=new User();
+			user.setUid(rs.getString("uid"));
+			user.setName(rs.getString("name"));
+			user.setPsw(rs.getBytes("psw"));
+			user.setIdcard(rs.getString("idcard"));
+			user.setSex(rs.getString("sex"));
+			user.setUtel(rs.getString("utel"));
+			user.setGrade(rs.getString("grade"));
+			list.add(user);
+		}
+		return list;
+	}
+
 }

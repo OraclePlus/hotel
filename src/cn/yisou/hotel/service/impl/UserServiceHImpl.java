@@ -30,8 +30,18 @@ public class UserServiceHImpl implements UserServiceH{
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=udao.selectAll(conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
 	}
 
 	@Override
@@ -114,6 +124,38 @@ public class UserServiceHImpl implements UserServiceH{
 			DBHelper.closeConnection(conn);
 		}
 		return max;
+	}
+
+	@Override
+	public List<User> findUserByName(String name) {
+		List<User> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=udao.selectUserByName(name, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
+	}
+
+	@Override
+	public List<User> findUserByGrade(String grade) {
+		List<User> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=udao.selectUserByGrade(grade, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
 	}
 
 }

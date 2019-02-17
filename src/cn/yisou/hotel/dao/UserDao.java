@@ -16,4 +16,6 @@ public interface UserDao {
 	public User selectUserByIdcard(String idcard,Connection conn)throws Exception;
 	public List<User> splitQuery(int pageSize,int pageNo,Connection conn)throws Exception;
 	public int getMaxPageNo(int pageSize,Connection conn)throws Exception;
+	public List<User> selectUserByName(String name,Connection conn) throws Exception;
+	public List<User> selectUserByGrade(String grade,Connection conn) throws Exception;
 }
