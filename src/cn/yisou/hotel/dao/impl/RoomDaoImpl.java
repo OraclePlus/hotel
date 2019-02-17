@@ -169,7 +169,7 @@ public class RoomDaoImpl implements RoomDao{
 		List<Room> list=new ArrayList<Room>();
 		String sql="select * from room where roomid like ? ";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, "'"+lc+"%"+"'");
+		ps.setString(1, lc+"%");
 		ResultSet rs=ps.executeQuery();
 		while (rs.next()) {
 			Room room = new Room();

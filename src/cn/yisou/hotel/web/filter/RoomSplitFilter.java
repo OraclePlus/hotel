@@ -62,7 +62,7 @@ public class RoomSplitFilter implements Filter{
 			room=rs.findRoomByRoomid(roomid);
 			pageSize=1;
 			list.add(room);
-		}else if(!"0".equals(lc)){
+		}else if("0".equals(lc)){
 			if ("0".equals(state)) {
 				String size = request.getParameter("roompageSize");
 				  if(size!=null){
@@ -123,8 +123,16 @@ public class RoomSplitFilter implements Filter{
 				  }
 			}else {
 				list=rs.findRoomByLC(lc);
-				List<Room> list2=rs.findRoomByState(state);
-				list.retainAll(list2);
+				List<Room>list2=rs.findRoomByState(state);
+				List<Room>list3=new ArrayList<Room>();
+				for (int i = 0; i < list.size(); i++) {
+					for (int j = 0; j < list2.size(); j++) {
+						if (list2.get(j).getRoomid().equals(list.get(i).getRoomid())) {
+							list3.add(list2.get(j));
+						}
+					}
+				}
+				list=list3;
 				String size = request.getParameter("roompageSize");
 				  if(size!=null){
 				  	pageSize = Integer.parseInt(size);
