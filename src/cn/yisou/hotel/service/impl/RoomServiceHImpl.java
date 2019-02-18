@@ -1,6 +1,7 @@
 package cn.yisou.hotel.service.impl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import cn.yisou.hotel.dao.RoomDao;
@@ -90,6 +91,55 @@ public class RoomServiceHImpl implements RoomServiceH{
 			DBHelper.closeConnection(conn);
 		}
 		return room;
+	}
+
+	/**
+	 * 查找所有房间
+	 */
+	@Override
+	public List<Room> findAll() {
+		List<Room> list = null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = rdao.selectAll(conn);
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
+	}
+
+	
+	/**
+	 * 查找所有房间类型
+	 */
+	@Override
+	public List<Room> findAllRoomType() {
+		List<Room> list = null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list = rdao.selectAllRoomType(conn);
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
 	}
 
 }

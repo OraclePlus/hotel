@@ -13,6 +13,13 @@ public class Room implements Serializable{
 	private String roomtel;
 	private String delete;
 	private String remark;
+	private Integer count;
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
+	}
 	public String getRoomid() {
 		return roomid;
 	}
