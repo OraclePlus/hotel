@@ -1,6 +1,5 @@
 package cn.yisou.hotel.service;
 
-import java.sql.Connection;
 import java.util.List;
 
 import cn.yisou.hotel.pojo.Room;
@@ -11,4 +10,6 @@ public interface RoomServiceH {
 	public Room findRoomByRoomid(String roomid);
 	public List<Room> findRoomByLC(String lc);
 	public List<Room> findRoomByState(String state);
+	public List<Room> findAll();			//查找所有房间
+	public List<Room> findAllRoomType();	//查找所有房间类型
 }

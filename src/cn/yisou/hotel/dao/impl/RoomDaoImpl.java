@@ -206,5 +206,30 @@ public class RoomDaoImpl implements RoomDao{
 		return list;
 	}
 
+	
+	/**
+	 * 查找所有房间类型
+	 */
+	@Override
+	public List<Room> selectAllRoomType(Connection conn) throws Exception {
+		List<Room> list=new ArrayList<Room>();
+		String sql="SELECT *,count(type) FROM room WHERE state='可入住' GROUP BY type";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ResultSet rs=ps.executeQuery();
+		while(rs.next()) {
+			Room room=new Room();
+			room.setRoomid(rs.getString("roomid"));
+			room.setType(rs.getString("type"));
+			room.setPrice(rs.getDouble("price"));
+			room.setState(rs.getString("state"));
+			room.setHourroom(rs.getString("hourroom"));
+		    room.setPeoplenum(rs.getInt("peoplenum"));
+			room.setRoomtel(rs.getString("roomtel"));
+			room.setCount(rs.getInt("count(type)"));
+			list.add(room);
+		}
+		return list;
+	}
+
 
 }

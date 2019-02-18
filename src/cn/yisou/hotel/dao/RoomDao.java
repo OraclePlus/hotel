@@ -18,4 +18,5 @@ public interface RoomDao {
 	public int getMaxPageNo(int pageSize,Connection conn)throws Exception;
 	public List<Room> selectRoomByLC(String lc,Connection conn)throws Exception;
 	public List<Room> selectRoomByState(String state,Connection conn)throws Exception;
+	public List<Room> selectAllRoomType(Connection conn)throws Exception;	//查找所有房间类型
 }
