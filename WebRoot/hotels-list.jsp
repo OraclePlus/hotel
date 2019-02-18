@@ -122,7 +122,7 @@
             <div class="row inner_banner bg-none">
                 <div class="hot-page2-alp-tit">
                     <h1>Hotel & Restaurants in Vancouver </h1><ul><li><a href="#inner-page-title">Home</a></li><li><i class="fa fa-angle-right" aria-hidden="true"></i> </li><li><a href="#inner-page-title" class="bread-acti">Hotels & Restaurants</a></li></ul>
-<p>World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. </p>
+					<p>World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. </p>
                 </div>
             </div>
             <div class="row">
@@ -466,43 +466,44 @@
                             <div class="row">
                             
                             	<c:forEach items="${list}" var="room" >
-                            	
-	                                <!--LISTINGS START-->
-	                                <div class="hot-page2-alp-r-list">
-	                                    <div class="col-md-4 hot-page2-alp-r-list-re-sp">
-	                                        <a href="javascript:void(0);">
-	                                            <!-- <div class="hotel-list-score">4.5</div> -->
-	                                            <div class="hot-page2-hli-1">
-	                                                <img src="images/hotels/l1.jpeg.jpg" alt="">
-	                                            </div>
-	                                            <div class="hom-hot-av-tic hom-hot-av-tic-list">
-	                                                	剩余房间 : ${room.count}
-	                                            </div>
-	                                        </a>
-	                                    </div>
-	                                    <div class="col-md-6">
-	                                        <div class="hot-page2-alp-ri-p2">
-	                                            <a href="hotel-details.html"><h3>${room.type}</h3></a>
-	                                            <ul>
-	                                                <li>湖南省-长沙市-岳麓区-麓谷街道-延农大厦</li>
-	                                                <li>+86 151-1522-2744</li>
-	                                            </ul>
-	                                            <p><b>设施: </b>厨房设施、游泳池、电视、WiFi、吹风机、毛巾、餐饮、锻炼、停车、音乐、健身房、操场等。 </p>
-	                                        </div>
-	                                    </div>
-										<div class="col-md-2">
-											<div class="hot-page2-alp-ri-p3">
-												<div class="hot-page2-alp-r-hot-page-rat">VIP 75%</div>
-												<span class="hot-list-p3-1">每 晚 价 格</span>
-												<span class="hot-list-p3-2">${room.price*0.75}</span>
-												<span class="hot-list-p3-3">${room.price}</span>
-												<span class="hot-list-p3-4">
-													<a href="booking.jsp" class="hot-page2-alp-quot-btn">立即预订</a>
-												</span>
-											</div>
-										</div>
-	                                </div>
-	                                <!--END LISTINGS-->
+                            		<c:if test="${room.count gt 0}">
+			                                <!--LISTINGS START-->
+			                                <div class="hot-page2-alp-r-list">
+			                                    <div class="col-md-4 hot-page2-alp-r-list-re-sp">
+			                                        <a href="javascript:void(0);">
+			                                            <!-- <div class="hotel-list-score">4.5</div> -->
+			                                            <div class="hot-page2-hli-1">
+			                                                <img src="images/hotels/l1.jpeg.jpg" alt="">
+			                                            </div>
+			                                            <div class="hom-hot-av-tic hom-hot-av-tic-list">
+			                                                	剩余房间 : ${room.count}
+			                                            </div>
+			                                        </a>
+			                                    </div>
+			                                    <div class="col-md-6">
+			                                        <div class="hot-page2-alp-ri-p2">
+			                                            <a href="hotel-details.html"><h3>${room.type}</h3></a>
+			                                            <ul>
+			                                                <li>湖南省-长沙市-岳麓区-麓谷街道-延农大厦</li>
+			                                                <li>+86 151-1522-2744</li>
+			                                            </ul>
+			                                            <p><b>设施: </b>厨房设施、游泳池、电视、WiFi、吹风机、毛巾、餐饮、锻炼、停车、音乐、健身房、操场等。 </p>
+			                                        </div>
+			                                    </div>
+												<div class="col-md-2">
+													<div class="hot-page2-alp-ri-p3">
+														<div class="hot-page2-alp-r-hot-page-rat">VIP 75%</div>
+														<span class="hot-list-p3-1">每 晚 价 格</span>
+														<span class="hot-list-p3-2">${room.price*0.75}</span>
+														<span class="hot-list-p3-3">${room.price}</span>
+														<span class="hot-list-p3-4">
+															<a href="booking.jsp" class="hot-page2-alp-quot-btn">立即预订</a>
+														</span>
+													</div>
+												</div>
+			                                </div>
+			                                <!--END LISTINGS-->
+	                                </c:if>
                    				</c:forEach>
                          								
                             </div>

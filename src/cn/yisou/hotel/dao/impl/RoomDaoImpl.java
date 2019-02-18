@@ -213,7 +213,7 @@ public class RoomDaoImpl implements RoomDao{
 	@Override
 	public List<Room> selectAllRoomType(Connection conn) throws Exception {
 		List<Room> list=new ArrayList<Room>();
-		String sql="SELECT *,count(type) FROM room GROUP BY type";
+		String sql="SELECT *,count(type) FROM room WHERE state='¿ÉÈë×¡' GROUP BY type";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
 		while(rs.next()) {

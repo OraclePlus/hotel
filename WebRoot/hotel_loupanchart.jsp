@@ -54,7 +54,24 @@
             }
         };
 
-        var zNodes = [{"checked":false,"crospID":0,"delFlag":1,"parentID":0,"weiduCode":"FANGYUANGUANLI","weiduGrade":0,"weiduID":5,"weiduName":"房源管理","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":5,"weiduCode":"KANGJUXINCHENG","weiduGrade":1,"weiduID":6,"weiduName":"瑞景河畔","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":5,"weiduCode":"YULANXIAOQU","weiduGrade":1,"weiduID":77,"weiduName":"蔚蓝小区","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":5,"weiduCode":"HESHENGYUAN","weiduGrade":1,"weiduID":83,"weiduName":"和盛园小区","weiduOrder":3,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":83,"weiduCode":" HESHENGYUAN1HAOLOU","weiduGrade":2,"weiduID":84,"weiduName":" 和盛园小区112号楼","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"KANGJUXINCHENG500HAO1DONG","weiduGrade":2,"weiduID":16,"weiduName":"瑞景河畔16号楼","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU2HAOLOU","weiduGrade":2,"weiduID":78,"weiduName":"蔚蓝小区4号楼","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU5HAOLOU","weiduGrade":2,"weiduID":79,"weiduName":"蔚蓝小区5号楼","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"KANGJUXINCHENG500HAO2DONG","weiduGrade":2,"weiduID":17,"weiduName":"瑞景河畔17号楼","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":83,"weiduCode":" HESHENGYUAN2HAOLOU","weiduGrade":2,"weiduID":85,"weiduName":" 和盛园小区113号楼","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"KANGJUXINCHENG500HAO3DONG","weiduGrade":2,"weiduID":69,"weiduName":"瑞景河畔18号楼","weiduOrder":3,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU7HAOLOU","weiduGrade":2,"weiduID":80,"weiduName":"蔚蓝小区7号楼","weiduOrder":3,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU8HAOLOU","weiduGrade":2,"weiduID":81,"weiduName":"蔚蓝小区8号楼","weiduOrder":4,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN20HAOLOU","weiduGrade":2,"weiduID":72,"weiduName":"瑞景河畔20号楼","weiduOrder":4,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN22HAOLOU","weiduGrade":2,"weiduID":73,"weiduName":"瑞景河畔22号楼","weiduOrder":5,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN23HAOLOU","weiduGrade":2,"weiduID":74,"weiduName":"瑞景河畔23号楼","weiduOrder":6,"weiduType":"FANGYUANGUANLI"},{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN24HAOLOU","weiduGrade":2,"weiduID":75,"weiduName":"瑞景河畔24号楼","weiduOrder":7,"weiduType":"FANGYUANGUANLI"}];
+        var zNodes = [
+{"checked":false,"crospID":0,"delFlag":1,"parentID":0,"weiduCode":"FANGYUANGUANLI","weiduGrade":0,"weiduID":5,"weiduName":"房源管理","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":5,"weiduCode":"KANGJUXINCHENG","weiduGrade":1,"weiduID":6,"weiduName":"瑞景河畔","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":5,"weiduCode":"YULANXIAOQU","weiduGrade":1,"weiduID":77,"weiduName":"蔚蓝小区","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":5,"weiduCode":"HESHENGYUAN","weiduGrade":1,"weiduID":83,"weiduName":"和盛园小区","weiduOrder":3,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":83,"weiduCode":" HESHENGYUAN1HAOLOU","weiduGrade":2,"weiduID":84,"weiduName":" 和盛园小区112号楼","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"KANGJUXINCHENG500HAO1DONG","weiduGrade":2,"weiduID":16,"weiduName":"瑞景河畔16号楼","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU2HAOLOU","weiduGrade":2,"weiduID":78,"weiduName":"蔚蓝小区4号楼","weiduOrder":1,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU5HAOLOU","weiduGrade":2,"weiduID":79,"weiduName":"蔚蓝小区5号楼","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"KANGJUXINCHENG500HAO2DONG","weiduGrade":2,"weiduID":17,"weiduName":"瑞景河畔17号楼","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":83,"weiduCode":" HESHENGYUAN2HAOLOU","weiduGrade":2,"weiduID":85,"weiduName":" 和盛园小区113号楼","weiduOrder":2,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"KANGJUXINCHENG500HAO3DONG","weiduGrade":2,"weiduID":69,"weiduName":"瑞景河畔18号楼","weiduOrder":3,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU7HAOLOU","weiduGrade":2,"weiduID":80,"weiduName":"蔚蓝小区7号楼","weiduOrder":3,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":77,"weiduCode":"YULANXIAOQU8HAOLOU","weiduGrade":2,"weiduID":81,"weiduName":"蔚蓝小区8号楼","weiduOrder":4,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN20HAOLOU","weiduGrade":2,"weiduID":72,"weiduName":"瑞景河畔20号楼","weiduOrder":4,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN22HAOLOU","weiduGrade":2,"weiduID":73,"weiduName":"瑞景河畔22号楼","weiduOrder":5,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN23HAOLOU","weiduGrade":2,"weiduID":74,"weiduName":"瑞景河畔23号楼","weiduOrder":6,"weiduType":"FANGYUANGUANLI"},
+{"checked":false,"crospID":0,"delFlag":1,"parentID":6,"weiduCode":"RUIJINGHEPAN24HAOLOU","weiduGrade":2,"weiduID":75,"weiduName":"瑞景河畔24号楼","weiduOrder":7,"weiduType":"FANGYUANGUANLI"}];
         $(document).ready(function() {
             $.fn.zTree.init($("#tree"), setting, zNodes);
             zTree = $.fn.zTree.getZTreeObj("tree");
@@ -194,7 +211,6 @@
                 <tbody>
 				
 					<c:forEach var="i" begin="1" end="6">
-					
 		                <tr>
 		                    <td style="color:#1853A1;">${i}层</td>
 							<c:forEach items="${tiers[i-1]}" var="room" varStatus="n">
@@ -253,8 +269,8 @@
 				               </c:if>
 		                    </c:forEach>
 		                </tr>
-	                
 	                </c:forEach>
+
 
                 </tbody>
             </table>
