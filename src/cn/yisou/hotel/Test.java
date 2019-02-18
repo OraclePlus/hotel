@@ -1,21 +1,15 @@
 package cn.yisou.hotel;
 
-import java.sql.Connection;
+import java.util.Date;
 
-import cn.yisou.hotel.dao.RoomDao;
-import cn.yisou.hotel.dao.UserDao;
-import cn.yisou.hotel.dao.impl.RoomDaoImpl;
-import cn.yisou.hotel.dao.impl.UserDaoImpl;
-import cn.yisou.hotel.db.DBHelper;
-import cn.yisou.hotel.pojo.Room;
-import cn.yisou.hotel.pojo.User;
-import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0;
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
 
 public class Test {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		Connection conn=DBHelper.getConnection();
+//		Connection conn=DBHelper.getConnection();
 //		UserDao udao=new UserDaoImpl();
 //		User user=new User();
 //		byte[] b= {1,2,3,4};
@@ -38,7 +32,14 @@ public class Test {
 //		room.setType("双人间");
 //		room.setState(0);
 //		System.out.println(rd.addRoom(room, conn));
-		
+		String dateStr1 = "2017-03-01";
+		Date date1 = DateUtil.parse(dateStr1);
+		String dateStr2 = "2017-04-01";
+		Date date2 = DateUtil.parse(dateStr2);
+
+		//相差一个月，31天
+		long betweenDay = DateUtil.between(date1, date2, DateUnit.DAY);
+		System.out.println(betweenDay);
 	}
 
 }
