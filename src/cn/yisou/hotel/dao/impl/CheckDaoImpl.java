@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.yisou.hotel.dao.CheckDao;
-import cn.yisou.hotel.db.DBHelper;
 import cn.yisou.hotel.pojo.Check;
 
 public class CheckDaoImpl implements CheckDao{
@@ -38,6 +37,7 @@ public class CheckDaoImpl implements CheckDao{
 		boolean flag=false;
 		String sql="delete from checke where number=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1, number);
 		int n=ps.executeUpdate();
 		if (n>0) {
 			flag=true;

@@ -47,6 +47,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				document.getElementById("logmsg").innerHTML=log;
 				document.getElementById("logmsg").style.color="red";
 				document.getElementById("logmsg").style.display="inline";
+			}else if(log=="此人已被拉黑，无法登录"){
+				document.getElementById("logmsg").innerHTML=log;
+				document.getElementById("logmsg").style.color="red";
+				document.getElementById("logmsg").style.display="inline";
 			}else{
 				document.getElementById("logmsg").innerHTML="";
 				document.getElementById("logmsg").style.display="none";
@@ -168,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h2>登 录</h2>
 			<form action="log.do" method="post" >
 				<input type="hidden" value="<%=session.getAttribute("logmsg") %>" id="msglog"/> 
-				<input type="text" name="userid" placeholder="账号" required="">
+				<input type="text" name="userid" placeholder="账号/身份证号" required="">
 				<input type="password" name="logpassword" placeholder="密码" required="" onfocus="clearnmsg()">
 				<div style="display:none" id="logmsg"></div><br/>
 				<div class="send-button w3layouts agileits">

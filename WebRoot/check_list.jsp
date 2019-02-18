@@ -20,9 +20,46 @@
 		
 		location.href="check_list.jsp?uid="+uid;
 	}
-	function deleteUsers(number){
-		
+	String.prototype.trim=function(){
+			var l = this.replace(this.match(/^\s+/),"");
+			var r = l.replace(this.match(/\s+$/),"");
+			return r;
+		};
+		var xmlHttp;
+		function createXmlHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();
+			}else{
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}catch(e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+		} 
+	function deleteUsersCheck(number){
+		var flag=confirm("是否确认删除该订单");
+		if(flag){
+			createXmlHttp();
+			number = encodeURI(encodeURI(number));
+			xmlHttp.open("GET","deletecheck.jsp?number="+number,true);
+			xmlHttp.onreadystatechange=callback;
+			xmlHttp.send();
+		}
 	}
+		function callback(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					if(result.trim()=="true"){
+						location.href="check_list.jsp";
+					}
+					
+				}
+			}
+		}
+	
 </script>
 <style>
 	.alt td{ background:black !important;}
@@ -78,7 +115,7 @@
 	    					<td   id="money">${cs.money}</td>
 	    					<td   id="checktime">${cs.checktime}</td>
 	    					<td   id="leavetime">${cs.leavetime}</td>
-	    					<td><button onclick="deleteUsers('${cs.number }')">删除</button>
+	    					<td><button onclick="deleteCheck('${cs.number }')">删除</button>
 	    					</td>
     					</tr>	
     				</c:forEach>

@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public List<User> selectAll(Connection conn) throws Exception {
 		List<User>list=new ArrayList<User>();
-		String sql="select * from user";
+		String sql="select * from user where grade!='vip-1'";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
 		while (rs.next()) {
@@ -134,7 +134,7 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public List<User> splitQuery(int pageSize, int pageNo, Connection conn) throws Exception {
 		List<User> list = new ArrayList<User>();
-		String sql = "select * from user limit ?,?";
+		String sql = "select * from user where grade!='vip-1' limit ?,?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, (pageNo-1)*pageSize);
 		ps.setInt(2, pageSize);

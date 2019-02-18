@@ -196,9 +196,6 @@
 	    					<td   id="hourroom">${r.hourroom}</td>
 	    					<td   id="peoplenum">${r.peoplenum}</td>
 	    					<td   id="roomtel">${r.roomtel}</td>
-	    					<td><button onclick="deleteUsers('${r.roomid }')">删除</button>
-	    						<input type="button" value="修改" onclick="updateUsers('${r.roomid}')"/>
-	    					</td>
     					</tr>	
     				</c:forEach>
     			</tbody>

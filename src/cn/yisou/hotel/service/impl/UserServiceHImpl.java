@@ -62,8 +62,18 @@ public class UserServiceHImpl implements UserServiceH{
 
 	@Override
 	public boolean changeGradeByUid(String uid, String grade) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag=false;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			flag=udao.updateGradeByUid(uid, grade, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return flag;
 	}
 
 	@Override

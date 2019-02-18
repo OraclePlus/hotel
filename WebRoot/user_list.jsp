@@ -34,6 +34,45 @@
 		name.readOnly=false;
 		}
 	}
+	String.prototype.trim=function(){
+			var l = this.replace(this.match(/^\s+/),"");
+			var r = l.replace(this.match(/\s+$/),"");
+			return r;
+		};
+		var xmlHttp;
+		function createXmlHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();
+			}else{
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}catch(e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+		} 
+	function deleteUsers(uid){
+	var flag=confirm("是否确认删除该订单");
+	
+		if(flag==true){
+			createXmlHttp();
+			uid = encodeURI(encodeURI(uid));
+			xmlHttp.open("GET","deleteuser.jsp?uid="+uid,true);
+			xmlHttp.onreadystatechange=callback;
+			xmlHttp.send();
+		}
+	}
+		function callback(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					if(result.trim()=="true"){
+						location.href="user_list.jsp";
+					}
+				}
+			}
+		}
 </script>
 <style>
 	.alt td{ background:black !important;}
@@ -97,7 +136,6 @@
 	    					<td   id="utel">${u.utel}</td>
 	    					<td   id="grade">${u.grade}</td>
 	    					<td><button onclick="deleteUsers('${u.uid }')">删除</button>
-	    						<input type="button" value="修改" onclick="updateUsers('${u.uid}')"/>
 	    					</td>
     					</tr>	
     				</c:forEach>

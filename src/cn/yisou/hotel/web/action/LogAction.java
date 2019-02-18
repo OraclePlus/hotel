@@ -27,20 +27,42 @@ public class LogAction extends DispatcherAction{
 		LogForm logForm=(LogForm)form;
 		User user=us.findUserByUid(logForm.getUserid());
 		Administrator ad=as.findUserById(logForm.getUserid());
-		if (user!=null) {
+		User user2=us.findUserByIdcard(logForm.getUserid());
+		if (user.getUid()!=null) {
 			byte[] pass=user.getPsw();//查出当前的user信息
+			String grade=user.getGrade();
 			byte[] pass1=GetMD5Byte.getMD5Byte(logForm.getLogpassword());
 			boolean f=GetMD5Byte.isMD5Equals(pass, pass1);
+			if ("vip-1".equals(grade)) {
+				request.getSession().setAttribute("logmsg","此人已被拉黑，无法登录");
+				return new ActionForward(true,"register");
+			}
 			if (f) {
+				request.getSession().setAttribute("logmsg","");
 				request.getSession().setAttribute("user", user);
-				
 				return new ActionForward("show");
-				
 			}else {
 				request.getSession().setAttribute("logmsg","密码错误");
 				return new ActionForward(true,"register");
 			}
-		}else {
+		}else if(user2.getUid()!=null) {
+			byte[] pass=user2.getPsw();//查出当前的user信息
+			String grade=user2.getGrade();
+			byte[] pass1=GetMD5Byte.getMD5Byte(logForm.getLogpassword());
+			boolean f=GetMD5Byte.isMD5Equals(pass, pass1);
+			if ("vip-1".equals(grade)) {
+				request.getSession().setAttribute("logmsg","此人已被拉黑，无法登录");
+				return new ActionForward(true,"register");
+			}
+			if (f) {
+				request.getSession().setAttribute("logmsg","");
+				request.getSession().setAttribute("user", user);
+				return new ActionForward("show");
+			}else {
+				request.getSession().setAttribute("logmsg","密码错误");
+				return new ActionForward(true,"register");
+			}
+		}else{
 			request.getSession().setAttribute("logmsg","没有此用户");
 			return new ActionForward(true,"register");
 		}
