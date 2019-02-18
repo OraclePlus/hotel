@@ -35,6 +35,18 @@
   	<dispatcher>REQUEST</dispatcher>
   	<dispatcher>FORWARD</dispatcher>
   </filter-mapping>
+  
+  <filter>
+  	<filter-name>checksplit</filter-name>
+  	<filter-class>cn.yisou.hotel.web.filter.CheckSplitFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>checksplit</filter-name>
+  	<url-pattern>/check_list.jsp</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
   <filter>
   	<filter-name>page</filter-name>
   	<filter-class>cn.yisou.hotel.web.filter.pageFilter</filter-class>

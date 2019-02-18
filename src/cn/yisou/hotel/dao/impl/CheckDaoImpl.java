@@ -16,7 +16,7 @@ public class CheckDaoImpl implements CheckDao{
 	@Override
 	public boolean addInfo(Check check, Connection conn) throws Exception {
 		boolean flag=false;
-		String sql="insert into check (number,roomid,uid,name,peopelnum,money,checktime,leavetime,state) values(?,?,?,?,?,?,?,?,?)";
+		String sql="insert into checke (number,roomid,uid,name,peoplenum,money,checktime,leavetime) values(?,?,?,?,?,?,?,?)";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, check.getNumber());
 		ps.setString(2, check.getRoomid());
@@ -26,7 +26,6 @@ public class CheckDaoImpl implements CheckDao{
 		ps.setDouble(6, check.getMoney());
 		ps.setDate(7,  check.getChecktime());
 		ps.setDate(8, check.getLeavetime());
-		ps.setString(9, check.getState());
 		int n=ps.executeUpdate();
 		if (n>0) {
 			flag=true;
@@ -37,7 +36,7 @@ public class CheckDaoImpl implements CheckDao{
 	@Override
 	public boolean deleteInfoByNumber(String number, Connection conn) throws Exception {
 		boolean flag=false;
-		String sql="delete from check where number=?";
+		String sql="delete from checke where number=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		int n=ps.executeUpdate();
 		if (n>0) {
@@ -49,7 +48,7 @@ public class CheckDaoImpl implements CheckDao{
 	@Override
 	public List<Check> selectAll(Connection conn) throws Exception {
 		List<Check> list=new ArrayList<Check>();
-		String sql="select * from check";
+		String sql="select * from checke";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ResultSet rs=ps.executeQuery();
 		while(rs.next()) {
@@ -62,7 +61,6 @@ public class CheckDaoImpl implements CheckDao{
 			check.setMoney(rs.getDouble("money"));
 			check.setChecktime(rs.getDate("checktime"));
 			check.setLeavetime(rs.getDate("leavetime"));
-			check.setState(rs.getString("state"));
 			list.add(check);
 		}
 		return list;
@@ -72,7 +70,7 @@ public class CheckDaoImpl implements CheckDao{
 	public boolean updateCheckTimeByNumber(Date checktime, String number, Double money, Connection conn)
 			throws Exception {
 		boolean flag=false;
-		String sql="update check set checktime=?,money=? where number=?";
+		String sql="update checke set checktime=?,money=? where number=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setDate(1, checktime);
 		ps.setDouble(2, money);
@@ -88,7 +86,7 @@ public class CheckDaoImpl implements CheckDao{
 	public boolean updateLeaveTimeByNumber(Date leavetime, String number, Double money, Connection conn)
 			throws Exception {
 		boolean flag=false;
-		String sql="update check set leavetime=?,money=? where number=?";
+		String sql="update checke set leavetime=?,money=? where number=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setDate(1, leavetime);
 		ps.setDouble(2, money);
@@ -103,7 +101,7 @@ public class CheckDaoImpl implements CheckDao{
 	@Override
 	public Check selectCheckByNumber(String number, Connection conn) throws Exception {
 		Check check=new Check();
-		String sql="select * from check where number=?";
+		String sql="select * from checke where number=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, number);
 		ResultSet rs=ps.executeQuery();
@@ -116,7 +114,6 @@ public class CheckDaoImpl implements CheckDao{
 			check.setMoney(rs.getDouble("money"));
 			check.setChecktime(rs.getDate("checktime"));
 			check.setLeavetime(rs.getDate("leavetime"));
-			check.setState(rs.getString("state"));
 		}
 		return check;
 	}
@@ -124,7 +121,7 @@ public class CheckDaoImpl implements CheckDao{
 	@Override
 	public List<Check> splitQuery(int pageSize, int pageNo, Connection conn) throws Exception {
 		List<Check> list = new ArrayList<Check>();
-		String sql = "select * from check limit ?,?";
+		String sql = "select * from checke limit ?,?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, (pageNo-1)*pageSize);
 		ps.setInt(2, pageSize);
@@ -139,7 +136,6 @@ public class CheckDaoImpl implements CheckDao{
 			check.setMoney(rs.getDouble("money"));
 			check.setChecktime(rs.getDate("checktime"));
 			check.setLeavetime(rs.getDate("leavetime"));
-			check.setState(rs.getString("state"));
 			list.add(check);
 		}
 		return list;
@@ -148,13 +144,35 @@ public class CheckDaoImpl implements CheckDao{
 	@Override
 	public int getMaxPageNo(int pageSize, Connection conn) throws Exception {
 		int count = 0;
-		String sql = "select count(*) from check";
+		String sql = "select count(*) from checke";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		if(rs.next()){
 			count = rs.getInt(1);
 		}
 		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
+	}
+
+	@Override
+	public List<Check> selectByUid(String uid, Connection conn) throws Exception {
+		List<Check> list = new ArrayList<Check>();
+		String sql = "select * from checke where uid=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, uid);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			Check check = new Check();
+			check.setNumber(rs.getString("number"));
+			check.setRoomid(rs.getString("roomid"));
+			check.setUid(rs.getString("uid"));
+			check.setName(rs.getString("name"));
+			check.setPeoplenum(rs.getInt("peoplenum"));
+			check.setMoney(rs.getDouble("money"));
+			check.setChecktime(rs.getDate("checktime"));
+			check.setLeavetime(rs.getDate("leavetime"));
+			list.add(check);
+		}
+		return list;
 	}
 
 }

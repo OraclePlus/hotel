@@ -12,4 +12,5 @@ public interface CheckServiceH {
 	public Check findCheckByNumber(String number);
 	public List<Check> splitQuery(int pageSize,int pageNo);
 	public int getMaxPageNo(int pageSize);
+	public List<Check> findByUid(String uid);
 }

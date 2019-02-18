@@ -46,8 +46,18 @@ public class CheckServiceHImpl implements CheckServiceH{
 
 	@Override
 	public List<Check> findAll() {
-		
-		return null;
+		List<Check> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=cdao.selectAll(conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
 	}
 
 	@Override
@@ -96,6 +106,22 @@ public class CheckServiceHImpl implements CheckServiceH{
 			DBHelper.closeConnection(conn);
 		}
 		return max;
+	}
+
+	@Override
+	public List<Check> findByUid(String uid) {
+		List<Check> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=cdao.selectByUid(uid, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
 	}
 
 }

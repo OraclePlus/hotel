@@ -31,6 +31,9 @@ public class RoomSplitFilter implements Filter{
 		
 	}
 	private void tongyong() {
+		maxPage=1;
+		pageNo=1;
+		pageSize = 10;
 		String size = request.getParameter("roompageSize");
 		  if(size!=null){
 		  	pageSize = Integer.parseInt(size);

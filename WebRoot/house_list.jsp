@@ -115,12 +115,22 @@
 		
 		location.href="house_list.jsp?lc="+lc+"&room="+roomid+"&state="+state;
 	}
+	function showA(){
+		var maxpage=document.getElementById("divmsg").value;
+		if(maxpage=="1"){
+			var div=document.getElementById("lianjie");
+			div.style.display="none";
+		}else{
+			var div=document.getElementById("lianjie");
+			div.style.display="inline";
+		}
+	}
 </script>
 <style>
 	.alt td{ background:black !important;}
 </style>
 </head>
-<body>
+<body onload="showA()">
 	<form id="submitForm" name="submitForm" action="" method="post">
 		<input type="hidden" name="allIDCheck" value="" id="allIDCheck"/>
 		<input type="hidden" name="fangyuanEntity.fyXqName" value="" id="fyXqName"/>
@@ -202,11 +212,12 @@
 						${roommaxPage }</span>
 						页
 					</div>
-					<div class="ui_frt">
+					<div class="ui_frt" id="lianjie">
+						<input type="hidden" value="<%=session.getAttribute("roommaxPage") %>" id="divmsg">
 						<a href="house_list.jsp?roompageNo=1&roompageSize=${roompageSize }">首页</a>
-				  	 		<a href="house_list.jsp?roompageNo=${roompageNo-1}&roompageSize=${roompageSize }">上一页</a>
-				  	 		<a href="house_list.jsp?roompageNo=${roompageNo+1}&roompageSize=${roompageSize }">下一页</a>
-				  	 		<a href="house_list.jsp?roompageNo=${roommaxPage }&roompageSize=${roompageSize }">末页</a>
+				  	 	<a href="house_list.jsp?roompageNo=${roompageNo-1}&roompageSize=${roompageSize }">上一页</a>
+				  	 	<a href="house_list.jsp?roompageNo=${roompageNo+1}&roompageSize=${roompageSize }">下一页</a>
+				  	 	<a href="house_list.jsp?roompageNo=${roommaxPage }&roompageSize=${roompageSize }">末页</a>
 					</div>
 				</div>
 			</div>

@@ -249,7 +249,7 @@
             {"accessPath":"","checked":false,"delFlag":0,"parentID":34,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":36,"resourceName":"园区企业盘查","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":24,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":42,"resourceName":"维修费用审核","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":16,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":33,"resourceName":"租金核算","resourceOrder":0,"resourceType":""},
-            {"accessPath":"","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":6,"resourceName":"当前用户入住情况","resourceOrder":0,"resourceType":""},
+            {"accessPath":"check_list.jsp","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":6,"resourceName":"用户订单","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":32,"resourceName":"备用信息","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":39,"resourceName":"备用信息","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":9,"resourceName":"vip用户信息","resourceOrder":0,"resourceType":""},
