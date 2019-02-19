@@ -21,7 +21,7 @@ import cn.yisou.hotel.service.impl.CheckServiceHImpl;
 import cn.yisou.hotel.service.impl.UserServiceHImpl;
 
 
-public class CheckSplitFilter implements Filter{
+public class CheckHistorySplitFilter implements Filter{
 
 	@Override
 	public void destroy() {
@@ -44,7 +44,7 @@ public class CheckSplitFilter implements Filter{
 			  if(size!=null){
 			  	pageSize = Integer.parseInt(size);
 			  }
-			  maxPage = cs.getMaxPageNo1(pageSize);
+			  maxPage = cs.getMaxPageNo2(pageSize);
 			  pageNo  = 1;
 			  String no = request.getParameter("checkpageNo");
 			  if(no!=null){
@@ -56,7 +56,7 @@ public class CheckSplitFilter implements Filter{
 			  		pageNo=maxPage;
 			  	}
 			  }
-			  list=cs.splitQuery1(pageSize, pageNo);
+			  list=cs.splitQuery2(pageSize, pageNo);
 		}else {
 			list=cs.findByUid(uid);
 			String size = request.getParameter("checkpageSize");

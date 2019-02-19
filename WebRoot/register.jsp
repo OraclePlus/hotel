@@ -168,7 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h2>登 录</h2>
 			<form action="log.do" method="post" >
 				<input type="hidden" value="<%=session.getAttribute("logmsg") %>" id="msglog"/> 
-				<input type="text" name="userid" placeholder="账号" required="">
+				<input type="text" name="userid" placeholder="账号/身份证号" required="">
 				<input type="password" name="logpassword" placeholder="密码" required="" onfocus="clearnmsg()">
 				<div style="display:none" id="logmsg"></div><br/>
 				<div class="send-button w3layouts agileits">
@@ -191,7 +191,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 			</div>
 			<div class="clear"></div>
-		<!-- </div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div> -->
+		</div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 		<div class="register w3layouts agileits">
 			<h2>注 册</h2>
 			<form action="reg.do" method="post" id="formid" onsubmit="return regtijiao()">
@@ -209,10 +209,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul>
                         <li>
                             <input id="male" class="w3-radio" type="radio" name="sex" id="sex" value="男">
-                            <label class="w3-validate" style="color: white;">男人</label>
+                            <label class="w3-validate" style="color: white;">男</label>
                         
                             <input id="female" class="w3-radio" type="radio" name="sex" id="sex" value="女">
-                            <label class="w3-validate" style="color: white;" >女人</label>
+                            <label class="w3-validate" style="color: white;" >女</label>
                         </li> 
                     </ul>
                 </div>

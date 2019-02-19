@@ -12,14 +12,10 @@
 	boolean f=false;
 	boolean ff=false;
 	User user=us.findUserByIdcard(idcard);
-	System.out.println("idcard======"+idcard);
 	f=IdcardUtil.isValidCard(idcard);
 	if(user.getUid()!=null){
 		ff=true;
-		System.out.println("ff======"+ff);
 	}
-	System.out.println(f);
-	System.out.println(ff);
 	f=f&&ff;
 	pageContext.setAttribute("f", f);
  %>

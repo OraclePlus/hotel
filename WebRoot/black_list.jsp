@@ -16,47 +16,59 @@
 <title>信息管理系统</title>
 <script type="text/javascript">
 	function selectAll(){
+		var name=document.getElementById("name").value;
 		var uid=document.getElementById("uid").value;
-		location.href="check_list.jsp?uid="+uid;
+		location.href="user_list.jsp?name="+name+"&uid="+uid;
+	}
+	function lockname(){
+		var name=document.getElementById("name");
+		name.readOnly=true;
+	}
+	function unlockname(){
+		var uid=document.getElementById("uid").value;
+		if(uid==null||uid==""){
+			var name=document.getElementById("name");
+		name.readOnly=false;
+		}
 	}
 	String.prototype.trim=function(){
 			var l = this.replace(this.match(/^\s+/),"");
 			var r = l.replace(this.match(/\s+$/),"");
 			return r;
 		};
-	var xmlHttp;
-	function createXmlHttp(){
-		if(window.XMLHttpRequest){
-			xmlHttp = new XMLHttpRequest();
-		}else{
-			try{
-				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-			}catch(e){
-				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		var xmlHttp;
+		function createXmlHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();
+			}else{
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}catch(e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
 			}
-		}
-	} 
-	function outcheck(number){
-		var flag=confirm("是否确认退房");
-		if(flag){
+		} 
+	function recoverUsers(uid){
+	var flag=confirm("是否恢复此会员");
+		if(flag==true){
 			createXmlHttp();
-			number = encodeURI(encodeURI(number));
-			xmlHttp.open("GET","outcheck.jsp?number="+number,true);
-			xmlHttp.onreadystatechange=callback1;
+			uid = encodeURI(encodeURI(uid));
+			xmlHttp.open("GET","recoveruser.jsp?uid="+uid,true);
+			xmlHttp.onreadystatechange=callback;
 			xmlHttp.send();
 		}
 	}
-	function callback1(){
-		if(xmlHttp.readyState==4){
-			if(xmlHttp.status==200){
-				//一切正常并能开始获得返回的结果
-				var result= xmlHttp.responseText;
-				if(result.trim()=="true"){
-					location.href="check_list.jsp";
+		function callback(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					if(result.trim()=="true"){
+						location.href="black_list.jsp";
+					}
 				}
 			}
 		}
-	}
 </script>
 <style>
 	.alt td{ background:black !important;}
@@ -72,8 +84,10 @@
 					<div id="box_border">
 						<div id="box_top">搜索</div>
 						<div id="box_center">
-							用户ID
-							<input type="text" name="uid" id="uid" class="ui_select01" value=""  oninput="value=value.replace(/[^\d]/g,'')" >
+							用户名
+							<input type="text" name="name" id="name" class="ui_select01" value="">
+							ID
+							<input type="text" name="uid" id="uid" class="ui_select01" value="" onblur="unlockname()" oninput="value=value.replace(/[^\d]/g,'')" onkeydown="lockname()">
                             <button onclick="selectAll()">搜索</button>
 						</div>
 					</div>
@@ -87,33 +101,28 @@
 							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
 							</th>
 							<th>序号</th>
-							<th>订单号</th>
-							<th>房间号</th>
 							<th>用户id</th>
 							<th>用户姓名</th>
-							<th>入住人数</th>
-							<th>实付金额</th>
-							<th>入住时间</th>
-							<th>离开时间</th>
+							<th>身份证</th>
+							<th>性别</th>
+							<th>电话</th>
+							<th>会员等级</th>
 							<th>操作</th>
 							<th>备注</th>
 						</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${checklist}" var="cs" varStatus="sta">
-    					<tr id="tr${cs.number }"  >
-    						<td><input type="checkbox" name="IDCheck" value="${cs.number }" class="acb" /></td>
+							<c:forEach items="${userlist}" var="u" varStatus="sta">
+    					<tr id="tr${u.uid }"  >
+    						<td><input type="checkbox" name="IDCheck" value="${u.uid }" class="acb" /></td>
 	    					<td>${sta.count}</td>
-	    					<td   id="number">${cs.number}</td>
-	    					<td   id="roomid">${cs.roomid}</td>
-	    					<td   id="uid">${cs.uid}</td>
-	    					<td   id="name">${cs.name}</td>
-	    					<td   id="peoplenum">${cs.peoplenum}</td>
-	    					<td   id="money">${cs.money}</td>
-	    					<td   id="checktime">${cs.checktime}</td>
-	    					<td   id="leavetime">${cs.leavetime}</td>
-	    					<td>
-	    						<button onclick="outcheck('${cs.number }')">退房</button>
+	    					<td   id="uid">${u.uid}</td>
+	    					<td   id="name">${u.name}</td>
+	    					<td   id="idcard">${u.idcard}</td>
+	    					<td   id="sex">${u.sex}</td>
+	    					<td   id="utel">${u.utel}</td>
+	    					<td   id="grade">${u.grade}</td>
+	    					<td><button onclick="recoverUsers('${u.uid }')">恢复会员</button>
 	    					</td>
     					</tr>	
     				</c:forEach>
@@ -123,16 +132,16 @@
 				<div class="ui_tb_h30">
 					<div class="ui_flt" style="height: 30px; line-height: 30px;">
 						当前第
-						<span class="ui_txt_bold04">${checkpageNo }
+						<span class="ui_txt_bold04">${userpageNo }
 						/
-						${checkmaxPage }</span>
+						${usermaxPage }</span>
 						页
 					</div>
 					<div class="ui_frt">
-						<a href="check_list.jsp?checkpageNo=1&checkpageSize=${checkpageSize }">首页</a>
-				  	 	<a href="check_list.jsp?checkpageNo=${checkpageNo-1}&checkpageSize=${checkpageSize }">上一页</a>
-				  	 	<a href="check_list.jsp?checkpageNo=${checkpageNo+1}&checkpageSize=${checkpageSize }">下一页</a>
-				  	 	<a href="check_list.jsp?checkpageNo=${checkmaxPage }&checkpageSize=${checkpageSize }">末页</a>
+						<a href="user_list.jsp?userpageNo=1&userpageSize=${userpageSize }">首页</a>
+				  	 	<a href="user_list.jsp?userpageNo=${userpageNo-1}&userpageSize=${userpageSize }">上一页</a>
+				  	 	<a href="user_list.jsp?userpageNo=${userpageNo+1}&userpageSize=${userpageSize }">下一页</a>
+				  	 	<a href="user_list.jsp?userpageNo=${usermaxPage }&userpageSize=${userpageSize }">末页</a>
 					</div>
 				</div>
 			</div>

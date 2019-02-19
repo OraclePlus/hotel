@@ -120,9 +120,9 @@ public class CheckDaoImpl implements CheckDao{
 	}
 
 	@Override
-	public List<Check> splitQuery(int pageSize, int pageNo, Connection conn) throws Exception {
+	public List<Check> splitQuery1(int pageSize, int pageNo, Connection conn) throws Exception {
 		List<Check> list = new ArrayList<Check>();
-		String sql = "select * from checke limit ?,?";
+		String sql = "select * from checke where state='Î´ÍË'  limit ?,?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, (pageNo-1)*pageSize);
 		ps.setInt(2, pageSize);
@@ -143,9 +143,9 @@ public class CheckDaoImpl implements CheckDao{
 	}
 
 	@Override
-	public int getMaxPageNo(int pageSize, Connection conn) throws Exception {
+	public int getMaxPageNo1(int pageSize, Connection conn) throws Exception {
 		int count = 0;
-		String sql = "select count(*) from checke";
+		String sql = "select count(*) from checke where state='Î´ÍË' ";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		if(rs.next()){
@@ -174,6 +174,56 @@ public class CheckDaoImpl implements CheckDao{
 			list.add(check);
 		}
 		return list;
+	}
+
+	@Override
+	public boolean updateStateByNumber(String number, String state, Connection conn) throws Exception {
+		boolean flag=false;
+		String sql="update checke set state=? where number=?";
+		PreparedStatement ps=conn.prepareStatement(sql);
+		ps.setString(1, state);
+		ps.setString(2, number);
+		int n=ps.executeUpdate();
+		if (n>0) {
+			flag=true;
+		}
+		return flag;
+	}
+	
+
+	@Override
+	public List<Check> splitQuery2(int pageSize, int pageNo, Connection conn) throws Exception {
+		List<Check> list = new ArrayList<Check>();
+		String sql = "select * from checke where state='ÒÑÍË'  limit ?,?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, (pageNo-1)*pageSize);
+		ps.setInt(2, pageSize);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			Check check = new Check();
+			check.setNumber(rs.getString("number"));
+			check.setRoomid(rs.getString("roomid"));
+			check.setUid(rs.getString("uid"));
+			check.setName(rs.getString("name"));
+			check.setPeoplenum(rs.getInt("peoplenum"));
+			check.setMoney(rs.getDouble("money"));
+			check.setChecktime(rs.getDate("checktime"));
+			check.setLeavetime(rs.getDate("leavetime"));
+			list.add(check);
+		}
+		return list;
+	}
+
+	@Override
+	public int getMaxPageNo2(int pageSize, Connection conn) throws Exception {
+		int count = 0;
+		String sql = "select count(*) from checke where state='ÒÑÍË' ";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()){
+			count = rs.getInt(1);
+		}
+		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
 
 }

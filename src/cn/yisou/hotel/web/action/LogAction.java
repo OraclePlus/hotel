@@ -25,6 +25,7 @@ public class LogAction extends DispatcherAction{
 		UserServiceH us=new UserServiceHImpl();
 		AdServiceH as=new AdServiceHImpl();
 		LogForm logForm=(LogForm)form;
+		System.out.println(logForm.getUserid());
 		User user=us.findUserByUid(logForm.getUserid());
 		Administrator ad=as.findUserById(logForm.getUserid());
 		User user2=us.findUserByIdcard(logForm.getUserid());
@@ -56,7 +57,7 @@ public class LogAction extends DispatcherAction{
 			}
 			if (f) {
 				request.getSession().setAttribute("logmsg","");
-				request.getSession().setAttribute("user", user);
+				request.getSession().setAttribute("user", user2);
 				return new ActionForward("show");
 			}else {
 				request.getSession().setAttribute("logmsg","√‹¬Î¥ÌŒÛ");

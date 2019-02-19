@@ -12,8 +12,9 @@
 	CheckServiceH cs=new CheckServiceHImpl();
 	RoomServiceH rs=new RoomServiceHImpl();
 	Check check=cs.findCheckByNumber(number);
-	
+	boolean ff=cs.changeStateByNumber(number, "已退");
 	boolean f=rs.changeStateByRoomid(check.getRoomid(), "可入住");
+	f=f&&ff;
 	pageContext.setAttribute("f", f);
  %>
 ${f}

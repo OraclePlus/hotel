@@ -47,6 +47,17 @@
   	<dispatcher>FORWARD</dispatcher>
   </filter-mapping>
   
+   <filter>
+  	<filter-name>checkhistory</filter-name>
+  	<filter-class>cn.yisou.hotel.web.filter.CheckHistorySplitFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>checkhistory</filter-name>
+  	<url-pattern>/checkhistory_list.jsp</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
   <filter>
   	<filter-name>page</filter-name>
   	<filter-class>cn.yisou.hotel.web.filter.pageFilter</filter-class>

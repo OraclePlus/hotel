@@ -77,12 +77,12 @@ public class CheckServiceHImpl implements CheckServiceH{
 	}
 
 	@Override
-	public List<Check> splitQuery(int pageSize, int pageNo) {
+	public List<Check> splitQuery1(int pageSize, int pageNo) {
 		List<Check> list=null;
 		Connection conn=DBHelper.getConnection();
 		try {
 			conn.setAutoCommit(false);
-			list=cdao.splitQuery(pageSize, pageNo, conn);
+			list=cdao.splitQuery1(pageSize, pageNo, conn);
 			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,12 +93,12 @@ public class CheckServiceHImpl implements CheckServiceH{
 	}
 
 	@Override
-	public int getMaxPageNo(int pageSize) {
+	public int getMaxPageNo1(int pageSize) {
 		int max=0;
 		Connection conn=DBHelper.getConnection();
 		try {
 			conn.setAutoCommit(false);
-			max=cdao.getMaxPageNo(pageSize, conn);
+			max=cdao.getMaxPageNo1(pageSize, conn);
 			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,6 +122,54 @@ public class CheckServiceHImpl implements CheckServiceH{
 			DBHelper.closeConnection(conn);
 		}
 		return list;
+	}
+
+	@Override
+	public boolean changeStateByNumber(String number, String state) {
+		boolean flag=false;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			flag=cdao.updateStateByNumber(number, state, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return flag;
+	}
+
+	@Override
+	public List<Check> splitQuery2(int pageSize, int pageNo) {
+		List<Check> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=cdao.splitQuery2(pageSize, pageNo, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
+	}
+
+	@Override
+	public int getMaxPageNo2(int pageSize) {
+		int max=0;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			max=cdao.getMaxPageNo2(pageSize, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return max;
 	}
 
 }
