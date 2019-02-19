@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import cn.yisou.hotel.dao.RoomDao;
 import cn.yisou.hotel.dao.RoomDaoZ;
 import cn.yisou.hotel.dao.impl.RoomDaoImplZ;
@@ -85,6 +87,19 @@ public class RoomServiceHImplZ implements RoomServiceZ{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public int findRoomNumByType(String roomtype) {
+		Connection conn=DBHelper.getConnection();
+		try {
+			int selectRoomNumByType = rdao.selectRoomNumByType(roomtype, conn);
+			return selectRoomNumByType;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }

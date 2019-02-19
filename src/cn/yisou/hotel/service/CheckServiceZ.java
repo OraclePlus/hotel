@@ -7,4 +7,5 @@ import cn.yisou.hotel.pojo.Check;
 
 public interface CheckServiceZ {
 	public boolean saveInfo(Check check);
+	
 }

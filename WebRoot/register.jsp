@@ -191,7 +191,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 			</div>
 			<div class="clear"></div>
-		</div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+		<!-- </div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div> -->
 		<div class="register w3layouts agileits">
 			<h2>注 册</h2>
 			<form action="reg.do" method="post" id="formid" onsubmit="return regtijiao()">

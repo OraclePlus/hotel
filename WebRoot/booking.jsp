@@ -165,7 +165,7 @@
           <div class="suite wow slideInLeft agileits w3layouts">
                 <div class="dropdown-button agileits w3layouts">
                     <h4>房型</h4>
-                    <select class="dropdown agileits w3layouts" name="roomtype" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                    <select class="dropdown agileits w3layouts" id="roomtype" name="roomtype" tabindex="10" onchange="roomnum()" data-settings='{"wrapperClass":"flat"}'>
                         <option value="亲子主题房">亲子主题房</option>
                         <option value="全海景套房">全海景套房</option>
                         <option value="家庭影院套房">家庭影院套房</option>
@@ -179,7 +179,8 @@
                         <option value="高档标间">高档标间</option>
                         <option value="豪华海景房">豪华海景房</option>
                         <option value="豪华家庭海景套房">豪华家庭海景套房</option>
-                    </select>            
+                    </select>   
+                    <div style="display:none" id="roommsg"></div>        
                 </div>                    
             </div>                        
             <div class="book-pag wow agileits w3layouts slideInLeft">
@@ -488,6 +489,51 @@
 	"&tel="+document.getElementById("tel").value
 	form.submit();
 	}
+	
+	
+	var xmlHttp;
+	function createXmlHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();
+			}else{
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}catch(e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+		} 
+		function callback(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					var num=result.trim();
+					if(num==0){
+						alert("sfsdfsdfsdfd	");
+						/* $("#pay").attr("disabled",true).css("pointer-events","none");  */
+						document.getElementById("pay").href="javascript:volid(0);";
+						document.getElementById("roommsg").innerHTML="该房间类型现在剩余"+num;
+						document.getElementById("roommsg").style.color="red";
+						document.getElementById("roommsg").style.display="inline";
+					}else{
+						document.getElementById("pay").href="#small-dialog";
+						document.getElementById("roommsg").innerHTML="该房间类型现在剩余"+num;
+						document.getElementById("roommsg").style.color="red";
+						document.getElementById("roommsg").style.display="inline";
+					}
+					
+				}
+			}
+		}
+	function roomnum(){
+		var roomtype =document.getElementById("roomtype").value;
+					roomtype=encodeURI(encodeURI(roomtype));
+				createXmlHttp();
+				xmlHttp.open("GET", "roomnum.jsp?roomtype="+roomtype,true);
+				xmlHttp.onreadystatechange=callback;
+				xmlHttp.send();
+			}
 
 </script>
 <!-- //Date-Picker-JavaScript -->

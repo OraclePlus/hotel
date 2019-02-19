@@ -10,4 +10,5 @@ public interface RoomDaoZ {
 	public boolean updateStateByRoomid(String roomid,String state,Connection conn)throws Exception;
 	public List<Room> selectRoomByState(String state, Connection conn)throws Exception;
 	public List<Room> selectRoomByRoomType(String roomtype, Connection conn) throws Exception;
+	public int selectRoomNumByType(String roomtype,Connection conn)throws Exception;
 }
