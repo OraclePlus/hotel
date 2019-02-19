@@ -209,10 +209,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <ul>
                         <li>
                             <input id="male" class="w3-radio" type="radio" name="sex" id="sex" value="男">
-                            <label class="w3-validate" style="color: white;">男</label>
+                            <label class="w3-validate" style="color: white;">男人</label>
                         
                             <input id="female" class="w3-radio" type="radio" name="sex" id="sex" value="女">
-                            <label class="w3-validate" style="color: white;" >女</label>
+                            <label class="w3-validate" style="color: white;" >女人</label>
                         </li> 
                     </ul>
                 </div>
