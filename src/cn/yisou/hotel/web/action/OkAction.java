@@ -28,6 +28,7 @@ public class OkAction extends DispatcherAction {
 @Override
 public ActionForward excute(HttpServletRequest request, HttpServletResponse response, ActionForm form)
 		throws ServletException, IOException {
+	System.out.println("excute");
 		long daysBetween=0;
 		CheckServiceHImplZ cHImpl=new CheckServiceHImplZ();
 		RoomServiceZ room=new RoomServiceHImplZ();
@@ -47,10 +48,12 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		String uname = okForm.getUname();
+		System.out.println("uname=="+uname);
 		byte[] b = uname.getBytes("ISO8859-1");
 		uname = new String(b,"UTF-8");
-		
+		System.out.println("uname***"+uname);
 		check.setName(uname);
 		check.setNumber(PrimaryKeyUUID.getPrimaryKey());
 		check.setName(okForm.getUname());

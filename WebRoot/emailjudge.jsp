@@ -10,9 +10,7 @@
 	
 	String email = request.getParameter("e_mail");
 	email = URLDecoder.decode(email,"UTF-8");
-	System.out.println(email);
 	boolean f= ReUtil.isMatch("\\w+@\\w+([.]|[.]\\w+[.])(com|cn|org)", email);
-	System.out.println(f);
 	pageContext.setAttribute("f", f);
  %>
 ${f}

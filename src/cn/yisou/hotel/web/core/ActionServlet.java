@@ -48,6 +48,7 @@ public class ActionServlet extends HttpServlet{
 			e1.printStackTrace();
 		}
 		String className = config.getProperty(uri);
+		System.out.println(className);
 		Action action = null;
 		try {
 			action = (Action)actionPool.get(className);
