@@ -82,5 +82,17 @@ public class RoomDaoImplZ implements RoomDaoZ{
 		return null;
 	}
 
+	@Override
+	public int selectRoomNumByType(String roomtype, Connection conn) throws Exception {
+		String sql="select count(type)as num from room where type= ? and state='¿ÉÈë×¡'  ";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, roomtype);
+		ResultSet eq = ps.executeQuery();
+		while (eq.next()) {
+			return eq.getInt("num");
+		}
+		return 0;
+	}
+
 
 }

@@ -8,4 +8,5 @@ import cn.yisou.hotel.pojo.Room;
 public interface RoomServiceZ {
 	public List<Room> findRoomByState(String state);
 	public Room findRoomByType(String roomtype);
+	public int  findRoomNumByType(String roomtype);
 }

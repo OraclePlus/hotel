@@ -8,4 +8,5 @@ import cn.yisou.hotel.pojo.Check;
 
 public interface CheckDaoZ {
 	public boolean addInfo(Check check,Connection conn )throws Exception;
+	
 }
