@@ -7,6 +7,9 @@
 <script type="text/javascript" src="scripts/jquery/jquery-1.7.1.js"></script>
 <link href="style/authority/basic_layout.css" rel="stylesheet" type="text/css">
 <link href="style/authority/common_style.css" rel="stylesheet" type="text/css">
+
+<link rel="shortcut icon"  href="images/hotelicon.png" type="image/x-icon" />
+
 <script type="text/javascript" src="scripts/authority/commonAll.js"></script>
 <script type="text/javascript" src="scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
 <script type="text/javascript" src="scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>

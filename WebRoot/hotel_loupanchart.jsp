@@ -295,7 +295,8 @@
 	function onClick(e, treeId, treeNode) {
 		var fyXqCode = treeNode.getParentNode().weiduID;
 		var fyDhCode = treeNode.weiduID;
-		$("#submitForm").attr("action", "/xngzf/archives/showLoupanChart.action?fyXqCode=" + fyXqCode + "&fyDhCode=" + fyDhCode).submit();
+		/* $("#submitForm").attr("action", "/xngzf/archives/showLoupanChart.action?fyXqCode=" + fyXqCode + "&fyDhCode=" + fyDhCode).submit(); */
+		$("#submitForm").attr("action", "hotel_loupanchart.jsp").submit();
 	}
 	/** ----------------leftMenu  zTree部分开始----------------  **/
 </script>

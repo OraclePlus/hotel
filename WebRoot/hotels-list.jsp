@@ -42,44 +42,6 @@
 
 	<!--====== TOP HEADER ==========-->
 	<!-- ================================================================================================================ -->
-	<!-- <section>
-        <div class="rows head" data-spy="affix" data-offset-top="120">
-            <div class="container">
-                <div>
-                    ====== BRANDING LOGO ==========
-                    <div class="col-md-4 col-sm-12 col-xs-12 head_left">
-                        <a href="index.html"><img src="images/logo.png" alt="" />
-                        </a>
-                    </div>
-                    ====== HELP LINE & EMAIL ID ==========
-                    <div class="col-md-8 col-sm-12 col-xs-12 head_right head_right_all">
-                        <ul>
-                            <li><a href="#">Help Line: +152-1169-9907</a>
-                            </li>
-                            <li><a href="#">Email:690005703@qq.com</a>
-                            </li>
-                            <li>
-                                <div class="dropdown">
-                                    <button class="dropbtn">My Account</button>
-                                    <div class="dropdown-content">
-                                        <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
-                                        <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i> Register with us</a>
-                                        <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookings</a>
-                                        <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> Tour Packages</a>
-                                        <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> Hotel Bookings</a>
-                                        <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> Cancel Bookings</a>
-                                        <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient E-Tickets</a>
-                                        <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> Custom Tour Plan</a>
-                                    </div>
-								</div>	
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section> -->
-
 	<!-- ================================================================================================================ -->
 
 
@@ -102,16 +64,16 @@
 						<!--页眉  -->
 						<div class="collapse navbar-collapse" id="myNavbar">
 							<ul class="nav navbar-nav">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="family-package.html">Family Package</a></li>
-								<li><a href="hotels-list.html">Hotels</a>
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="places.html">Places</a></li>
-								<li><a href="contact.html">Contact Us</a></li>
+								<li><a href="index.jsp">Home</a></li>
+								<li><a href="register.jsp">LOGIN</a>
+								<li><a href="register.jsp">REGISTER</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">Places</a></li>
+								<li><a href="#">Contact Us</a></li>
 							</ul>
-							<div class="menu_book">
+							<!-- <div class="menu_book">
 								<a href="booking.html">Book Your Package</a>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</nav>
@@ -125,10 +87,10 @@
 				<div class="hot-page2-alp-tit">
 					<h1>Hotel & Restaurants in Vancouver</h1>
 					<ul>
-						<li><a href="#inner-page-title">Home</a></li>
+						<li><a href="index.jsp">Home</a></li>
 						<li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-						<li><a href="#inner-page-title" class="bread-acti">Hotels
-								& Restaurants</a></li>
+						<li><a href="#inner-page-title" class="bread-acti">LOGIN
+								& REGISTER</a></li>
 					</ul>
 					<p>World's leading Hotel Booking website,Over 30,000 Hotel
 						rooms worldwide.</p>
@@ -325,11 +287,11 @@
 						</div>
 						<!--END PART 5 : LEFT LISTINGS-->
 						<!--PART 6 : LEFT LISTINGS-->
-						<div class="hot-page2-alp-l3 hot-page2-alp-l-com">
+						<!-- <div class="hot-page2-alp-l3 hot-page2-alp-l-com">
 							<h4>
 								<i class="fa fa-star-o" aria-hidden="true"></i> Select Ratings
 							</h4>
-							<!-- <div class="hot-page2-alp-l-com1 hot-page2-alp-p5">
+							<div class="hot-page2-alp-l-com1 hot-page2-alp-p5">
 								<form>
 									<ul>
 										<li>
@@ -407,8 +369,8 @@
 								</form>
 								<a href="javascript:void(0);" class="hot-page2-alp-p5-btn-s">view
 									more</a>
-							</div> -->
-						</div>
+							</div>
+						</div> -->
 						<!--END PART 5 : LEFT LISTINGS-->
 						<!--PART 6 : LEFT LISTINGS-->
 						<div class="hot-page2-alp-l3 hot-page2-alp-l-com">
@@ -479,7 +441,7 @@
 											</div>
 											<div class="col-md-6">
 												<div class="hot-page2-alp-ri-p2">
-													<a href="hotel-details.html"><h3>${room.type}</h3></a>
+													<a href="#"><h3>${room.type}</h3></a>
 													<ul>
 														<li>湖南省-长沙市-岳麓区-麓谷街道-延农大厦</li>
 														<li>+86 151-1522-2744</li>

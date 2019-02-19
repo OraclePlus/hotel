@@ -18,6 +18,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    
+    <link rel="shortcut icon"  href="images/hotelicon.png" type="image/x-icon" />
+    
     <!-- //Meta-Tags -->
 
     <!-- Custom-Stylesheet-Links -->
@@ -55,11 +58,11 @@
 
             <div id="navbar" class="navbar-collapse agileits w3layouts navbar-right collapse">
                 <ul class="nav navbar-nav agileits w3layouts">
-                    <li ><a href="../index.jsp">酒店</a></li>
+                    <li ><a href="hotels-list.jsp">酒店</a></li>
                     <li><a href="about.jsp">关于我们</a></li>
-                    <li><a href="cuisines.jsp">美食</a></li>
-                    <li><a href="gallery.jsp">酒店照片</a></li>
-                    <li><a href="codes.jsp">登录</a></li>
+                    <li><a href="#">美食</a></li>
+                    <li><a href="#">酒店照片</a></li>
+                    <li><a href="register.jsp">登录</a></li>
                     <li class="active"><a href="booking.jsp">预定</a></li>
 
                 </ul>
