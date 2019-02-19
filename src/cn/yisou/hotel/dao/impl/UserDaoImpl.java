@@ -9,6 +9,7 @@ import java.util.List;
 import cn.yisou.hotel.dao.UserDao;
 import cn.yisou.hotel.pojo.Room;
 import cn.yisou.hotel.pojo.User;
+import cn.yisou.hotel.utils.MailUtils;
 import sun.security.timestamp.TSRequest;
 
 public class UserDaoImpl implements UserDao{
@@ -27,6 +28,9 @@ public class UserDaoImpl implements UserDao{
 		int n=ps.executeUpdate();
 		if (n>0) {
 			flag=true;
+			
+			String mes="欢迎您来到香格里拉大家庭，我们为您准备了舒适的住宿环境让您宾至如归，您的账号是"+user.getUid()+"<a herf='#'>点击激活</a>"+"请联系我们电话1521169997,";
+			MailUtils.sendMail("zjl@fulian.com", mes);
 		}
 		return flag;
 	}

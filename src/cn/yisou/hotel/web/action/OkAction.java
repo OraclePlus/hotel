@@ -85,9 +85,8 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		return new ActionForward(true,"okh");
+		//return new ActionForward(true,"okh");
+		return null;
 		
 }
 
@@ -118,6 +117,7 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 			String pd_FrpId = request.getParameter("pd_FrpId");
 			String p0_Cmd = "Buy";
 			String p1_MerId = ResourceBundle.getBundle("merchantInfo").getString("p1_MerId");
+			System.out.println(p1_MerId+"p1_MerId");
 			String p2_Order = oid;
 			String p3_Amt = "0.01";
 			String p4_Cur = "CNY";
@@ -127,6 +127,7 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 			// 支付成功回调地址 ---- 第三方支付公司会访问、用户访问
 			// 第三方支付可以访问网址
 			String p8_Url = ResourceBundle.getBundle("merchantInfo").getString("responseURL");
+			System.out.println("url"+p8_Url);
 			String p9_SAF = "";
 			String pa_MP = "";
 			String pr_NeedResponse = "1";
@@ -162,6 +163,7 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 		//回调
 		
 		public ActionForward callback(HttpServletRequest request,HttpServletResponse response) throws Exception{
+			System.out.println("我在callback");
 			String p1_MerId = request.getParameter("p1_MerId");
 			String r0_Cmd = request.getParameter("r0_Cmd");
 			String r1_Code = request.getParameter("r1_Code");
