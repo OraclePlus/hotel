@@ -78,7 +78,17 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 		check.setMoney(findRoomByType.getPrice()*daysBetween);
 		
 		cHImpl.saveInfo(check);
+		
+		try {
+			pay(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		return new ActionForward(true,"okh");
+		
 }
 
 
