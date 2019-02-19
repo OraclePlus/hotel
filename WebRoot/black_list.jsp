@@ -18,7 +18,7 @@
 	function selectAll(){
 		var name=document.getElementById("name").value;
 		var uid=document.getElementById("uid").value;
-		location.href="user_list.jsp?name="+name+"&uid="+uid;
+		location.href="black_list.jsp?name="+name+"&uid="+uid;
 	}
 	function lockname(){
 		var name=document.getElementById("name");
@@ -112,7 +112,7 @@
 						</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${userlist}" var="u" varStatus="sta">
+							<c:forEach items="${blackuserlist}" var="u" varStatus="sta">
     					<tr id="tr${u.uid }"  >
     						<td><input type="checkbox" name="IDCheck" value="${u.uid }" class="acb" /></td>
 	    					<td>${sta.count}</td>
@@ -138,10 +138,10 @@
 						页
 					</div>
 					<div class="ui_frt">
-						<a href="user_list.jsp?userpageNo=1&userpageSize=${userpageSize }">首页</a>
-				  	 	<a href="user_list.jsp?userpageNo=${userpageNo-1}&userpageSize=${userpageSize }">上一页</a>
-				  	 	<a href="user_list.jsp?userpageNo=${userpageNo+1}&userpageSize=${userpageSize }">下一页</a>
-				  	 	<a href="user_list.jsp?userpageNo=${usermaxPage }&userpageSize=${userpageSize }">末页</a>
+						<a href="black_list.jsp?blackuserpageNo=1&blackuserpageSize=${blackuserpageSize }">首页</a>
+				  	 	<a href="black_list.jsp?blackuserpageNo=${blackuserpageNo-1}&blackuserpageSize=${blackuserpageSize }">上一页</a>
+				  	 	<a href="black_list.jsp?blackuserpageNo=${blackuserpageNo+1}&blackuserpageSize=${blackuserpageSize }">下一页</a>
+				  	 	<a href="black_list.jsp?blackuserpageNo=${blackusermaxPage }&blackuserpageSize=${blackuserpageSize }">末页</a>
 					</div>
 				</div>
 			</div>

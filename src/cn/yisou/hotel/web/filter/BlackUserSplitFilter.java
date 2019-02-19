@@ -13,15 +13,12 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.yisou.hotel.pojo.Check;
 import cn.yisou.hotel.pojo.User;
-import cn.yisou.hotel.service.CheckServiceH;
 import cn.yisou.hotel.service.UserServiceH;
-import cn.yisou.hotel.service.impl.CheckServiceHImpl;
 import cn.yisou.hotel.service.impl.UserServiceHImpl;
 
 
-public class CheckHistorySplitFilter implements Filter{
+public class BlackUserSplitFilter implements Filter{
 
 	@Override
 	public void destroy() {
@@ -33,20 +30,22 @@ public class CheckHistorySplitFilter implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		HttpServletResponse response = (HttpServletResponse)arg1;
-		CheckServiceH cs=new CheckServiceHImpl();
-		List<Check> list = new ArrayList<Check>();
+		UserServiceH us = new UserServiceHImpl();
+		List<User> list = new ArrayList<User>();
+		User user=new User();
+		String name=request.getParameter("name");
 		String uid=request.getParameter("uid");
 		int maxPage=1;
 		int pageNo=1;
 		int pageSize = 10;
-		if (uid==null||"".equals(uid)){
-			String size = request.getParameter("checkhistorypageSize");
+		if (name==null||uid==null||("".equals(uid)&&"".equals(name))) {
+			String size = request.getParameter("blackuserpageSize");
 			  if(size!=null){
 			  	pageSize = Integer.parseInt(size);
 			  }
-			  maxPage = cs.getMaxPageNo2(pageSize);
+			  maxPage = us.getMaxPageNo2(pageSize);
 			  pageNo  = 1;
-			  String no = request.getParameter("checkhistorypageNo");
+			  String no = request.getParameter("blackuserpageNo");
 			  if(no!=null){
 			  	pageNo = Integer.parseInt(no);
 			  	if(pageNo < 1){
@@ -56,17 +55,21 @@ public class CheckHistorySplitFilter implements Filter{
 			  		pageNo=maxPage;
 			  	}
 			  }
-			  list=cs.splitQuery2(pageSize, pageNo);
+			  list=us.splitQuery2(pageSize, pageNo);
+		}else if (uid!=null&&!"".equals(uid)) {
+			user=us.findUserByUid(uid);
+			pageSize=1;
+			list.add(user);
 		}else {
-			list=cs.findByUid(uid);
-			String size = request.getParameter("checkhistorypageSize");
+			list=us.findUserByName(name);
+			String size = request.getParameter("blackuserpageSize");
 			  if(size!=null){
 			  	pageSize = Integer.parseInt(size);
 			  }
 			  int count=list.size();
 			  maxPage = count%pageSize==0 ? count/pageSize : count/pageSize+1;
 			  pageNo  = 1;
-			  String no = request.getParameter("checkhistorypageNo");
+			  String no = request.getParameter("blackuserpageNo");
 			  if(no!=null){
 			  	pageNo = Integer.parseInt(no);
 			  	if(pageNo < 1){
@@ -77,11 +80,10 @@ public class CheckHistorySplitFilter implements Filter{
 			  	}
 			  }
 		}
-		
-		request.getSession().setAttribute("checkhistorylist",list);
-		request.getSession().setAttribute("checkhistorypageNo",pageNo);
-		request.getSession().setAttribute("checkhistorymaxPage",maxPage);
-		request.getSession().setAttribute("checkhistorypageSize",pageSize);
+		request.getSession().setAttribute("blackuserlist",list);
+		request.getSession().setAttribute("blackuserpageNo",pageNo);
+		request.getSession().setAttribute("blackusermaxPage",maxPage);
+		request.getSession().setAttribute("blackuserpageSize",pageSize);
 		arg2.doFilter(request, response);
 	}
 

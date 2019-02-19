@@ -16,7 +16,13 @@
 	if(user.getUid()!=null){
 		ff=true;
 	}
-	f=f&&ff;
-	pageContext.setAttribute("f", f);
+	if(ff){
+		f=false;
+		pageContext.setAttribute("f", f);
+	}
+	if(f&&!ff){
+		f=true;
+		pageContext.setAttribute("f", f);
+	}
  %>
 ${f}

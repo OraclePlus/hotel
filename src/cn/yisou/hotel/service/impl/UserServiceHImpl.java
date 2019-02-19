@@ -105,12 +105,12 @@ public class UserServiceHImpl implements UserServiceH{
 	}
 
 	@Override
-	public List<User> splitQuery(int pageSize, int pageNo) {
+	public List<User> splitQuery1(int pageSize, int pageNo) {
 		List<User> list=null;
 		Connection conn=DBHelper.getConnection();
 		try {
 			conn.setAutoCommit(false);
-			list=udao.splitQuery(pageSize, pageNo, conn);
+			list=udao.splitQuery1(pageSize, pageNo, conn);
 			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,12 +121,12 @@ public class UserServiceHImpl implements UserServiceH{
 	}
 
 	@Override
-	public int getMaxPageNo(int pageSize) {
+	public int getMaxPageNo1(int pageSize) {
 		int max=0;
 		Connection conn=DBHelper.getConnection();
 		try {
 			conn.setAutoCommit(false);
-			max=udao.getMaxPageNo(pageSize, conn);
+			max=udao.getMaxPageNo1(pageSize, conn);
 			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -166,6 +166,38 @@ public class UserServiceHImpl implements UserServiceH{
 			DBHelper.closeConnection(conn);
 		}
 		return list;
+	}
+
+	@Override
+	public List<User> splitQuery2(int pageSize, int pageNo) {
+		List<User> list=null;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			list=udao.splitQuery2(pageSize, pageNo, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return list;
+	}
+
+	@Override
+	public int getMaxPageNo2(int pageSize) {
+		int max=0;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			max=udao.getMaxPageNo2(pageSize, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return max;
 	}
 
 }

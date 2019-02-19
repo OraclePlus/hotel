@@ -46,20 +46,21 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 			java.util.Date d1=sdf.parse(inhotel);
 			java.util.Date d2=sdf.parse(outhotel);
 			daysBetween=(d2.getTime()-d1.getTime()+1000000)/(60*60*24*1000);
-			/*System.out.println("daysBetween"+daysBetween);*/
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		check.setName(okForm.getUname());
+		
+		String uname = okForm.getUname();
+		byte[] b = uname.getBytes("ISO8859-1");
+		uname = new String(b,"UTF-8");
+		
+		check.setName(uname);
 		check.setNumber(PrimaryKeyUUID.getPrimaryKey());
-		System.out.println("11111111"+okForm.getRoomtype());
 		
 		Room findRoomByType = room.findRoomByType(okForm.getRoomtype());
 		if(findRoomByType==null) {
-			System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhh");
 			return new ActionForward(true,"error");
 		}
-		System.out.println(findRoomByType.getRoomid()+"roomid");
 		check.setRoomid(findRoomByType.getRoomid());
 		check.setPeoplenum(new Integer(new Integer(okForm.getAdult()).intValue()+new Integer(okForm.getChild()).intValue()));
 		User user = (User)request.getSession().getAttribute("user");

@@ -27,8 +27,10 @@ public class LogAction extends DispatcherAction{
 		LogForm logForm=(LogForm)form;
 		System.out.println(logForm.getUserid());
 		User user=us.findUserByUid(logForm.getUserid());
+		System.out.println(user.getUid());
 		Administrator ad=as.findUserById(logForm.getUserid());
 		User user2=us.findUserByIdcard(logForm.getUserid());
+		System.out.println(user2.getUid());
 		if (user.getUid()!=null) {
 			byte[] pass=user.getPsw();//查出当前的user信息
 			String grade=user.getGrade();
