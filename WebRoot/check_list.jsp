@@ -17,7 +17,6 @@
 <script type="text/javascript">
 	function selectAll(){
 		var uid=document.getElementById("uid").value;
-		
 		location.href="check_list.jsp?uid="+uid;
 	}
 	String.prototype.trim=function(){
@@ -25,18 +24,18 @@
 			var r = l.replace(this.match(/\s+$/),"");
 			return r;
 		};
-		var xmlHttp;
-		function createXmlHttp(){
-			if(window.XMLHttpRequest){
-				xmlHttp = new XMLHttpRequest();
-			}else{
-				try{
-					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-				}catch(e){
-					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
+	var xmlHttp;
+	function createXmlHttp(){
+		if(window.XMLHttpRequest){
+			xmlHttp = new XMLHttpRequest();
+		}else{
+			try{
+				xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+			}catch(e){
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 			}
-		} 
+		}
+	} 
 	function deleteUsersCheck(number){
 		var flag=confirm("是否确认删除该订单");
 		if(flag){
@@ -47,19 +46,39 @@
 			xmlHttp.send();
 		}
 	}
-		function callback(){
-			if(xmlHttp.readyState==4){
-				if(xmlHttp.status==200){
-					//一切正常并能开始获得返回的结果
-					var result= xmlHttp.responseText;
-					if(result.trim()=="true"){
-						location.href="check_list.jsp";
-					}
-					
+	function callback(){
+		if(xmlHttp.readyState==4){
+			if(xmlHttp.status==200){
+				//一切正常并能开始获得返回的结果
+				var result= xmlHttp.responseText;
+				if(result.trim()=="true"){
+					location.href="check_list.jsp";
+				}
+				
+			}
+		}
+	}
+	function outcheck(number){
+		var flag=confirm("是否确认退房");
+		if(flag){
+			createXmlHttp();
+			number = encodeURI(encodeURI(number));
+			xmlHttp.open("GET","outcheck.jsp?number="+number,true);
+			xmlHttp.onreadystatechange=callback1;
+			xmlHttp.send();
+		}
+	}
+	function callback1(){
+		if(xmlHttp.readyState==4){
+			if(xmlHttp.status==200){
+				//一切正常并能开始获得返回的结果
+				var result= xmlHttp.responseText;
+				if(result.trim()=="true"){
+					location.href="check_list.jsp";
 				}
 			}
 		}
-	
+	}
 </script>
 <style>
 	.alt td{ background:black !important;}
@@ -115,7 +134,9 @@
 	    					<td   id="money">${cs.money}</td>
 	    					<td   id="checktime">${cs.checktime}</td>
 	    					<td   id="leavetime">${cs.leavetime}</td>
-	    					<td><button onclick="deleteCheck('${cs.number }')">删除</button>
+	    					<td>
+	    						<button onclick="outcheck('${cs.number }')">退房</button>
+	    						<button onclick="deleteCheck('${cs.number }')">删除</button>
 	    					</td>
     					</tr>	
     				</c:forEach>

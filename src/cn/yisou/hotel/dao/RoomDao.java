@@ -7,7 +7,7 @@ import cn.yisou.hotel.pojo.Check;
 import cn.yisou.hotel.pojo.Room;
 
 public interface RoomDao {
-	public boolean updateStateByRoomid(String roomid,Integer state,Connection conn)throws Exception;
+	public boolean updateStateByRoomid(String roomid,String state,Connection conn)throws Exception;
 	public boolean updatePriceByType(Double price,String type,Connection conn)throws Exception;
 	public boolean updateHourroomByRoomid(String roomid,String hourroom,Connection conn)throws Exception;
 	public boolean addRemarkByRoomid(String roomid,String remark,Connection conn)throws Exception;

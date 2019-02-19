@@ -12,4 +12,5 @@ public interface RoomServiceH {
 	public List<Room> findRoomByState(String state);
 	public List<Room> findAll();			//查找所有房间
 	public List<Room> findAllRoomType();	//查找所有房间类型
+	public boolean changeStateByRoomid(String roomid,String state);
 }
