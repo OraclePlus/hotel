@@ -10,7 +10,7 @@
 
 <!-- Head -->
 <head>
-
+		
     <title>Booking</title>
 
     <!-- Meta-Tags -->
@@ -103,6 +103,7 @@
 
 
 <!-- Booking -->
+<form  method="post" name="ok" id="formpay">
 <div class="reg agileits w3layouts">
     <div class="container">
 
@@ -110,7 +111,7 @@
 
             <h2>Book Your Resort!</h2>
 
-            <div class="place wow  agileits w3layoutsslideInLeft">
+            <!-- <div class="place wow  agileits w3layoutsslideInLeft">
                 <div class="dropdown-button agileits w3layouts">
                     <h4>地点</h4>
                     <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
@@ -127,12 +128,15 @@
                     </select>
                 </div>
             </div>
-
+ --> 		
+	
+		
             <div class="members wow agileits w3layouts slideInLeft">
                 <div class="adult agileits w3layouts">
+              
                     <h4>成年人数量</h4>
                     <div class="dropdown-button agileits w3layouts">
-                        <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                        <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}' name="adult">
                             <option value=""></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -146,7 +150,7 @@
                 <div class="child wow slideInLeft agileits w3layouts">
                     <h4>儿童数量</h4>
                     <div class="dropdown-button agileits w3layouts">
-                        <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                        <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}' name="child">
                             <option value=""></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -158,80 +162,86 @@
                 <div class="clearfix"></div>
             </div>
 
-            <!-- <div class="suite wow slideInLeft agileits w3layouts">
+          <div class="suite wow slideInLeft agileits w3layouts">
                 <div class="dropdown-button agileits w3layouts">
                     <h4>房型</h4>
-                    <select class="dropdown agileits w3layouts" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                        <option value="1"></option>
-                        <option value="1">Single Room</option>
-                        <option value="2">Premium Single Room</option>
-                        <option value="2">Double Room</option>
-                        <option value="2">Premium Double Room</option>
-                        <option value="3">Deluxe Suite</option>
-                        <option value="4">Executive Suite</option>
-                        <option value="4">Ocean View Suite</option>
-                        <option value="4">Presidential Suite</option>
-                        <option value="3">The Penthouse</option>
-                    </select>
-                </div>
-            </div> -->
-
+                    <select class="dropdown agileits w3layouts" name="roomtype" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
+                        <option value="亲子主题房">亲子主题房</option>
+                        <option value="全海景套房">全海景套房</option>
+                        <option value="家庭影院套房">家庭影院套房</option>
+                        <option value="总统套房">总统套房</option>
+                        <option value="情侣主题房">情侣主题房</option>
+                        <option value="普通大床">普通大床</option>
+                        <option value="景观房">景观房</option>
+                        <option value="池畔房">池畔房</option>
+                        <option value="河景大床">河景大床</option>
+                        <option value="花园大床房">花园大床房</option>
+                        <option value="高档标间">高档标间</option>
+                        <option value="豪华海景房">豪华海景房</option>
+                        <option value="豪华家庭海景套房">豪华家庭海景套房</option>
+                    </select>            
+                </div>                    
+            </div>                        
             <div class="book-pag wow agileits w3layouts slideInLeft">
                 <h4>Select Date</h4>
                 <div class="book-pag-frm1 agileits w3layouts wow slideInLeft">
                     <label>入住日期</label>
-                    <input class="date agileits w3layouts" id="datepicker1" type="text" value="Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+                    <input class="date agileits w3layouts" name = "inhotel" id="datepicker1" type="text" placeholder="选择入住日期">
                 </div>
+                
                 <div class="book-pag-frm2 wow agileits w3layouts slideInLeft">
                     <label>离开日期</label>
-                    <input class="date agileits w3layouts" id="datepicker2" type="text" value="Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+                    <input class="date agileits w3layouts" name ="outhotel" id="datepicker2" type="text"  placeholder="选择离开日期">
                 </div>
                 <div class="clearfix"></div>
             </div>
-
+				
             <div class="food wow agileits w3layouts slideInLeft">
                 <h4>选择支付方式</h4>
                 <div class="radio-btns agileits w3layouts">
                     <ul>
                         <li>
                             <input id="male" class="w3-radio" type="radio" name="gender" value="local">
-                            <label class="w3-validate">Local</label>
+                            <label class="w3-validate">到店</label>
                         </li>
                         <li class="li2">
                             <input id="female" class="w3-radio" type="radio" name="gender" value="continental">
-                            <label class="w3-validate">Continental</label>
+                            <label class="w3-validate">支付宝</label>
                         </li>
                         <li>
                             <input id="unknown" class="w3-radio" type="radio" name="gender" value="multicuisine">
-                            <label class="w3-validate">Multi</label>
+                            <label class="w3-validate">信用卡</label>
                         </li>
                     </ul>
                 </div>
             </div>
-
             <div class="submit wow agileits w3layouts slideInLeft">
-                <a class="popup-with-zoom-anim agileits w3layouts" href="#small-dialog">BOOK NOW</a>
+                <a class="popup-with-zoom-anim agileits w3layouts" id="pay" href="#small-dialog">BOOK NOW</a>
             </div>
 
-
-
+<!-- 支付页面 -->
             <!-- Popup-Box -->
             <div id="popup">
                 <div id="small-dialog" class="mfp-hide agileits w3layouts">
                     <div class="pop_up agileits w3layouts">
                         <div class="payment-online-form-left agileits w3layouts">
-                            <form>
+                            
                                 <h4><span class="shipping agileits w3layouts"> </span>Customer Details</h4>
                                 <ul class="agileits w3layouts">
-                                    <li class="agileits w3layouts"><input required="" class="text-box-dark agileits w3layouts" type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}"></li>
-                                    <li class="agileits w3layouts"><input required="" class="text-box-dark agileits w3layouts" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
+                                    <li class="agileits w3layouts">
+                                    <input  id="uname" class="text-box-dark agileits w3layouts" type="text" placeholder="入住人姓名"  name = "uname"></li>
+                                    <li class="agileits w3layouts">
+                                    <input  id="idcard" class="text-box-dark agileits w3layouts" type="text" placeholder="身份证号码"  name ="idcard"></li>
                                 </ul>
                                 <ul class="agileits w3layouts">
-                                    <li class="agileits w3layouts"><input required="" class="text-box-dark agileits w3layouts" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
-                                    <li class="agileits w3layouts"><input required="" class="text-box-dark agileits w3layouts" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
+                                    <li class="agileits w3layouts">
+                                    <input class="text-box-dark agileits w3layouts" id="email" type="text" placeholder="email"  name ="email"></li>
+                                    <li class="agileits w3layouts">
+                                    <input class="text-box-dark agileits w3layouts" id="tel" type="text" placeholder="联系电话" name= "tel">></li>
+                                   	<%-- <%session.setAttribute("tel") %> --%>
                                 </ul>
                                 <div class="clearfix"></div>
-                                <h4 class="paymenthead agileits w3layouts"><span class="payment agileits w3layouts"></span>Payment Details</h4>
+                                <!-- <h4 class="paymenthead agileits w3layouts"><span class="payment agileits w3layouts"></span>Payment Details</h4>
                                 <div class="clearfix"></div>
                                 <ul class="payment-type agileits w3layouts">
                                     <li class="agileits w3layouts"><span class="col_checkbox agileits w3layouts">
@@ -247,34 +257,32 @@
 												<a class="paypal agileits w3layouts" href="#"></a>
 											</span>
                                     </li>
-                                </ul>
-                                <ul class="agileits w3layouts">
+                                </ul> -->
+                                <!-- <ul class="agileits w3layouts">
                                     <li class="agileits w3layouts"><input required="" class="text-box-dark agileits w3layouts" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
                                     <li class="agileits w3layouts"><input required="" class="text-box-dark agileits w3layouts" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
                                 </ul>
                                 <ul class="agileits w3layouts">
                                     <li class="agileits w3layouts"><input required="" class="text-box-light hasDatepicker agileits w3layouts" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
                                     <li class="agileits w3layouts"><input required="" class="text-box-dark agileits w3layouts" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
-                                </ul>
+                                </ul> -->
                                 <ul class="payment-sendbtns agileits w3layouts">
                                     <li class="agileits w3layouts"><input type="reset" value="Reset"></li>
-                                    <li class="agileits w3layouts"><input type="submit" value="Process Payment" class="order"></li>
+                                    <li class="agileits w3layouts"><input type="button" value="Process Payment" class="order" onclick="pay()"></li>
                                 </ul>
                                 <div class="clearfix"></div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>   
             <button title="Close (Esc)" type="button" class="mfp-close agileits w3layouts">×</button>
             <!-- //Popup-Box -->
-
-        </div>
-
-    </div>
-</div>
+        		</div>
+    		</div>
+		</div>
+	</form>
 <!-- //Booking -->
-
 
 
 <!-- Contact -->
@@ -313,7 +321,7 @@
             <div class="col-md-6 col-sm-6 agileits w3layouts contact-grid contact-grid-2 wow slideInLeft">
                 <form action="#" method="post">
                     <input type="text" class="text wow agileits w3layouts slideInLeft" name="Name" placeholder="Name" required="">
-                    <input type="text" class="text wow agileits w3layouts slideInLeft" name="Email" placeholder="Email" required="">
+                    <input type="text" class="text wow agileits w3layouts slideInLeft" name="E_mail" placeholder="E_mail" required="">
                     <textarea name="Message" class="wow agileits w3layouts slideInLeft" placeholder="Message" required=""></textarea>
                     <input type="submit" class="more_btn wow agileits w3layouts slideInLeft" value="Send Message">
                 </form>
@@ -375,7 +383,7 @@
             <h4>Stay Connected</h4>
             <p>Subscribe to our newsletter and get informed of our newest projects.</p>
             <form action="#" method="post">
-                <input type="text" placeholder="Email" name="Email" required="">
+                <input type="text" placeholder="E_mail" name="E_mail" required="">
                 <input type="submit" value="SUBSCRIBE">
             </form>
         </div>
@@ -391,7 +399,7 @@
         </div>
 
         <div class="col-md-6 col-sm-6 footer-grids agileits w3layouts copyright wow fadeInUp">
-            <p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+            <p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">香格里拉酒店</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
         </div>
         <div class="clearfix"></div>
 
@@ -466,6 +474,21 @@
     $(function() {
         $( "#datepicker,#datepicker1,#datepicker2" ).datepicker();
     });
+</script>
+<script type="text/javascript">
+/* $(function(){
+	$(".popup-with-zoom-anim agileits w3layouts").click(function (){
+			$("#pay").sub();
+	})
+}) */
+	function pay(){
+	var form=document.getElementById("formpay");
+	form.action="ok.do?uname="+document.getElementById("uname").value+"&idcard="+
+	document.getElementById("idcard").value+"&email="+document.getElementById("email").value+
+	"&tel="+document.getElementById("tel").value
+	form.submit();
+	}
+
 </script>
 <!-- //Date-Picker-JavaScript -->
 

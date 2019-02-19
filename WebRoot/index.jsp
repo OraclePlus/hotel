@@ -121,7 +121,7 @@
 		   						<p><span>香格里拉酒店</span></p>
 		   						<h2>Reserve Room for Family Vacation</h2>
 			   					<p>
-			   						<a href="#" class="btn btn-primary btn-lg">立即预定</a>
+			   						<a href="booking.jsp" class="btn btn-primary btn-lg">立即预定</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -137,7 +137,7 @@
 		   						<p><span>香格里拉酒店</span></p>
 		   						<h2>让您的假期更舒适</h2>
 			   					<p>
-			   						<a href="#" class="btn btn-primary btn-lg">立即预定</a>
+			   						<a href="booking.jsp" class="btn btn-primary btn-lg">立即预定</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -153,7 +153,7 @@
 		   						<p><span>香格里拉酒店</span></p>
 		   						<h2>A Best Place To Enjoy Your Life</h2>
 			   					<p>
-			   						<a href="#" class="btn btn-primary btn-lg">立即预定</a>
+			   						<a href="booking.jsp" class="btn btn-primary btn-lg">立即预定</a>
 			   					</p>
 		   					</div>
 		   				</div>
