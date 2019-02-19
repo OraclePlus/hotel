@@ -18,7 +18,7 @@ public class AdministratorDaoImpl implements AdministratorDao{
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, ad.getId());
 		ps.setBytes(2, ad.getAdpsw());
-		ps.setInt(3, ad.getPower());
+		ps.setInt(3, 1);
 		int n=ps.executeUpdate();
 		if (n>0) {
 			flag=true;
@@ -92,7 +92,7 @@ public class AdministratorDaoImpl implements AdministratorDao{
 		ResultSet rs=ps.executeQuery();
 		while(rs.next()) {
 			ad.setId(rs.getString("id"));
-			ad.setPower(rs.getInt("power"));
+			ad.setAdpsw(rs.getBytes("adpsw"));
 		}
 		return ad;
 	}

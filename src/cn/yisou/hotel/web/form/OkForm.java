@@ -9,6 +9,13 @@ public class OkForm extends ActionForm {
 	private String inhotel;
 	private String outhotel;
 	private String gender;
+	private String Pd_FrpId;
+	public String getPd_FrpId() {
+		return Pd_FrpId;
+	}
+	public void setPd_FrpId(String pd_FrpId) {
+		Pd_FrpId = pd_FrpId;
+	}
 	private String uname;
 	private String idcard;
 	private String email;

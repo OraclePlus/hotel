@@ -25,7 +25,8 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/mob.css">
 <link rel="stylesheet" href="css/radio.css">
-<link rel="shortcut icon"  href="images/hotelicon.png" type="image/x-icon" />
+<link rel="shortcut icon" href="images/hotelicon.png"
+	type="image/x-icon" />
 
 
 </head>
@@ -457,7 +458,8 @@
 													<span class="hot-list-p3-1">每 晚 价 格</span> <span
 														class="hot-list-p3-2">${room.price*0.75}</span> <span
 														class="hot-list-p3-3">${room.price}</span> <span
-														class="hot-list-p3-4"> <a href="booking.jsp"
+														class="hot-list-p3-4"> <a href="booking.jsp?roomtype=${room.type}"
+														
 														class="hot-page2-alp-quot-btn">立即预订</a>
 													</span>
 												</div>

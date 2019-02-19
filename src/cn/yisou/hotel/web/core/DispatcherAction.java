@@ -15,6 +15,7 @@ public class DispatcherAction implements Action{
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response, ActionForm form)
 			throws ServletException, IOException {
 		String methodName = form.getParam();
+		System.out.println(form.getParam()+"=====form.getParam()");
 		Class c = this.getClass();
 		ActionForward af = null;
 		if (methodName == null) {

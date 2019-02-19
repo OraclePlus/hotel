@@ -10,7 +10,17 @@
 
 <!-- Head -->
 <head>
-		
+		<style type="text/css">
+	/* 	.carousel-inner .item img {
+				width: 100%;
+				height: 300px;
+			}
+		 */
+		 img {
+		 	width: 100px;
+		 
+		 }
+		</style>
     <title>Booking</title>
 
     <!-- Meta-Tags -->
@@ -29,7 +39,90 @@
     <!-- Index-Page-CSS --> <link rel="stylesheet" href="css/jquery-ui.css" 	type="text/css" media="all">
     <!-- Animate.CSS --> 	<link rel="stylesheet" href="css/animate.css" 		type="text/css" media="all">
     <!-- //Custom-Stylesheet-Links -->
-
+	<script type="text/javascript">
+		String.prototype.trim=function(){
+			var l = this.replace(this.match(/^\s+/),"");
+			var r = l.replace(this.match(/\s+$/),"");
+			return r;
+		};
+		var xmlHttp;
+		function createXmlHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();
+			}else{
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}catch(e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+		} 
+		function judge(){
+			createXmlHttp();
+			var e_mail = document.getElementById("e_mail").value;
+			e_mail = encodeURI(encodeURI(e_mail));
+			xmlHttp.open("GET","emailjudge.jsp?e_mail="+e_mail,true);
+			xmlHttp.onreadystatechange=callback2;
+			xmlHttp.send();
+			
+		}
+		function callback2(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					if(result.trim()!="true"){
+						document.getElementById("msgdiv").innerHTML="邮箱输入错误";
+						document.getElementById("msgdiv").style.color="red";
+						document.getElementById("msgdiv").style.display="inline";
+					}else{
+						document.getElementById("msgdiv").innerHTML="";
+						document.getElementById("msgdiv").style.display="none";
+					}
+					
+				}
+			}
+		}
+		
+		function idjudge(){
+			createXmlHttp();
+			var idcard = document.getElementById("idcard").value;
+			idcard = encodeURI(encodeURI(idcard));
+			xmlHttp.open("GET","idcardjudge.jsp?idcard="+idcard,true);
+			xmlHttp.onreadystatechange=callback1;
+			xmlHttp.send();
+		}
+		function callback1(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					alert(result);
+					if(result.trim()!="true"){
+						document.getElementById("iddiv").innerHTML="身份证输入错误";
+						document.getElementById("iddiv").style.color="red";
+						document.getElementById("iddiv").style.display="inline";
+					}else{
+						document.getElementById("iddiv").innerHTML="";
+						document.getElementById("iddiv").style.display="none";
+					}
+					
+				}
+			}
+		}
+		function teljudge(){
+			var tel = document.getElementById("tel").value;
+			var myreg=/^[1][3,4,5,7,8,9][0-9]{9}$/;  
+          	if (!myreg.test(tel)) {  
+         	  document.getElementById("teldiv").innerHTML="手机号格式不正确";
+			  document.getElementById("teldiv").style.color="red";
+			  document.getElementById("teldiv").style.display="inline";
+        	} else {  
+         	    document.getElementById("teldiv").innerHTML="";
+				document.getElementById("teldiv").style.display="none";
+         	} 
+		}
+	</script>
     
 </head>
 <!-- //Head -->
@@ -104,9 +197,9 @@
 <!-- //Location -->
 
 
-
+  <input type="hidden" value="<%=request.getParameter("roomtype")%>" id="roomt"> 
 <!-- Booking -->
-<form  method="post" name="ok" id="formpay">
+<form  method="post" name="ok" id="formpay" >
 <div class="reg agileits w3layouts">
     <div class="container">
 
@@ -169,21 +262,22 @@
                 <div class="dropdown-button agileits w3layouts">
                     <h4>房型</h4>
                     <select class="dropdown agileits w3layouts" id="roomtype" name="roomtype" tabindex="10" onchange="roomnum()" data-settings='{"wrapperClass":"flat"}'>
-                        <option value="亲子主题房">亲子主题房</option>
-                        <option value="全海景套房">全海景套房</option>
-                        <option value="家庭影院套房">家庭影院套房</option>
-                        <option value="总统套房">总统套房</option>
-                        <option value="情侣主题房">情侣主题房</option>
-                        <option value="普通大床">普通大床</option>
-                        <option value="景观房">景观房</option>
-                        <option value="池畔房">池畔房</option>
-                        <option value="河景大床">河景大床</option>
-                        <option value="花园大床房">花园大床房</option>
-                        <option value="高档标间">高档标间</option>
-                        <option value="豪华海景房">豪华海景房</option>
-                        <option value="豪华家庭海景套房">豪华家庭海景套房</option>
+                        <option id="rooms" value="亲子主题房">亲子主题房</option>
+                        <option id="rooms" value="全海景套房">全海景套房</option>
+                        <option id="rooms" value="家庭影院套房">家庭影院套房</option>
+                        <option id="rooms" value="总统套房">总统套房</option>
+                        <option id="rooms" value="情侣主题房">情侣主题房</option>
+                        <option id="rooms" value="普通大床">普通大床</option>
+                        <option id="rooms" value="景观房">景观房</option>
+                        <option id="rooms" value="池畔房">池畔房</option>
+                        <option id="rooms" value="河景大床">河景大床</option>
+                        <option id="rooms" value="花园大床房">花园大床房</option>
+                        <option id="rooms" value="高档标间">高档标间</option>
+                        <option id="rooms" value="豪华海景房">豪华海景房</option>
+                        <option id="rooms" value="豪华家庭海景套房">豪华家庭海景套房</option>
                     </select>   
-                    <div style="display:none" id="roommsg"></div>        
+                    <div style="display:none" id="roommsg"></div>      
+                  
                 </div>                    
             </div>                        
             <div class="book-pag wow agileits w3layouts slideInLeft">
@@ -200,25 +294,64 @@
                 <div class="clearfix"></div>
             </div>
 				
-            <div class="food wow agileits w3layouts slideInLeft">
+           <div class="food wow agileits w3layouts slideInLeft">
                 <h4>选择支付方式</h4>
                 <div class="radio-btns agileits w3layouts">
                     <ul>
                         <li>
-                            <input id="male" class="w3-radio" type="radio" name="gender" value="local">
-                            <label class="w3-validate">到店</label>
+                            <input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked" />
+                            <label class="w3-validate">工商银行</label>
                         </li>
                         <li class="li2">
-                            <input id="female" class="w3-radio" type="radio" name="gender" value="continental">
-                            <label class="w3-validate">支付宝</label>
+                           	<input type="radio" name="pd_FrpId" value="BOC-NET-B2C" />
+                            <label class="w3-validate">中国银行</label>
                         </li>
                         <li>
-                            <input id="unknown" class="w3-radio" type="radio" name="gender" value="multicuisine">
-                            <label class="w3-validate">信用卡</label>
+                            <input type="radio" name="pd_FrpId" value="ABC-NET-B2C" />
+                            <label class="w3-validate">农业银行</label>
                         </li>
-                    </ul>
+                   </ul>
                 </div>
-            </div>
+            </div> 
+            
+            
+         <%--    <div style="margin-top:5px;margin-left:5px;">
+						<strong>选择银行：</strong>
+						<p>
+							<br/>
+							<input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked" />工商银行
+							<img src="${pageContext.request.contextPath}/bank_img/icbc.bmp" align="middle" width="30" height="30" />&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="pd_FrpId" value="BOC-NET-B2C" />中国银行
+							<img src="${pageContext.request.contextPath}/bank_img/bc.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="pd_FrpId" value="ABC-NET-B2C" />农业银行
+							<img src="${pageContext.request.contextPath}/bank_img/abc.bmp" align="middle" />
+							<br/>
+							<br/>
+							<input type="radio" name="pd_FrpId" value="BOCO-NET-B2C" />交通银行
+							<img src="${pageContext.request.contextPath}/bank_img/bcc.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="pd_FrpId" value="PINGANBANK-NET" />平安银行
+							<img src="${pageContext.request.contextPath}/bank_img/pingan.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="pd_FrpId" value="CCB-NET-B2C" />建设银行
+							<img src="${pageContext.request.contextPath}/bank_img/ccb.bmp" align="middle" />
+							<br/>
+							<br/>
+							<input type="radio" name="pd_FrpId" value="CEB-NET-B2C" />光大银行
+							<img src="${pageContext.request.contextPath}/bank_img/guangda.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C" />招商银行
+							<img src="${pageContext.request.contextPath}/bank_img/cmb.bmp" align="middle" />
+
+						</p>
+						<hr/>
+						<p style="text-align:right;margin-right:100px;">
+							<a href="javascript:document.getElementById('orderForm').submit();">
+								<img src="${pageContext.request.contextPath}/images/finalbutton.gif" width="204" height="51" border="0" />
+							</a>
+						</p>
+					</div>
+             --%>
+            
+            
+            
             <div class="submit wow agileits w3layouts slideInLeft">
                 <a class="popup-with-zoom-anim agileits w3layouts" id="pay" href="#small-dialog">BOOK NOW</a>
             </div>
@@ -235,13 +368,16 @@
                                     <li class="agileits w3layouts">
                                     <input  id="uname" class="text-box-dark agileits w3layouts" type="text" placeholder="入住人姓名"  name = "uname"></li>
                                     <li class="agileits w3layouts">
-                                    <input  id="idcard" class="text-box-dark agileits w3layouts" type="text" placeholder="身份证号码"  name ="idcard"></li>
+                                    <input  id="idcard" class="text-box-dark agileits w3layouts" type="text"  onblur="idjudge()" placeholder="身份证号码"  name ="idcard"></li>
+                                    <div style="display:none" id="iddiv"></div><br/>
                                 </ul>
                                 <ul class="agileits w3layouts">
                                     <li class="agileits w3layouts">
-                                    <input class="text-box-dark agileits w3layouts" id="email" type="text" placeholder="email"  name ="email"></li>
+                                    <input class="text-box-dark agileits w3layouts" id="e_mail" type="text" onblur="judge()" placeholder="email"  name ="e_mail"></li>
+                                    <div style="display:none" id="msgdiv"></div><br/>
                                     <li class="agileits w3layouts">
-                                    <input class="text-box-dark agileits w3layouts" id="tel" type="text" placeholder="联系电话" name= "tel">></li>
+                                    <input class="text-box-dark agileits w3layouts" id="tel" type="text" placeholder="联系电话" oninput="value=value.replace(/[^\d]/g,'')" onblur="teljudge()" name= "tel">></li>
+                                    <div style="display:none" id="teldiv"></div><br/>
                                    	<%-- <%session.setAttribute("tel") %> --%>
                                 </ul>
                                 <div class="clearfix"></div>
@@ -489,7 +625,7 @@
 	var form=document.getElementById("formpay");
 	form.action="ok.do?uname="+document.getElementById("uname").value+"&idcard="+
 	document.getElementById("idcard").value+"&email="+document.getElementById("email").value+
-	"&tel="+document.getElementById("tel").value
+	"&tel="+document.getElementById("tel").value+"&param=pay"
 	form.submit();
 	}
 	
@@ -537,7 +673,17 @@
 				xmlHttp.onreadystatechange=callback;
 				xmlHttp.send();
 			}
-
+	/* function defaults(){
+		var rooms=document.getElementById("#rooms");
+		alert(1111)
+	} */
+		window.onload=function(){
+		
+			var rooms=document.getElementById("rooms").value
+			var rooms2=document.getElementById("roomt").value
+			<%-- alert(<%=request.getParameter("roomtype")%>); --%>
+			
+		}
 </script>
 <!-- //Date-Picker-JavaScript -->
 
