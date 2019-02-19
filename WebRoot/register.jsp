@@ -202,7 +202,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="password" name="psw" placeholder="确认密码" required="" id="confirmpsw" onblur="pswjudge()"><div style="display:none" id="pswdiv"></div><br/>
 				<input type="text" name="tel" placeholder="手机号码" required="" id="tel" onblur="teljudge()" ><div style="display:none" id="teldiv"></div><br/>
 				<input type="text" name="idcard" placeholder="身份证号" required="" id="idcard" onblur="judge()" ><div style="display:none" id="msgdiv"></div><br/>
-				<input type="text" name="sex" id="sex" placeholder="性别" required="" >
+				<!-- <input type="text" name="sex" id="sex" placeholder="性别" required="" > -->
+				 <div class="food wow agileits w3layouts slideInLeft">
+                <h3 style="color: white;">性别</h3>
+                <div class="radio-btns agileits w3layouts">
+                    <ul>
+                        <li>
+                            <input id="male" class="w3-radio" type="radio" name="sex" id="sex" value="男">
+                            <label class="w3-validate" style="color: white;">男</label>
+                        
+                            <input id="female" class="w3-radio" type="radio" name="sex" id="sex" value="女">
+                            <label class="w3-validate" style="color: white;" >女</label>
+                        </li> 
+                    </ul>
+                </div>
+            </div>
 				<div class="send-button w3layouts agileits">
 					<input type="submit" value="免费注册" >
 				</div>

@@ -17,7 +17,7 @@ public class CheckDaoImplZ implements CheckDaoZ{
 	@Override
 	public boolean addInfo(Check check, Connection conn) throws Exception {
 		boolean flag=false;
-		String sql="insert into checke (number,roomid,uid,name,peopelnum,money,checktime,leavetime) values(?,?,?,?,?,?,?,?)";
+		String sql="insert into checke (number,roomid,uid,name,peoplenum,money,checktime,leavetime) values(?,?,?,?,?,?,?,?)";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, check.getNumber());
 		ps.setString(2, check.getRoomid());

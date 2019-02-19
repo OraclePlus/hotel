@@ -62,6 +62,7 @@ public class RoomServiceHImplZ implements RoomServiceZ{
 		try {
 			selectRoomByState = rdao.selectRoomByRoomType(roomtype,conn);
 			System.out.println("selectRoomByState"+selectRoomByState.size());
+			
 			for (Room room : selectRoomByState) {
 				System.out.println(room.getRoomid()+"11111111111");
 				System.out.println(room.getState());
@@ -72,6 +73,8 @@ public class RoomServiceHImplZ implements RoomServiceZ{
 					conn.commit();
 					return room;
 				}
+				}else {
+					
 				}
 			}
 		} catch (Exception e) {
