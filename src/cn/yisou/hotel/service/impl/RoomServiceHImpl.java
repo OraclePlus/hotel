@@ -142,4 +142,20 @@ public class RoomServiceHImpl implements RoomServiceH{
 		return list;
 	}
 
+	@Override
+	public boolean changeStateByRoomid(String roomid, String state) {
+		boolean flag=false;
+		Connection conn=DBHelper.getConnection();
+		try {
+			conn.setAutoCommit(false);
+			flag=rdao.updateStateByRoomid(roomid, state, conn);
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBHelper.closeConnection(conn);
+		}
+		return flag;
+	}
+
 }

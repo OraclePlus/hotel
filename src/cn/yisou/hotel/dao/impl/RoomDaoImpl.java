@@ -33,11 +33,11 @@ public class RoomDaoImpl implements RoomDao{
 	}
 	
 	@Override
-	public boolean updateStateByRoomid(String roomid, Integer state, Connection conn) throws Exception {
+	public boolean updateStateByRoomid(String roomid, String state, Connection conn) throws Exception {
 		boolean flag=false;
 		String sql="update room set state=? where roomid=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
-		ps.setInt(1, state);
+		ps.setString(1, state);
 		ps.setString(2, roomid);
 		int n=ps.executeUpdate();
 		if (n>0) {
