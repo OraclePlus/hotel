@@ -28,6 +28,7 @@ public class CharacterEncodingFilter implements Filter{
 			FilterChain arg2) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		HttpServletResponse response = (HttpServletResponse)arg1;
+		
 		String method = request.getMethod();
 		if("post".equalsIgnoreCase(method)){
 			request.setCharacterEncoding(newEncoding);
