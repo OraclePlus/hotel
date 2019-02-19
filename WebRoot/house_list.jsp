@@ -158,7 +158,7 @@
 							<select name="state" id="state" class="ui_select01">
                                 <option value="0">--请选择--</option>
                                 <option value="可入住">可入住</option>
-                                <option value="已住">已住</option>
+                                <option value="已入住">已入住</option>
                             </select>
 						<button onclick="selectAll()">搜索</button>
 						</div>
