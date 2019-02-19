@@ -32,6 +32,7 @@
 	href="style/authority/jquery.fancybox-1.3.4.css" media="screen" /></link>
 <script type="text/javascript"
 	src="scripts/artDialog/artDialog.js?skin=default"></script>
+<link rel="shortcut icon"  href="images/hotelicon.png" type="image/x-icon" />
 <title>信息管理系统</title>
 <script type="text/javascript">
 

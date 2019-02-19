@@ -53,7 +53,12 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 		check.setName(okForm.getUname());
 		check.setNumber(PrimaryKeyUUID.getPrimaryKey());
 		System.out.println("11111111"+okForm.getRoomtype());
+		
 		Room findRoomByType = room.findRoomByType(okForm.getRoomtype());
+		if(findRoomByType==null) {
+			System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhh");
+			return new ActionForward(true,"error");
+		}
 		System.out.println(findRoomByType.getRoomid()+"roomid");
 		check.setRoomid(findRoomByType.getRoomid());
 		check.setPeoplenum(new Integer(new Integer(okForm.getAdult()).intValue()+new Integer(okForm.getChild()).intValue()));

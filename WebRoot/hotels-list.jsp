@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title></title>
+<title>房间选择</title>
 
 <!--== META TAGS ==-->
 <meta charset="utf-8">
@@ -25,13 +25,9 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/mob.css">
 <link rel="stylesheet" href="css/radio.css">
+<link rel="shortcut icon"  href="images/hotelicon.png" type="image/x-icon" />
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+
 </head>
 
 <body>
@@ -333,7 +329,7 @@
 							<h4>
 								<i class="fa fa-star-o" aria-hidden="true"></i> Select Ratings
 							</h4>
-							<div class="hot-page2-alp-l-com1 hot-page2-alp-p5">
+							<!-- <div class="hot-page2-alp-l-com1 hot-page2-alp-p5">
 								<form>
 									<ul>
 										<li>
@@ -411,7 +407,7 @@
 								</form>
 								<a href="javascript:void(0);" class="hot-page2-alp-p5-btn-s">view
 									more</a>
-							</div>
+							</div> -->
 						</div>
 						<!--END PART 5 : LEFT LISTINGS-->
 						<!--PART 6 : LEFT LISTINGS-->
@@ -719,7 +715,7 @@
 	<section>
 		<div class="rows copy">
 			<div class="container">
-				<p>Copyrights © 2017 Company Name. All Rights Reserved</p>
+				<p>Copyrights © 2019 YISOU. All Rights Reserved</p>
 			</div>
 		</div>
 	</section>

@@ -52,8 +52,7 @@
 			}
 		} 
 	function deleteUsers(uid){
-	var flag=confirm("是否确认删除该订单");
-	
+	var flag=confirm("是否确认拉黑此用户");
 		if(flag==true){
 			createXmlHttp();
 			uid = encodeURI(encodeURI(uid));
@@ -135,7 +134,7 @@
 	    					<td   id="sex">${u.sex}</td>
 	    					<td   id="utel">${u.utel}</td>
 	    					<td   id="grade">${u.grade}</td>
-	    					<td><button onclick="deleteUsers('${u.uid }')">删除</button>
+	    					<td><button onclick="deleteUsers('${u.uid }')">拉黑</button>
 	    					</td>
     					</tr>	
     				</c:forEach>

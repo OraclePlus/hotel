@@ -114,6 +114,7 @@ public class CheckDaoImpl implements CheckDao{
 			check.setMoney(rs.getDouble("money"));
 			check.setChecktime(rs.getDate("checktime"));
 			check.setLeavetime(rs.getDate("leavetime"));
+			check.setState(rs.getString("state"));
 		}
 		return check;
 	}

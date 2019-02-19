@@ -51,7 +51,7 @@
 	<link rel="stylesheet" href="css/icomoon.css">
 	<!-- Flexslider  -->
 	<link rel="stylesheet" href="css/flexslider.css">
-	
+	<link rel="shortcut icon"  href="images/hotelicon.png" type="image/x-icon" />
 	<!-- Style -->
 	<link rel="stylesheet" href="css/style.css">
 
@@ -61,7 +61,7 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+	
 </head>
 <body>
 	<div id="fh5co-wrapper">
@@ -199,7 +199,7 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="copyright">
-						<p><small>&copy; 2016 Free HTML5 Template. <br> All Rights Reserved. <br>
+						<p><small>&copy; 2019 Free HTML5 Template. <br> All Rights Reserved. <br>
 						More Templates <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹å®¶">æ¨¡æ¿ä¹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½é¡µæ¨¡æ¿" target="_blank">ç½é¡µæ¨¡æ¿</a> <br> Demo Images: <a href="#" target="_blank">Unsplash</a></small></p>
 					</div>
 				</div>
