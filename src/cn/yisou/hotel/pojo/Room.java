@@ -14,6 +14,13 @@ public class Room implements Serializable{
 	private String delete;
 	private String remark;
 	private Integer count;
+	private String photo;
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	public Integer getCount() {
 		return count;
 	}

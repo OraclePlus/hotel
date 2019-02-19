@@ -10,9 +10,12 @@
 <html lang="zh-CN">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>SCT-后台系统</title>
+	<title>后台系统</title>
 	<link href="style/authority/main_css.css" rel="stylesheet" type="text/css" />
 	<link href="style/authority/zTreeStyle.css" rel="stylesheet" type="text/css">
+	
+	<link rel="shortcut icon"  href="images/hotelicon.png" type="image/x-icon" />
+	
 	<script type="text/javascript" src="scripts/jquery/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="scripts/zTree/jquery.ztree.core-3.2.js"></script>
 	<script type="text/javascript" src="scripts/authority/commonAll.js"></script>
@@ -403,7 +406,7 @@
 	 	<span id="here_area">当前位置：系统&nbsp;>&nbsp;系统介绍</span>
 	</div>
     <div id="main">
-      	<iframe name="right" id="rightMain" src="hotel_introduce.jsp" frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true"/>
+      	<iframe name="right" id="rightMain" src="hotel_introduce.jsp" frameborder="no" scrolling="auto" width="100%" height="100%" allowtransparency="true"/></iframe>
     </div>
 
 </body>
