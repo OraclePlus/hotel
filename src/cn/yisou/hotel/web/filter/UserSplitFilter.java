@@ -44,7 +44,7 @@ public class UserSplitFilter implements Filter{
 			  if(size!=null){
 			  	pageSize = Integer.parseInt(size);
 			  }
-			  maxPage = us.getMaxPageNo(pageSize);
+			  maxPage = us.getMaxPageNo1(pageSize);
 			  pageNo  = 1;
 			  String no = request.getParameter("userpageNo");
 			  if(no!=null){
@@ -56,7 +56,7 @@ public class UserSplitFilter implements Filter{
 			  		pageNo=maxPage;
 			  	}
 			  }
-			  list=us.splitQuery(pageSize, pageNo);
+			  list=us.splitQuery1(pageSize, pageNo);
 		}else if (uid!=null&&!"".equals(uid)) {
 			user=us.findUserByUid(uid);
 			pageSize=1;

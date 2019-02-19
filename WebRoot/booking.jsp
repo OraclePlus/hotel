@@ -39,7 +39,90 @@
     <!-- Index-Page-CSS --> <link rel="stylesheet" href="css/jquery-ui.css" 	type="text/css" media="all">
     <!-- Animate.CSS --> 	<link rel="stylesheet" href="css/animate.css" 		type="text/css" media="all">
     <!-- //Custom-Stylesheet-Links -->
-
+	<script type="text/javascript">
+		String.prototype.trim=function(){
+			var l = this.replace(this.match(/^\s+/),"");
+			var r = l.replace(this.match(/\s+$/),"");
+			return r;
+		};
+		var xmlHttp;
+		function createXmlHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();
+			}else{
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}catch(e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+		} 
+		function judge(){
+			createXmlHttp();
+			var e_mail = document.getElementById("e_mail").value;
+			e_mail = encodeURI(encodeURI(e_mail));
+			xmlHttp.open("GET","emailjudge.jsp?e_mail="+e_mail,true);
+			xmlHttp.onreadystatechange=callback2;
+			xmlHttp.send();
+			
+		}
+		function callback2(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					if(result.trim()!="true"){
+						document.getElementById("msgdiv").innerHTML="邮箱输入错误";
+						document.getElementById("msgdiv").style.color="red";
+						document.getElementById("msgdiv").style.display="inline";
+					}else{
+						document.getElementById("msgdiv").innerHTML="";
+						document.getElementById("msgdiv").style.display="none";
+					}
+					
+				}
+			}
+		}
+		
+		function idjudge(){
+			createXmlHttp();
+			var idcard = document.getElementById("idcard").value;
+			idcard = encodeURI(encodeURI(idcard));
+			xmlHttp.open("GET","idcardjudge.jsp?idcard="+idcard,true);
+			xmlHttp.onreadystatechange=callback1;
+			xmlHttp.send();
+		}
+		function callback1(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					alert(result);
+					if(result.trim()!="true"){
+						document.getElementById("iddiv").innerHTML="身份证输入错误";
+						document.getElementById("iddiv").style.color="red";
+						document.getElementById("iddiv").style.display="inline";
+					}else{
+						document.getElementById("iddiv").innerHTML="";
+						document.getElementById("iddiv").style.display="none";
+					}
+					
+				}
+			}
+		}
+		function teljudge(){
+			var tel = document.getElementById("tel").value;
+			var myreg=/^[1][3,4,5,7,8,9][0-9]{9}$/;  
+          	if (!myreg.test(tel)) {  
+         	  document.getElementById("teldiv").innerHTML="手机号格式不正确";
+			  document.getElementById("teldiv").style.color="red";
+			  document.getElementById("teldiv").style.display="inline";
+        	} else {  
+         	    document.getElementById("teldiv").innerHTML="";
+				document.getElementById("teldiv").style.display="none";
+         	} 
+		}
+	</script>
     
 </head>
 <!-- //Head -->
@@ -285,13 +368,16 @@
                                     <li class="agileits w3layouts">
                                     <input  id="uname" class="text-box-dark agileits w3layouts" type="text" placeholder="入住人姓名"  name = "uname"></li>
                                     <li class="agileits w3layouts">
-                                    <input  id="idcard" class="text-box-dark agileits w3layouts" type="text" placeholder="身份证号码"  name ="idcard"></li>
+                                    <input  id="idcard" class="text-box-dark agileits w3layouts" type="text"  onblur="idjudge()" placeholder="身份证号码"  name ="idcard"></li>
+                                    <div style="display:none" id="iddiv"></div><br/>
                                 </ul>
                                 <ul class="agileits w3layouts">
                                     <li class="agileits w3layouts">
-                                    <input class="text-box-dark agileits w3layouts" id="email" type="text" placeholder="email"  name ="email"></li>
+                                    <input class="text-box-dark agileits w3layouts" id="e_mail" type="text" onblur="judge()" placeholder="email"  name ="e_mail"></li>
+                                    <div style="display:none" id="msgdiv"></div><br/>
                                     <li class="agileits w3layouts">
-                                    <input class="text-box-dark agileits w3layouts" id="tel" type="text" placeholder="联系电话" name= "tel">></li>
+                                    <input class="text-box-dark agileits w3layouts" id="tel" type="text" placeholder="联系电话" oninput="value=value.replace(/[^\d]/g,'')" onblur="teljudge()" name= "tel">></li>
+                                    <div style="display:none" id="teldiv"></div><br/>
                                    	<%-- <%session.setAttribute("tel") %> --%>
                                 </ul>
                                 <div class="clearfix"></div>
@@ -538,8 +624,8 @@
 	function pay(){
 	var form=document.getElementById("formpay");
 	form.action="ok.do?uname="+document.getElementById("uname").value+"&idcard="+
-	document.getElementById("idcard").value+"&email="+document.getElementById("email").value+
-	"&tel="+document.getElementById("tel").value+"&param=pay"
+	document.getElementById("idcard").value+"&email="+document.getElementById("e_mail").value+
+	"&tel="+document.getElementById("tel").value+"&param=pay";
 	form.submit();
 	}
 	

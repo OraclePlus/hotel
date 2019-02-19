@@ -61,7 +61,50 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+	<script type="text/javascript">
+		String.prototype.trim=function(){
+			var l = this.replace(this.match(/^\s+/),"");
+			var r = l.replace(this.match(/\s+$/),"");
+			return r;
+		};
+		var xmlHttp;
+		function createXmlHttp(){
+			if(window.XMLHttpRequest){
+				xmlHttp = new XMLHttpRequest();
+			}else{
+				try{
+					xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+				}catch(e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+		} 
+		function judge(){
+			createXmlHttp();
+			var e_mail = document.getElementById("e_mail").value;
+			e_mail = encodeURI(encodeURI(e_mail));
+			xmlHttp.open("GET","emailjudge.jsp?e_mail="+e_mail,true);
+			xmlHttp.onreadystatechange=callback;
+			xmlHttp.send();
+		}
+		function callback(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					//一切正常并能开始获得返回的结果
+					var result= xmlHttp.responseText;
+					if(result.trim()!="true"){
+						document.getElementById("msgdiv").innerHTML="邮箱输入错误";
+						document.getElementById("msgdiv").style.color="red";
+						document.getElementById("msgdiv").style.display="inline";
+					}else{
+						document.getElementById("msgdiv").innerHTML="";
+						document.getElementById("msgdiv").style.display="none";
+					}
+					
+				}
+			}
+		}
+	</script>
 </head>
 <body>
 	<div id="fh5co-wrapper">
@@ -136,21 +179,23 @@
 						<li><i class="ti-home"></i><a href="#">www.yoursite.com</a></li>
 					</ul>
 				</div>
+				<form action="send.do" >
 				<div class="col-md-12">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Name">
+								<input type="text" class="form-control" placeholder="Name" required="required" name="mname" id="mname">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email">
+								<input type="text" class="form-control" name="e_mail" onblur="judge()" placeholder="Email" required="required" id="e_mail">
+								<div style="display:none" id="msgdiv"></div><br/>
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
+								<textarea name="messages" class="form-control" required="required" id="messages" cols="30" rows="7" placeholder="Message"></textarea>
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -160,6 +205,7 @@
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -255,6 +301,7 @@
 	<script src="js/google_map.js"></script>
 
 	<script src="js/custom.js"></script>
-
+	
 </body>
+
 </html>

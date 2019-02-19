@@ -9,7 +9,7 @@
 	String uid=request.getParameter("uid");
 	uid = URLDecoder.decode(uid,"UTF-8");
 	UserServiceH us=new UserServiceHImpl();
-	boolean f=us.changeGradeByUid(uid, "vip-1");
+	boolean f=us.changeGradeByUid(uid, "vip0");
 	pageContext.setAttribute("f", f);
  %>
 ${f}

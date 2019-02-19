@@ -101,7 +101,7 @@
 						</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${checklist}" var="cs" varStatus="sta">
+							<c:forEach items="${checkhistorylist}" var="cs" varStatus="sta">
     					<tr id="tr${cs.number }"  >
     						<td><input type="checkbox" name="IDCheck" value="${cs.number }" class="acb" /></td>
 	    					<td>${sta.count}</td>
@@ -124,16 +124,16 @@
 				<div class="ui_tb_h30">
 					<div class="ui_flt" style="height: 30px; line-height: 30px;">
 						当前第
-						<span class="ui_txt_bold04">${checkpageNo }
+						<span class="ui_txt_bold04">${checkhistorypageNo }
 						/
-						${checkmaxPage }</span>
+						${checkhistorymaxPage }</span>
 						页
 					</div>
 					<div class="ui_frt">
-						<a href="check_list.jsp?checkpageNo=1&checkpageSize=${checkpageSize }">首页</a>
-				  	 	<a href="check_list.jsp?checkpageNo=${checkpageNo-1}&checkpageSize=${checkpageSize }">上一页</a>
-				  	 	<a href="check_list.jsp?checkpageNo=${checkpageNo+1}&checkpageSize=${checkpageSize }">下一页</a>
-				  	 	<a href="check_list.jsp?checkpageNo=${checkmaxPage }&checkpageSize=${checkpageSize }">末页</a>
+						<a href="check_list.jsp?checkhistorypageNo=1&checkhistorypageSize=${checkhistorypageSize }">首页</a>
+				  	 	<a href="check_list.jsp?checkhistorypageNo=${checkhistorypageNo-1}&checkhistorypageSize=${checkhistorypageSize }">上一页</a>
+				  	 	<a href="check_list.jsp?checkhistorypageNo=${checkhistorypageNo+1}&checkhistorypageSize=${checkhistorypageSize }">下一页</a>
+				  	 	<a href="check_list.jsp?checkhistorypageNo=${checkhistorymaxPage }&checkhistorypageSize=${checkhistorypageSize }">末页</a>
 					</div>
 				</div>
 			</div>
