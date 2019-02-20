@@ -48,7 +48,7 @@ public class MailUtils {
 		message.setRecipient(RecipientType.TO, new InternetAddress(email)); 
 
 		//设置邮件主题
-		message.setSubject("用户激活");
+		message.setSubject("来自香格里拉的消息");
 		// message.setText("这是一封激活邮件，请<a href='#'>点击</a>");
 
 		//设置邮件内容

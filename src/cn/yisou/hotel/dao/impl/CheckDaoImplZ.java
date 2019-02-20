@@ -11,6 +11,7 @@ import cn.yisou.hotel.dao.CheckDao;
 import cn.yisou.hotel.dao.CheckDaoZ;
 import cn.yisou.hotel.db.DBHelper;
 import cn.yisou.hotel.pojo.Check;
+import cn.yisou.hotel.utils.MailUtils;
 
 public class CheckDaoImplZ implements CheckDaoZ{
 
@@ -32,6 +33,9 @@ public class CheckDaoImplZ implements CheckDaoZ{
 		int n=ps.executeUpdate();
 		if (n>0) {
 			flag=true;
+			String emailMsg="亲爱的"+check.getName()+"，您已成功预订房间，订单号为:"+check.getNumber()+"，房间号为:"+check.getRoomid()+",请于"+
+					check.getChecktime()+",18：00前入住。联系电话：15211699907";
+			MailUtils.sendMail("zjl@fulian.com", emailMsg);
 		}
 		return flag;
 	}

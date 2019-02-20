@@ -126,6 +126,7 @@ public class RoomDaoImpl implements RoomDao{
 			room.setHourroom(rs.getString("hourroom"));
 		    room.setPeoplenum(rs.getInt("peoplenum"));
 			room.setRoomtel(rs.getString("roomtel"));
+			room.setPhoto(rs.getString("photo"));
 		}
 		return room;
 	}

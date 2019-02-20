@@ -114,7 +114,7 @@
 	    					<td   id="checktime">${cs.checktime}</td>
 	    					<td   id="leavetime">${cs.leavetime}</td>
 	    					<td>
-	    						<button onclick="deleteCheck('${cs.number }')">删除</button>
+	    						<button onclick="deleteUsersCheck('${cs.number }')">删除</button>
 	    					</td>
     					</tr>	
     				</c:forEach>

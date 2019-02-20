@@ -428,21 +428,21 @@
 											<!-- 根据房间号显示不同的单元(一单元...) -->
 											<td width="40" style="background-color: blue" unitname='1'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid}"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
 										<c:if test="${n.count gt 3 and n.count le 6}">
 											<td width="40" style="background-color: blue" unitname='2'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid}"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
 										<c:if test="${n.count gt 6}">
 											<td width="40" style="background-color: blue" unitname='3'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid}"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
@@ -453,21 +453,21 @@
 										<c:if test="${n.count le 3}">
 											<td width="40" style="background-color: red" unitname='1'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid}"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
 										<c:if test="${n.count gt 3 and n.count le 6}">
 											<td width="40" style="background-color: red" unitname='2'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid }"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
 										<c:if test="${n.count gt 6}">
 											<td width="40" style="background-color: red" unitname='3'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid }"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
@@ -478,21 +478,21 @@
 										<c:if test="${n.count le 3}">
 											<td width="40" style="background-color: green" unitname='1'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid }"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
 										<c:if test="${n.count gt 3 and n.count le 6}">
 											<td width="40" style="background-color: green" unitname='2'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid }"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>
 										<c:if test="${n.count gt 6}">
 											<td width="40" style="background-color: green" unitname='3'>
 												<a
-												href="/xngzf/archives/fangyuanRentHistory.action?fyID=14458579642011"
+												href="showroom.jsp?roomid=${room.roomid }"
 												class="fy_table_td" style="color:#fff;">${room.roomid }</a>
 											</td>
 										</c:if>

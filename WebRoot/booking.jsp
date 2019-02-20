@@ -97,7 +97,6 @@
 				if(xmlHttp.status==200){
 					//一切正常并能开始获得返回的结果
 					var result= xmlHttp.responseText;
-					alert(result);
 					if(result.trim()!="true"){
 						document.getElementById("iddiv").innerHTML="身份证输入错误";
 						document.getElementById("iddiv").style.color="red";
@@ -623,9 +622,11 @@
 }) */
 	function pay(){
 	var form=document.getElementById("formpay");
+	
 	form.action="ok.do?uname="+document.getElementById("uname").value+"&idcard="+
 	document.getElementById("idcard").value+"&email="+document.getElementById("e_mail").value+
 	"&tel="+document.getElementById("tel").value+"&param=pay";
+	"&tel="+document.getElementById("tel").value;
 	form.submit();
 	}
 	
@@ -649,7 +650,6 @@
 					var result= xmlHttp.responseText;
 					var num=result.trim();
 					if(num==0){
-						alert("sfsdfsdfsdfd	");
 						/* $("#pay").attr("disabled",true).css("pointer-events","none");  */
 						document.getElementById("pay").href="javascript:volid(0);";
 						document.getElementById("roommsg").innerHTML="该房间类型现在剩余"+num;

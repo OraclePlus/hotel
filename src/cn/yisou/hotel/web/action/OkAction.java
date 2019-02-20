@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import cn.yisou.hotel.pojo.Check;
+import cn.yisou.hotel.pojo.Room;
 import cn.yisou.hotel.pojo.User;
 import cn.yisou.hotel.service.RoomServiceZ;
 import cn.yisou.hotel.service.impl.CheckServiceHImplZ;
@@ -24,15 +25,17 @@ import cn.yisou.hotel.web.core.DispatcherAction;
 import cn.yisou.hotel.web.form.OkForm;
 
 public class OkAction extends DispatcherAction {
+	
 	String oid=PrimaryKeyUUID.getPrimaryKey();
+	Check check=new Check();
 @Override
 public ActionForward excute(HttpServletRequest request, HttpServletResponse response, ActionForm form)
 		throws ServletException, IOException {
+	System.out.println("excute");
 		long daysBetween=0;
 		CheckServiceHImplZ cHImpl=new CheckServiceHImplZ();
 		RoomServiceZ room=new RoomServiceHImplZ();
 		OkForm okForm=(OkForm)form;
-		Check check=new Check();
 		System.out.println(okForm.getParam()+"okForm.getParam()");
 		check.setChecktime(SqlDateConvert.convert(okForm.getInhotel()));
 		check.setLeavetime(SqlDateConvert.convert(okForm.getOuthotel()));
@@ -44,24 +47,33 @@ public ActionForward excute(HttpServletRequest request, HttpServletResponse resp
 			java.util.Date d1=sdf.parse(inhotel);
 			java.util.Date d2=sdf.parse(outhotel);
 			daysBetween=(d2.getTime()-d1.getTime()+1000000)/(60*60*24*1000);
+			
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		String uname = okForm.getUname();
+		System.out.println("uname=="+uname);
 		byte[] b = uname.getBytes("ISO8859-1");
 		uname = new String(b,"UTF-8");
-		
+		System.out.println("uname***"+uname);
 		check.setName(uname);
-		check.setNumber(PrimaryKeyUUID.getPrimaryKey());
-		check.setName(okForm.getUname());
+		//check.setNumber(PrimaryKeyUUID.getPrimaryKey());
+		//check.setName(okForm.getUname());
 		check.setNumber(oid);
-		System.out.println("11111111"+okForm.getRoomtype());
+		//System.out.println("11111111"+okForm.getRoomtype());
 		
+		Room findRoomByType = room.findRoomByType(okForm.getRoomtype());
+		if(findRoomByType==null) {
+			return new ActionForward(true,"error");
+		}
+		check.setRoomid(findRoomByType.getRoomid());
+
 		check.setPeoplenum(new Integer(new Integer(okForm.getAdult()).intValue()+new Integer(okForm.getChild()).intValue()));
 		
 		User user = (User)request.getSession().getAttribute("user");
 		check.setUid(user.getUid());
-		
+		check.setMoney(findRoomByType.getPrice()*daysBetween);
 		cHImpl.saveInfo(check);
 		
 		try {
